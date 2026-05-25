@@ -413,6 +413,7 @@
   <rect class="grid-cell" x="1031" y="174" width="12" height="12" fill="#30476e" />
   <rect class="grid-cell" x="1031" y="190" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="1047" y="94" width="12" height="12" fill="#30476e" />
+  <rect class="grid-cell" x="1047" y="110" width="12" height="12" fill="#1a2030" />
   <g class="scanline">
     <rect x="205" y="84" width="868" height="8" fill="#8cc1ff" fill-opacity="0.18" />
   </g>
