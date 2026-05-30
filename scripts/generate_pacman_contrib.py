@@ -126,13 +126,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     cell = 11
     gap = 4
-    grid_x = 112
-    grid_y = 94
+    grid_x = 118
+    grid_y = 118
     grid_w = max(len(weeks), 52) * (cell + gap)
     grid_h = 7 * (cell + gap)
 
     width = grid_x + grid_w + 46
-    height = grid_y + grid_h + 122
+    height = grid_y + grid_h + 106
     panel_bg = "#091324"
     palette = ["#17243d", "#264c7d", "#3177b8", "#59a7e8", "#8fd1ff"]
 
@@ -161,10 +161,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         active_cells = cells[:1]
 
     active_cells.sort(key=lambda item: (item["x"], item["y"]))
-    targets = trim_targets(active_cells, 24)
+    targets = trim_targets(active_cells, 18)
     avg_active = sum(int(item["count"]) for item in active_cells) / max(len(active_cells), 1)
+    target_keys = {(item["x"], item["y"]) for item in targets}
 
-    route_points = [(grid_x - 26.0, grid_y + grid_h / 2)]
+    route_points = [(grid_x - 24.0, grid_y + grid_h / 2)]
     impact_lengths = []
     total_length = 0.0
 
@@ -202,7 +203,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     title = f"{login}'s Pac-Man Contribution Run"
     generated_on = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d %H:%M UTC")
-    cycle = max(16.0, len(targets) * 0.78)
+    cycle = max(15.0, len(targets) * 0.9)
 
     pieces = []
     pieces.append(
@@ -217,10 +218,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <stop offset="100%" stop-color="#102036" stop-opacity="0.82" />
     </linearGradient>
     <style>
-      .t-main {{ font: 700 22px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #edf6ff; }}
+      .t-main {{ font: 700 21px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #edf6ff; }}
       .t-sub {{ font: 500 12px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
       .t-mini {{ font: 500 10px 'Consolas', 'Courier New', monospace; fill: #7fa5d6; }}
       .grid-cell {{ rx: 2; ry: 2; }}
+      .grid-bg {{ fill: #1a2743; }}
       .pacman-shell {{ fill: #ffd54a; }}
       .pacman-mouth {{ fill: {panel_bg}; }}
       .pacman-eye {{ fill: #0b1220; }}
@@ -232,16 +234,23 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
   <rect x="18" y="18" width="{width - 36}" height="{height - 36}" rx="13" stroke="#29466f" stroke-opacity="0.7" />
 
   <text x="28" y="42" class="t-main">{title}</text>
-  <text x="28" y="61" class="t-sub">Pac-Man glides through your active days, chomps contribution blocks, and grows as he eats stronger days.</text>
+  <text x="28" y="63" class="t-sub">Pac-Man glides through selected active days, eats them on contact, and levels up smoothly.</text>
   <text x="{width - 205}" y="{height - 20}" class="t-mini">auto-generated: {generated_on}</text>
 
-  <rect x="{grid_x - 24}" y="{grid_y - 20}" width="{grid_w + 30}" height="{grid_h + 42}" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
-  <text x="{grid_x - 2}" y="{grid_y - 32}" class="t-sub">Total contributions (last year): {total}</text>
-  <text x="{grid_x + grid_w - 180}" y="{grid_y - 32}" class="t-mini">growth reacts subtly to stronger days</text>
+  <rect x="{grid_x - 28}" y="{grid_y - 34}" width="{grid_w + 38}" height="{grid_h + 58}" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
+  <text x="{grid_x - 4}" y="{grid_y - 14}" class="t-sub">Total contributions (last year): {total}</text>
+  <text x="{grid_x + grid_w - 188}" y="{grid_y - 14}" class="t-mini">growth scales with stronger days</text>
 """
     )
 
     for c in cells:
+        pieces.append(
+            f'  <rect class="grid-cell grid-bg" x="{c["x"]}" y="{c["y"]}" width="{cell}" height="{cell}" />\n'
+        )
+
+    for c in active_cells:
+        if (c["x"], c["y"]) in target_keys:
+            continue
         fill = palette[level_for_count(int(c["count"]), max_count)]
         pieces.append(
             f'  <rect class="grid-cell" x="{c["x"]}" y="{c["y"]}" width="{cell}" height="{cell}" fill="{fill}" />\n'
@@ -249,17 +258,17 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     for idx, target in enumerate(targets):
         impact = impact_keys[idx]
-        fade_a = clamp(impact - 0.014, 0.0, 1.0)
-        fade_b = clamp(impact - 0.003, 0.0, 1.0)
-        fade_c = clamp(impact + 0.018, 0.0, 1.0)
-        pulse_b = clamp(impact + 0.012, 0.0, 1.0)
+        fade_a = clamp(impact - 0.010, 0.0, 1.0)
+        fade_b = clamp(impact - 0.0015, 0.0, 1.0)
+        fade_c = clamp(impact + 0.015, 0.0, 1.0)
+        pulse_b = clamp(impact + 0.010, 0.0, 1.0)
         tx = target["x"] + cell / 2
         ty = target["y"] + cell / 2
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         crumb_offset = 7 + (idx % 3)
         pieces.append(
             f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
-    <animate attributeName="opacity" values="1;1;1;0;0;1" keyTimes="0;{fade_a:.5f};{fade_b:.5f};{impact:.5f};{fade_c:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;1;0;0;0;1" keyTimes="0;{fade_a:.5f};{fade_b:.5f};{impact:.5f};{fade_c:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </rect>
   <circle cx="{tx:.1f}" cy="{ty:.1f}" r="1.4" fill="#fff0a6" opacity="0">
     <animate attributeName="r" values="1.4;1.4;4.5;0.6;1.4" keyTimes="0;{fade_b:.5f};{impact:.5f};{pulse_b:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
@@ -282,8 +291,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     <g>
       <g>
         <circle class="pacman-shell" cx="0" cy="0" r="12" />
-        <polygon class="pacman-mouth" points="0,0 13,-3 13,3">
-          <animate attributeName="points" values="0,0 13,-3 13,3;0,0 13,-10 13,10;0,0 13,-3 13,3" dur="0.42s" repeatCount="indefinite"/>
+        <polygon class="pacman-mouth" points="0,0 13,-2.6 13,2.6">
+          <animate attributeName="points" values="0,0 13,-2.6 13,2.6;0,0 13,-9.8 13,9.8;0,0 13,-2.6 13,2.6" dur="0.32s" repeatCount="indefinite"/>
         </polygon>
         <circle class="pacman-eye" cx="-2.8" cy="-5.2" r="1.7" />
         <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
