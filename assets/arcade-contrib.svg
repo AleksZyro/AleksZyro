@@ -347,7 +347,7 @@
   <rect class="grid-cell" x="887" y="126" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="887" y="142" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="887" y="158" width="12" height="12" fill="#1a2030" />
-  <rect class="grid-cell" x="887" y="174" width="12" height="12" fill="#30476e" />
+  <rect class="grid-cell" x="887" y="174" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="887" y="190" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="903" y="94" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="903" y="110" width="12" height="12" fill="#1a2030" />
@@ -417,7 +417,8 @@
   <rect class="grid-cell" x="1047" y="126" width="12" height="12" fill="#1a2030" />
   <rect class="grid-cell" x="1047" y="142" width="12" height="12" fill="#30476e" />
   <rect class="grid-cell" x="1047" y="158" width="12" height="12" fill="#30476e" />
-  <rect class="grid-cell" x="1047" y="174" width="12" height="12" fill="#1a2030" />
+  <rect class="grid-cell" x="1047" y="174" width="12" height="12" fill="#3e6aa7" />
+  <rect class="grid-cell" x="1047" y="190" width="12" height="12" fill="#30476e" />
   <g class="scanline">
     <rect x="205" y="84" width="868" height="8" fill="#8cc1ff" fill-opacity="0.18" />
   </g>
@@ -903,7 +904,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.28490;0.28599;0.28690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p11" d="M 132 123 C 291.9 79.0, 451.9 154.0, 589 180" fill="none" stroke="none"/>
+  <path id="p11" d="M 132 123 C 297.5 79.0, 463.1 154.0, 605 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -921,14 +922,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.30556;0.30720;0.31267;0.31468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="583" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="599" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.31267;0.31377;0.31468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="583" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="599" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.31267;0.31377;0.31468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(589 180)" opacity="0">
+  <g class="impact" transform="translate(605 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.31267;0.31377;0.31468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.31267;0.31377;0.31468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1075,7 +1076,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.39601;0.39710;0.39802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p15" d="M 132 123 C 325.5 79.0, 519.1 154.0, 685 180" fill="none" stroke="none"/>
+  <path id="p15" d="M 132 123 C 342.4 79.0, 552.7 154.0, 733 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1093,14 +1094,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.41667;0.41831;0.42379;0.42579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="679" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="727" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.42379;0.42488;0.42579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="679" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="727" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.42379;0.42488;0.42579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(685 180)" opacity="0">
+  <g class="impact" transform="translate(733 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.42379;0.42488;0.42579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.42379;0.42488;0.42579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1204,7 +1205,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.47934;0.48044;0.48135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p18" d="M 132 123 C 370.4 79.0, 608.7 154.0, 813 180" fill="none" stroke="none"/>
+  <path id="p18" d="M 132 123 C 375.9 79.0, 619.9 154.0, 829 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1222,14 +1223,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.50000;0.50164;0.50712;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="807" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="823" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.50712;0.50821;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="807" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="823" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.50712;0.50821;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(813 180)" opacity="0">
+  <g class="impact" transform="translate(829 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.50712;0.50821;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.50712;0.50821;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1247,7 +1248,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.50712;0.50821;0.50913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p19" d="M 132 123 C 375.9 79.0, 619.9 154.0, 829 180" fill="none" stroke="none"/>
+  <path id="p19" d="M 132 123 C 381.5 79.0, 631.1 154.0, 845 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1265,14 +1266,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52778;0.52942;0.53490;0.53690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="823" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="839" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.53490;0.53599;0.53690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="823" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="839" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.53490;0.53599;0.53690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(829 180)" opacity="0">
+  <g class="impact" transform="translate(845 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.53490;0.53599;0.53690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.53490;0.53599;0.53690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1376,7 +1377,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.59045;0.59155;0.59246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p22" d="M 132 123 C 392.8 79.0, 653.5 154.0, 877 180" fill="none" stroke="none"/>
+  <path id="p22" d="M 132 123 C 398.3 79.0, 664.7 90.0, 893 116" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1394,14 +1395,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.61111;0.61275;0.61823;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="871" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="887" y="110" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.61823;0.61933;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="871" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="887" y="110" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.61823;0.61933;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(877 180)" opacity="0">
+  <g class="impact" transform="translate(893 116)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.61823;0.61933;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.61823;0.61933;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1419,7 +1420,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.61823;0.61933;0.62024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p23" d="M 132 123 C 398.3 79.0, 664.7 90.0, 893 116" fill="none" stroke="none"/>
+  <path id="p23" d="M 132 123 C 426.3 79.0, 720.7 106.0, 973 132" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1437,14 +1438,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.63889;0.64053;0.64601;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="887" y="110" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="967" y="126" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.64601;0.64710;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="887" y="110" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="967" y="126" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.64601;0.64710;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(893 116)" opacity="0">
+  <g class="impact" transform="translate(973 132)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.64601;0.64710;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.64601;0.64710;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1462,7 +1463,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.64601;0.64710;0.64802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p24" d="M 132 123 C 426.3 79.0, 720.7 106.0, 973 132" fill="none" stroke="none"/>
+  <path id="p24" d="M 132 123 C 426.3 79.0, 720.7 154.0, 973 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1480,14 +1481,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66667;0.66831;0.67379;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="967" y="126" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="967" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.67379;0.67488;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="967" y="126" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="967" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.67379;0.67488;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(973 132)" opacity="0">
+  <g class="impact" transform="translate(973 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.67379;0.67488;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.67379;0.67488;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1505,7 +1506,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.67379;0.67488;0.67579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p25" d="M 132 123 C 426.3 79.0, 720.7 154.0, 973 180" fill="none" stroke="none"/>
+  <path id="p25" d="M 132 123 C 431.9 79.0, 731.9 90.0, 989 116" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1523,14 +1524,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.69444;0.69609;0.70156;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="967" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="983" y="110" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.70156;0.70266;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="967" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="983" y="110" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.70156;0.70266;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(973 180)" opacity="0">
+  <g class="impact" transform="translate(989 116)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.70156;0.70266;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.70156;0.70266;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1548,7 +1549,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.70156;0.70266;0.70357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p26" d="M 132 123 C 431.9 79.0, 731.9 90.0, 989 116" fill="none" stroke="none"/>
+  <path id="p26" d="M 132 123 C 437.5 79.0, 743.1 154.0, 1005 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1566,14 +1567,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72222;0.72387;0.72934;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="983" y="110" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="999" y="174" width="12" height="12" fill="#90c2ff" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.72934;0.73044;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="983" y="110" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="999" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.72934;0.73044;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(989 116)" opacity="0">
+  <g class="impact" transform="translate(1005 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.72934;0.73044;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.72934;0.73044;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1591,7 +1592,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.72934;0.73044;0.73135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p27" d="M 132 123 C 437.5 79.0, 743.1 122.0, 1005 148" fill="none" stroke="none"/>
+  <path id="p27" d="M 132 123 C 437.5 79.0, 743.1 170.0, 1005 196" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1609,14 +1610,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75000;0.75164;0.75712;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="999" y="142" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="999" y="190" width="12" height="12" fill="#5f95dd" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.75712;0.75821;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="999" y="142" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="999" y="190" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.75712;0.75821;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1005 148)" opacity="0">
+  <g class="impact" transform="translate(1005 196)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.75712;0.75821;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.75712;0.75821;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1634,7 +1635,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.75712;0.75821;0.75913;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p28" d="M 132 123 C 437.5 79.0, 743.1 170.0, 1005 196" fill="none" stroke="none"/>
+  <path id="p28" d="M 132 123 C 443.1 79.0, 754.3 74.0, 1021 100" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1652,14 +1653,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77778;0.77942;0.78490;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="999" y="190" width="12" height="12" fill="#5f95dd" opacity="1">
+  <rect x="1015" y="94" width="12" height="12" fill="#5f95dd" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.78490;0.78599;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="999" y="190" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1015" y="94" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.78490;0.78599;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1005 196)" opacity="0">
+  <g class="impact" transform="translate(1021 100)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.78490;0.78599;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.78490;0.78599;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1677,7 +1678,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.78490;0.78599;0.78690;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p29" d="M 132 123 C 443.1 79.0, 754.3 74.0, 1021 100" fill="none" stroke="none"/>
+  <path id="p29" d="M 132 123 C 448.8 79.0, 765.5 90.0, 1037 116" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1695,14 +1696,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.80556;0.80720;0.81267;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1015" y="94" width="12" height="12" fill="#5f95dd" opacity="1">
+  <rect x="1031" y="110" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.81267;0.81377;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1015" y="94" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1031" y="110" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.81267;0.81377;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1021 100)" opacity="0">
+  <g class="impact" transform="translate(1037 116)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.81267;0.81377;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.81267;0.81377;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1720,7 +1721,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.81267;0.81377;0.81468;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p30" d="M 132 123 C 443.1 79.0, 754.3 90.0, 1021 116" fill="none" stroke="none"/>
+  <path id="p30" d="M 132 123 C 448.8 79.0, 765.5 122.0, 1037 148" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1738,14 +1739,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.83333;0.83498;0.84045;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1015" y="110" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1031" y="142" width="12" height="12" fill="#3e6aa7" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.84045;0.84155;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1015" y="110" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1031" y="142" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.84045;0.84155;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1021 116)" opacity="0">
+  <g class="impact" transform="translate(1037 148)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.84045;0.84155;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.84045;0.84155;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1763,7 +1764,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.84045;0.84155;0.84246;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p31" d="M 132 123 C 448.8 79.0, 765.5 90.0, 1037 116" fill="none" stroke="none"/>
+  <path id="p31" d="M 132 123 C 448.8 79.0, 765.5 138.0, 1037 164" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1781,14 +1782,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.86111;0.86275;0.86823;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1031" y="110" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1031" y="158" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.86823;0.86933;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1031" y="110" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1031" y="158" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.86823;0.86933;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1037 116)" opacity="0">
+  <g class="impact" transform="translate(1037 164)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.86823;0.86933;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.86823;0.86933;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1806,7 +1807,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.86823;0.86933;0.87024;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p32" d="M 132 123 C 448.8 79.0, 765.5 138.0, 1037 164" fill="none" stroke="none"/>
+  <path id="p32" d="M 132 123 C 448.8 79.0, 765.5 154.0, 1037 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1824,14 +1825,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.88889;0.89053;0.89601;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1031" y="158" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1031" y="174" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.89601;0.89710;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1031" y="158" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1031" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.89601;0.89710;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1037 164)" opacity="0">
+  <g class="impact" transform="translate(1037 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.89601;0.89710;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.89601;0.89710;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1849,7 +1850,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.89601;0.89710;0.89802;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p33" d="M 132 123 C 448.8 79.0, 765.5 154.0, 1037 180" fill="none" stroke="none"/>
+  <path id="p33" d="M 132 123 C 454.3 79.0, 776.7 122.0, 1053 148" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1867,14 +1868,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.91667;0.91831;0.92379;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1031" y="174" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1047" y="142" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.92379;0.92488;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1031" y="174" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1047" y="142" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.92379;0.92488;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1037 180)" opacity="0">
+  <g class="impact" transform="translate(1053 148)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.92379;0.92488;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.92379;0.92488;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1892,7 +1893,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.92379;0.92488;0.92579;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p34" d="M 132 123 C 454.3 79.0, 776.7 74.0, 1053 100" fill="none" stroke="none"/>
+  <path id="p34" d="M 132 123 C 454.3 79.0, 776.7 138.0, 1053 164" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1910,14 +1911,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.94444;0.94609;0.95156;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1047" y="94" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1047" y="158" width="12" height="12" fill="#30476e" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.95156;0.95266;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1047" y="94" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1047" y="158" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.95156;0.95266;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1053 100)" opacity="0">
+  <g class="impact" transform="translate(1053 164)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.95156;0.95266;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.95156;0.95266;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
@@ -1935,7 +1936,7 @@
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.95156;0.95266;0.95357;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
     </line>
   </g>
-  <path id="p35" d="M 132 123 C 454.3 79.0, 776.7 122.0, 1053 148" fill="none" stroke="none"/>
+  <path id="p35" d="M 132 123 C 454.3 79.0, 776.7 154.0, 1053 180" fill="none" stroke="none"/>
   <g class="barrel" opacity="0">
     <g>
       <ellipse cx="0" cy="0" rx="8" ry="5.4" fill="#8a4f2b"/>
@@ -1953,14 +1954,14 @@
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.97222;0.97387;0.97934;0.98135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </g>
 
-  <rect x="1047" y="142" width="12" height="12" fill="#30476e" opacity="1">
+  <rect x="1047" y="174" width="12" height="12" fill="#3e6aa7" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.97934;0.98044;0.98135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
-  <rect x="1047" y="142" width="12" height="12" fill="#0d1117" opacity="0">
+  <rect x="1047" y="174" width="12" height="12" fill="#0d1117" opacity="0">
     <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;0.97934;0.98044;0.98135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
   </rect>
 
-  <g class="impact" transform="translate(1053 148)" opacity="0">
+  <g class="impact" transform="translate(1053 180)" opacity="0">
     <circle r="1" fill="#ffe8a6">
       <animate attributeName="r" values="1;1;10;14;1" keyTimes="0;0.97934;0.98044;0.98135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.97934;0.98044;0.98135;1" dur="126.00s" begin="0s" repeatCount="indefinite"/>
