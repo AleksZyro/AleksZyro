@@ -1,4 +1,4 @@
-name: Arcade Contributions
+name: Pac-Man Contributions
 
 on:
   workflow_dispatch:
@@ -9,8 +9,8 @@ on:
       - main
       - master
     paths:
-      - "scripts/generate_arcade_contrib.py"
-      - ".github/workflows/arcade-contributions.yml"
+      - "scripts/generate_pacman_contrib.py"
+      - ".github/workflows/pacman-contributions.yml"
       - "README.md"
 
 permissions:
@@ -28,19 +28,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Generate arcade contribution SVG
+      - name: Generate Pac-Man contribution SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_USERNAME: Aleksandros2
-        run: python scripts/generate_arcade_contrib.py
+        run: python scripts/generate_pacman_contrib.py
 
       - name: Commit and push if changed
         run: |
-          if [[ -n "$(git status --porcelain assets/arcade-contrib.svg)" ]]; then
+          if [[ -n "$(git status --porcelain assets/pacman-contrib.svg)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add assets/arcade-contrib.svg
-            git commit -m "chore: update arcade contribution animation"
+            git add assets/pacman-contrib.svg
+            git commit -m "chore: update pacman contribution animation"
             git push
           else
             echo "No changes to commit."
