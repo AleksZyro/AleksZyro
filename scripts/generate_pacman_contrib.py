@@ -160,50 +160,34 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     if not active_cells:
         active_cells = cells[:1]
 
-    rows: dict[int, list[dict[str, Any]]] = {}
-    for item in active_cells:
-        rows.setdefault(int(item["y"]), []).append(item)
-    for row_items in rows.values():
+    rows_all: dict[int, list[dict[str, Any]]] = {}
+    for item in cells:
+        rows_all.setdefault(int(item["y"]), []).append(item)
+    for row_items in rows_all.values():
         row_items.sort(key=lambda cell_item: int(cell_item["x"]))
 
-    row_keys = sorted(rows.keys())
+    # Full snake sweep from bottom row to top row:
+    # fast clear movement across empty tiles and predictable row-by-row traversal.
+    row_keys = sorted(rows_all.keys(), reverse=True)
+    sweep_cells: list[dict[str, Any]] = []
+    for row_index, row_y in enumerate(row_keys):
+        row_items = rows_all[row_y]
+        if row_index % 2 == 0:
+            sweep_cells.extend(row_items)
+        else:
+            sweep_cells.extend(reversed(row_items))
 
-    # Heuristic: start on the densest row (ties -> earliest activity on the x-axis),
-    # then traverse row-by-row with snake direction chosen to minimize horizontal jumps.
-    start_row = max(
-        row_keys,
-        key=lambda y_val: (
-            len(rows[y_val]),
-            -min(int(cell_item["x"]) for cell_item in rows[y_val]),
-        ),
-    )
-    start_row_index = row_keys.index(start_row)
-    rows_above = sum(len(rows[y_val]) for y_val in row_keys[:start_row_index])
-    rows_below = sum(len(rows[y_val]) for y_val in row_keys[start_row_index + 1 :])
-    if rows_below >= rows_above:
-        ordered_rows = row_keys[start_row_index:] + row_keys[:start_row_index]
-    else:
-        ordered_rows = list(reversed(row_keys[: start_row_index + 1])) + list(
-            reversed(row_keys[start_row_index + 1 :])
-        )
-
-    targets: list[dict[str, Any]] = []
-    current_route_x = float(grid_x - 22.0)
-    for row_y in ordered_rows:
-        asc = rows[row_y]
-        desc = list(reversed(asc))
-        asc_first_x = float(asc[0]["x"]) + cell / 2
-        desc_first_x = float(desc[0]["x"]) + cell / 2
-        row_targets = asc if abs(asc_first_x - current_route_x) <= abs(desc_first_x - current_route_x) else desc
-        targets.extend(row_targets)
-        current_route_x = float(row_targets[-1]["x"]) + cell / 2
+    targets = [item for item in sweep_cells if int(item["count"]) > 0]
     avg_active = sum(int(item["count"]) for item in active_cells) / max(len(active_cells), 1)
     target_keys = {(item["x"], item["y"]) for item in targets}
 
-    route_start_y = float(targets[0]["y"]) + cell / 2
-    route_points = [(grid_x - 22.0, route_start_y)]
+    first_sweep = sweep_cells[0]
+    route_start_y = float(first_sweep["y"]) + cell / 2
+    route_start_x = float(first_sweep["x"]) + cell / 2 - (cell + gap)
+    route_points = [(route_start_x, route_start_y)]
     impact_lengths = []
     total_length = 0.0
+    active_route_indices: set[int] = set()
 
     def push_route_point(px: float, py: float) -> None:
         nonlocal total_length
@@ -213,15 +197,17 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         total_length += math.hypot(px - last_x, py - last_y)
         route_points.append((px, py))
 
-    for target in targets:
-        px = float(target["x"]) + cell / 2
-        py = float(target["y"]) + cell / 2
+    for sweep_cell in sweep_cells:
+        px = float(sweep_cell["x"]) + cell / 2
+        py = float(sweep_cell["y"]) + cell / 2
         last_x, last_y = route_points[-1]
         if abs(py - last_y) > 0.001:
             # Move in orthogonal segments (vertical then horizontal) to avoid diagonal jitter.
             push_route_point(last_x, py)
         push_route_point(px, py)
-        impact_lengths.append(total_length)
+        if int(sweep_cell["count"]) > 0:
+            impact_lengths.append(total_length)
+            active_route_indices.add(len(route_points) - 1)
 
     if total_length <= 0:
         total_length = 1.0
@@ -230,31 +216,30 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     impact_keys = [length / total_length for length in impact_lengths]
 
-    segment_angles: list[int] = []
-    segment_end_keys: list[float] = []
-    walked = 0.0
+    distance_keys = [0.0]
+    time_keys = [0.0]
+    walked_dist = 0.0
+    walked_time = 0.0
+    fast_factor = 0.40
+    slow_factor = 1.15
     for idx in range(1, len(route_points)):
         x0, y0 = route_points[idx - 1]
         x1, y1 = route_points[idx]
-        dx = x1 - x0
-        dy = y1 - y0
-        seg_length = math.hypot(dx, dy)
+        seg_length = math.hypot(x1 - x0, y1 - y0)
         if seg_length <= 0.0:
             continue
-        walked += seg_length
-        if abs(dx) >= abs(dy):
-            angle = 0 if dx >= 0 else 180
-        else:
-            angle = 90 if dy > 0 else -90
-        segment_angles.append(angle)
-        segment_end_keys.append(walked / total_length)
+        walked_dist += seg_length
+        speed_factor = slow_factor if idx in active_route_indices else fast_factor
+        walked_time += seg_length * speed_factor
+        distance_keys.append(walked_dist / total_length)
+        time_keys.append(walked_time)
 
-    if not segment_angles:
-        segment_angles = [0]
-        segment_end_keys = [1.0]
-
-    rotation_key_times = [0.0] + segment_end_keys[:-1] + [1.0]
-    rotation_values = segment_angles + [segment_angles[-1]]
+    if walked_time <= 0.0:
+        motion_key_times = [0.0, 1.0]
+        motion_key_points = [0.0, 1.0]
+    else:
+        motion_key_times = [t / walked_time for t in time_keys]
+        motion_key_points = distance_keys
 
     growth_values = [1.0]
     current_scale = 1.0
@@ -274,7 +259,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
 
     title = f"{login}'s Pac-Man Contribution Run"
-    cycle = max(45.0, len(targets) * 0.82)
+    cycle = max(22.0, len(sweep_cells) * 0.055)
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
     mouth_open = "0,0 14.8,-9.3 14.8,9.3"
@@ -298,7 +283,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .pacman-shell {{ fill: #ffd54a; }}
       .pacman-mouth {{ fill: #132744; }}
       .pacman-eye {{ fill: #0b1220; }}
-      .score-pop {{ font: 700 11px 'Consolas', 'Courier New', monospace; fill: #fff2b1; stroke: #0b1220; stroke-width: 0.5; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
+      .score-pop {{ font: 700 10px 'Consolas', 'Courier New', monospace; fill: #fff2b1; stroke: #0b1220; stroke-width: 0.45; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
     </style>
   </defs>
 
@@ -329,9 +314,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         popup_hit = impact
-        popup_rise = clamp(impact + 0.022, 0.0, 1.0)
-        popup_mid = clamp(impact + 0.095, 0.0, 1.0)
-        popup_end = clamp(impact + 0.145, 0.0, 1.0)
+        popup_rise = clamp(impact + 0.012, 0.0, 1.0)
+        popup_mid = clamp(impact + 0.045, 0.0, 1.0)
+        popup_end = clamp(impact + 0.070, 0.0, 1.0)
         if popup_end <= popup_rise:
             popup_rise = max(0.0, popup_end - 0.001)
         if popup_mid <= popup_rise:
@@ -341,7 +326,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         tx = float(target["x"]) + cell / 2
         ty = float(target["y"]) + cell / 2
         popup_y = ty - 5.0
-        popup_y_top = popup_y - 7.0
+        popup_y_top = popup_y - 4.5
         pieces.append(
             f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
@@ -356,17 +341,16 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
-    <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyTimes="{';'.join(f'{value:.5f}' for value in motion_key_times)}" keyPoints="{';'.join(f'{value:.5f}' for value in motion_key_points)}">
       <mpath href="#pac-route" />
     </animateMotion>
     <g>
+      <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <circle class="pacman-shell" cx="0" cy="0" r="13" />
       <polygon class="pacman-mouth" points="{mouth_closed}">
         <animate attributeName="points" values="{mouth_closed};{mouth_open};{mouth_closed}" dur="0.42s" repeatCount="indefinite" />
       </polygon>
       <circle class="pacman-eye" cx="-2.2" cy="-5.2" r="1.65" />
-      <animateTransform attributeName="transform" type="rotate" values="{';'.join(str(angle) for angle in rotation_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
   </g>
 </svg>
