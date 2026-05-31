@@ -202,8 +202,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     title = f"{login}'s Pac-Man Contribution Run"
     cycle = max(45.0, len(targets) * 0.82)
-    closed_mouth = "M 0 0 L 13 -3 A 13 13 0 1 1 13 3 Z"
-    open_mouth = "M 0 0 L 13 -8.5 A 13 13 0 1 1 13 8.5 Z"
+    # Classic Pac-Man silhouette via evenodd fill:
+    # one full circle path + one right-side triangle "bite" cutout.
+    pac_base = "M 13 0 A 13 13 0 1 0 -13 0 A 13 13 0 1 0 13 0 Z"
+    bite_closed = "M 0 0 L 13 -2.7 L 13 2.7 Z"
+    bite_open = "M 0 0 L 13 -8.9 L 13 8.9 Z"
+    pac_closed = f"{pac_base} {bite_closed}"
+    pac_open = f"{pac_base} {bite_open}"
 
     pieces = []
     pieces.append(
@@ -270,10 +275,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
     <g>
-      <path class="pacman-shell" d="{closed_mouth}">
-        <animate attributeName="d" values="{closed_mouth};{open_mouth};{closed_mouth}" dur="0.42s" repeatCount="indefinite"/>
+      <path class="pacman-shell" fill-rule="evenodd" d="{pac_closed}">
+        <animate attributeName="d" values="{pac_closed};{pac_open};{pac_closed}" dur="0.42s" repeatCount="indefinite" />
       </path>
-      <circle class="pacman-eye" cx="2.4" cy="-5.2" r="1.7" />
+      <circle class="pacman-eye" cx="-2.7" cy="-5.3" r="1.65" />
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0">
         <mpath href="#pac-route" />
