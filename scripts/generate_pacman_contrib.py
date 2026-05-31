@@ -202,13 +202,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     title = f"{login}'s Pac-Man Contribution Run"
     cycle = max(45.0, len(targets) * 0.82)
-    # Classic Pac-Man silhouette via evenodd fill:
-    # one full circle path + one right-side triangle "bite" cutout.
-    pac_base = "M 13 0 A 13 13 0 1 0 -13 0 A 13 13 0 1 0 13 0 Z"
-    bite_closed = "M 0 0 L 13 -2.7 L 13 2.7 Z"
-    bite_open = "M 0 0 L 13 -8.9 L 13 8.9 Z"
-    pac_closed = f"{pac_base} {bite_closed}"
-    pac_open = f"{pac_base} {bite_open}"
+    # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
+    mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
+    mouth_open = "0,0 14.8,-9.3 14.8,9.3"
 
     pieces = []
     pieces.append(
@@ -227,8 +223,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .grid-cell {{ rx: 2; ry: 2; }}
       .grid-bg {{ fill: #1a2743; }}
       .pacman-shell {{ fill: #ffd54a; }}
+      .pacman-mouth {{ fill: #132744; }}
       .pacman-eye {{ fill: #0b1220; }}
-      .chomp {{ fill: #fff0a6; opacity: 0; }}
     </style>
   </defs>
 
@@ -257,17 +253,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         impact = impact_keys[idx]
         fade_start = clamp(impact - 0.002, 0.0, 1.0)
         restore = clamp(impact + 0.030, 0.0, 1.0)
-        tx = float(target["x"]) + cell / 2
-        ty = float(target["y"]) + cell / 2
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         pieces.append(
             f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </rect>
-  <circle class="chomp" cx="{tx:.1f}" cy="{ty:.1f}" r="1.2">
-    <animate attributeName="r" values="1.2;1.2;4.2;1.2" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;0;0.95;0;0" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-  </circle>
 """
         )
 
@@ -275,10 +265,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
     <g>
-      <path class="pacman-shell" fill-rule="evenodd" d="{pac_closed}">
-        <animate attributeName="d" values="{pac_closed};{pac_open};{pac_closed}" dur="0.42s" repeatCount="indefinite" />
-      </path>
-      <circle class="pacman-eye" cx="-2.7" cy="-5.3" r="1.65" />
+      <circle class="pacman-shell" cx="0" cy="0" r="13" />
+      <polygon class="pacman-mouth" points="{mouth_closed}">
+        <animate attributeName="points" values="{mouth_closed};{mouth_open};{mouth_closed}" dur="0.42s" repeatCount="indefinite" />
+      </polygon>
+      <circle class="pacman-eye" cx="-2.2" cy="-5.2" r="1.65" />
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0">
         <mpath href="#pac-route" />
