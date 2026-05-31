@@ -160,48 +160,28 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     if not active_cells:
         active_cells = cells[:1]
 
-    rows: dict[int, list[dict[str, Any]]] = {}
-    for item in active_cells:
-        rows.setdefault(int(item["y"]), []).append(item)
-    for row_items in rows.values():
+    rows_all: dict[int, list[dict[str, Any]]] = {}
+    for item in cells:
+        rows_all.setdefault(int(item["y"]), []).append(item)
+    for row_items in rows_all.values():
         row_items.sort(key=lambda cell_item: int(cell_item["x"]))
 
-    row_keys = sorted(rows.keys())
+    # Fixed snake route from bottom-left:
+    # row 1 -> right, row 2 -> left, row 3 -> right, ...
+    row_keys = sorted(rows_all.keys(), reverse=True)
+    sweep_cells: list[dict[str, Any]] = []
+    for row_index, row_y in enumerate(row_keys):
+        row_items = rows_all[row_y]
+        sweep_cells.extend(row_items if row_index % 2 == 0 else reversed(row_items))
 
-    # Heuristic: start on the densest row (ties -> earliest activity on the x-axis),
-    # then traverse row-by-row with snake direction chosen to minimize horizontal jumps.
-    start_row = max(
-        row_keys,
-        key=lambda y_val: (
-            len(rows[y_val]),
-            -min(int(cell_item["x"]) for cell_item in rows[y_val]),
-        ),
-    )
-    start_row_index = row_keys.index(start_row)
-    rows_above = sum(len(rows[y_val]) for y_val in row_keys[:start_row_index])
-    rows_below = sum(len(rows[y_val]) for y_val in row_keys[start_row_index + 1 :])
-    if rows_below >= rows_above:
-        ordered_rows = row_keys[start_row_index:] + row_keys[:start_row_index]
-    else:
-        ordered_rows = list(reversed(row_keys[: start_row_index + 1])) + list(
-            reversed(row_keys[start_row_index + 1 :])
-        )
-
-    targets: list[dict[str, Any]] = []
-    current_route_x = float(grid_x - 22.0)
-    for row_y in ordered_rows:
-        asc = rows[row_y]
-        desc = list(reversed(asc))
-        asc_first_x = float(asc[0]["x"]) + cell / 2
-        desc_first_x = float(desc[0]["x"]) + cell / 2
-        row_targets = asc if abs(asc_first_x - current_route_x) <= abs(desc_first_x - current_route_x) else desc
-        targets.extend(row_targets)
-        current_route_x = float(row_targets[-1]["x"]) + cell / 2
+    targets = [item for item in sweep_cells if int(item["count"]) > 0]
     avg_active = sum(int(item["count"]) for item in active_cells) / max(len(active_cells), 1)
     target_keys = {(item["x"], item["y"]) for item in targets}
 
-    route_start_y = float(targets[0]["y"]) + cell / 2
-    route_points = [(grid_x - 22.0, route_start_y)]
+    first_sweep = sweep_cells[0]
+    route_start_y = float(first_sweep["y"]) + cell / 2
+    route_start_x = float(first_sweep["x"]) + cell / 2 - (cell + gap)
+    route_points = [(route_start_x, route_start_y)]
     impact_lengths = []
     total_length = 0.0
 
@@ -213,15 +193,16 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         total_length += math.hypot(px - last_x, py - last_y)
         route_points.append((px, py))
 
-    for target in targets:
-        px = float(target["x"]) + cell / 2
-        py = float(target["y"]) + cell / 2
+    for sweep_cell in sweep_cells:
+        px = float(sweep_cell["x"]) + cell / 2
+        py = float(sweep_cell["y"]) + cell / 2
         last_x, last_y = route_points[-1]
         if abs(py - last_y) > 0.001:
             # Move in orthogonal segments (vertical then horizontal) to avoid diagonal jitter.
             push_route_point(last_x, py)
         push_route_point(px, py)
-        impact_lengths.append(total_length)
+        if int(sweep_cell["count"]) > 0:
+            impact_lengths.append(total_length)
 
     if total_length <= 0:
         total_length = 1.0
@@ -260,7 +241,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     current_scale = 1.0
     for target in targets:
         ratio = clamp(float(target["count"]) / max(avg_active, 1.0), 0.15, 3.2)
-        current_scale = clamp(current_scale + 0.012 + 0.02 * (ratio / 3.2), 1.0, 1.78)
+        current_scale = clamp(current_scale + 0.006 + 0.010 * (ratio / 3.2), 1.0, 1.42)
         growth_values.append(current_scale)
 
     growth_key_times = [0.0] + impact_keys
@@ -329,9 +310,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         popup_hit = impact
-        popup_rise = clamp(impact + 0.022, 0.0, 1.0)
-        popup_mid = clamp(impact + 0.095, 0.0, 1.0)
-        popup_end = clamp(impact + 0.145, 0.0, 1.0)
+        popup_rise = clamp(impact + 0.015, 0.0, 1.0)
+        popup_mid = clamp(impact + 0.050, 0.0, 1.0)
+        popup_end = clamp(impact + 0.080, 0.0, 1.0)
         if popup_end <= popup_rise:
             popup_rise = max(0.0, popup_end - 0.001)
         if popup_mid <= popup_rise:
@@ -341,7 +322,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         tx = float(target["x"]) + cell / 2
         ty = float(target["y"]) + cell / 2
         popup_y = ty - 5.0
-        popup_y_top = popup_y - 7.0
+        popup_y_top = popup_y - 4.5
         pieces.append(
             f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
