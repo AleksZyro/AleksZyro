@@ -210,23 +210,20 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     impact_keys = [length / total_length for length in impact_lengths]
 
-    move_cycle = max(45.0, len(targets) * 0.82)
-    pause_seconds = 2.0
-    cycle = move_cycle + pause_seconds
-    motion_end = move_cycle / cycle
+    cycle = max(45.0, len(targets) * 0.82)
 
     counter_total = max(total, 0)
     counter_steps: list[tuple[float, float, int]] = []
     if targets:
-        first_hit = impact_keys[0] * motion_end
+        first_hit = impact_keys[0]
         counter_steps.append((0.0, first_hit, 0))
         running_total = 0
         target_sum = max(sum(int(item["count"]) for item in targets), 1)
         shown_total = 0
         for idx, target in enumerate(targets):
             running_total += int(target["count"])
-            start = impact_keys[idx] * motion_end
-            end = impact_keys[idx + 1] * motion_end if idx + 1 < len(targets) else 1.0
+            start = impact_keys[idx]
+            end = impact_keys[idx + 1] if idx + 1 < len(targets) else 1.0
             mapped_value = int(round(counter_total * (running_total / target_sum)))
             shown_total = max(shown_total, min(mapped_value, counter_total))
             counter_steps.append((start, end, shown_total))
@@ -264,9 +261,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         segment_flips = [1]
         segment_end_keys = [1.0]
 
-    rotation_key_times = [0.0] + [value * motion_end for value in segment_end_keys[:-1]] + [motion_end, 1.0]
-    rotation_values = segment_angles + [segment_angles[-1], segment_angles[-1]]
-    flip_values = segment_flips + [segment_flips[-1], segment_flips[-1]]
+    rotation_key_times = [0.0] + segment_end_keys
+    rotation_values = segment_angles + [segment_angles[-1]]
+    flip_values = segment_flips + [segment_flips[-1]]
 
     path_data = " ".join(
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
@@ -308,15 +305,16 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 """
     )
 
-    for start, end, value in counter_steps:
+    for idx, (start, end, value) in enumerate(counter_steps):
         show_start = clamp(start, 0.0, 1.0)
         show_end = clamp(end, show_start, 1.0)
-        hide_after = clamp(show_end + 0.0008, 0.0, 1.0)
-        if hide_after < show_end:
-            hide_after = show_end
+        if idx > 0:
+            show_start = max(show_start, clamp(counter_steps[idx - 1][1], 0.0, 1.0))
+        if show_end <= show_start:
+            show_end = min(1.0, show_start + 0.0005)
         pieces.append(
-            f"""  <text x="{grid_x - 2}" y="{grid_y - 4}" class="t-sub" opacity="0">{value}/{counter_total}
-    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;{show_start:.5f};{show_end:.5f};{hide_after:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+            f"""  <text x="{grid_x - 2}" y="{grid_y - 4}" class="t-sub" display="none">{value}/{counter_total}
+    <animate attributeName="display" values="none;inline;inline;none" keyTimes="0;{show_start:.5f};{show_end:.5f};1" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
 """
         )
@@ -335,7 +333,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         )
 
     for idx, target in enumerate(targets):
-        impact = impact_keys[idx] * motion_end
+        impact = impact_keys[idx]
         fade_start = clamp(impact - 0.002, 0.0, 1.0)
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
@@ -367,10 +365,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyTimes="0;{motion_end:.5f};1" keyPoints="0;1;1">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear">
       <mpath href="#pac-route" />
     </animateMotion>
-    <animate attributeName="opacity" values="1;0" keyTimes="0;{motion_end:.5f};1" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     <g>
       <circle class="pacman-shell" cx="0" cy="0" r="13" />
       <polygon class="pacman-mouth" points="{mouth_closed}">
