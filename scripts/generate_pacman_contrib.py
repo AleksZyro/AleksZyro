@@ -213,6 +213,25 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     cycle = max(45.0, len(targets) * 0.82)
 
     counter_total = max(total, 0)
+    counter_steps: list[tuple[float, float, int]] = []
+    if targets:
+        first_hit = impact_keys[0]
+        counter_steps.append((0.0, first_hit, 0))
+        running_total = 0
+        target_sum = max(sum(int(item["count"]) for item in targets), 1)
+        shown_total = 0
+        for idx, target in enumerate(targets):
+            running_total += int(target["count"])
+            start = impact_keys[idx]
+            end = impact_keys[idx + 1] if idx + 1 < len(targets) else 1.0
+            mapped_value = int(round(counter_total * (running_total / target_sum)))
+            shown_total = max(shown_total, min(mapped_value, counter_total))
+            counter_steps.append((start, end, shown_total))
+        if counter_steps[-1][2] != counter_total:
+            last_start, _, _ = counter_steps[-1]
+            counter_steps[-1] = (last_start, 1.0, counter_total)
+    else:
+        counter_steps.append((0.0, 1.0, counter_total))
 
     segment_angles: list[int] = []
     segment_flips: list[int] = []
@@ -286,9 +305,19 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 """
     )
 
-    pieces.append(
-        f'  <text x="{grid_x + 10}" y="{grid_y - 4}" class="t-sub">Commit amount: 0/{counter_total}</text>\n'
-    )
+    for idx, (start, end, value) in enumerate(counter_steps):
+        show_start = clamp(start, 0.0, 1.0)
+        show_end = clamp(end, show_start, 1.0)
+        if idx > 0:
+            show_start = max(show_start, clamp(counter_steps[idx - 1][1], 0.0, 1.0))
+        if show_end <= show_start:
+            show_end = min(1.0, show_start + 0.0005)
+        pieces.append(
+            f"""  <text x="{grid_x + 10}" y="{grid_y - 4}" class="t-sub" opacity="0">Commit amount: {value}/{counter_total}
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;{show_start:.5f};{show_end:.5f};1" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+  </text>
+"""
+        )
 
     for c in cells:
         pieces.append(
