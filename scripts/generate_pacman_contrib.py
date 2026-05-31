@@ -216,6 +216,20 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     cycle = move_cycle + pause_seconds
     motion_end = move_cycle / cycle
 
+    counter_total = max(total, sum(int(item["count"]) for item in targets))
+    counter_steps: list[tuple[float, float, int]] = []
+    if targets:
+        first_hit = impact_keys[0] * motion_end
+        counter_steps.append((0.0, first_hit, 0))
+        running_total = 0
+        for idx, target in enumerate(targets):
+            running_total += int(target["count"])
+            start = impact_keys[idx] * motion_end
+            end = impact_keys[idx + 1] * motion_end if idx + 1 < len(targets) else 1.0
+            counter_steps.append((start, end, min(running_total, counter_total)))
+    else:
+        counter_steps.append((0.0, 1.0, counter_total))
+
     segment_angles: list[int] = []
     segment_flips: list[int] = []
     segment_end_keys: list[float] = []
@@ -299,9 +313,21 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
   <rect x="18" y="18" width="{width - 36}" height="{height - 36}" rx="13" stroke="#29466f" stroke-opacity="0.7" />
 
   <rect x="{grid_x - 18}" y="{grid_y - 18}" width="{grid_w + 24}" height="{grid_h + 36}" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
-  <text x="{grid_x - 2}" y="{grid_y - 4}" class="t-sub">Total contributions: {total}</text>
 """
     )
+
+    for start, end, value in counter_steps:
+        show_start = clamp(start, 0.0, 1.0)
+        show_end = clamp(end, show_start, 1.0)
+        hide_after = clamp(show_end + 0.0008, 0.0, 1.0)
+        if hide_after < show_end:
+            hide_after = show_end
+        pieces.append(
+            f"""  <text x="{grid_x - 2}" y="{grid_y - 4}" class="t-sub" opacity="0">{value}/{counter_total}
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;{show_start:.5f};{show_end:.5f};{hide_after:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+  </text>
+"""
+        )
 
     for c in cells:
         pieces.append(
@@ -322,9 +348,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         popup_hit = impact
-        popup_rise = clamp(impact + 0.015, 0.0, 1.0)
-        popup_mid = clamp(impact + 0.050, 0.0, 1.0)
-        popup_end = clamp(impact + 0.080, 0.0, 1.0)
+        popup_rise = clamp(impact + 0.009, 0.0, 1.0)
+        popup_mid = clamp(impact + 0.030, 0.0, 1.0)
+        popup_end = clamp(impact + 0.048, 0.0, 1.0)
         if popup_end <= popup_rise:
             popup_rise = max(0.0, popup_end - 0.001)
         if popup_mid <= popup_rise:
