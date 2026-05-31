@@ -175,7 +175,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         sweep_cells.extend(row_items if row_index % 2 == 0 else reversed(row_items))
 
     targets = [item for item in sweep_cells if int(item["count"]) > 0]
-    avg_active = sum(int(item["count"]) for item in active_cells) / max(len(active_cells), 1)
     target_keys = {(item["x"], item["y"]) for item in targets}
 
     first_sweep = sweep_cells[0]
@@ -216,17 +215,24 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     cycle = move_cycle + pause_seconds
     motion_end = move_cycle / cycle
 
-    counter_total = max(total, sum(int(item["count"]) for item in targets))
+    counter_total = max(total, 0)
     counter_steps: list[tuple[float, float, int]] = []
     if targets:
         first_hit = impact_keys[0] * motion_end
         counter_steps.append((0.0, first_hit, 0))
         running_total = 0
+        target_sum = max(sum(int(item["count"]) for item in targets), 1)
+        shown_total = 0
         for idx, target in enumerate(targets):
             running_total += int(target["count"])
             start = impact_keys[idx] * motion_end
             end = impact_keys[idx + 1] * motion_end if idx + 1 < len(targets) else 1.0
-            counter_steps.append((start, end, min(running_total, counter_total)))
+            mapped_value = int(round(counter_total * (running_total / target_sum)))
+            shown_total = max(shown_total, min(mapped_value, counter_total))
+            counter_steps.append((start, end, shown_total))
+        if counter_steps[-1][2] != counter_total:
+            last_start, _, _ = counter_steps[-1]
+            counter_steps[-1] = (last_start, 1.0, counter_total)
     else:
         counter_steps.append((0.0, 1.0, counter_total))
 
@@ -261,20 +267,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     rotation_key_times = [0.0] + [value * motion_end for value in segment_end_keys[:-1]] + [motion_end, 1.0]
     rotation_values = segment_angles + [segment_angles[-1], segment_angles[-1]]
     flip_values = segment_flips + [segment_flips[-1], segment_flips[-1]]
-
-    growth_values = [1.0]
-    current_scale = 1.0
-    for target in targets:
-        ratio = clamp(float(target["count"]) / max(avg_active, 1.0), 0.15, 3.2)
-        current_scale = clamp(current_scale + 0.006 + 0.010 * (ratio / 3.2), 1.0, 1.42)
-        growth_values.append(current_scale)
-
-    growth_key_times = [0.0] + [value * motion_end for value in impact_keys]
-    if growth_key_times[-1] < motion_end:
-        growth_key_times.append(motion_end)
-        growth_values.append(growth_values[-1])
-    growth_key_times.append(1.0)
-    growth_values.append(growth_values[-1])
 
     path_data = " ".join(
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
@@ -375,10 +367,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
-    <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyTimes="0;{motion_end:.5f};1" keyPoints="0;1;1">
       <mpath href="#pac-route" />
     </animateMotion>
+    <animate attributeName="opacity" values="1;0" keyTimes="0;{motion_end:.5f};1" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     <g>
       <circle class="pacman-shell" cx="0" cy="0" r="13" />
       <polygon class="pacman-mouth" points="{mouth_closed}">
