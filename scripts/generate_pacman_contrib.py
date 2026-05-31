@@ -409,14 +409,18 @@ def main() -> None:
     out_file = pathlib.Path("assets/pacman-contrib.svg")
 
     if not token:
-        render_svg(login, build_mock_calendar(login), out_file)
+        # Safety: never overwrite the tracked profile SVG with mock data.
+        # Local runs without token should leave the last real SVG untouched.
+        print("GITHUB_TOKEN missing - keeping existing assets/pacman-contrib.svg unchanged.")
         return
 
     try:
         calendar = fetch_contribution_calendar(login, token)
         render_svg(login, calendar, out_file)
     except (RuntimeError, urllib.error.URLError, TimeoutError, KeyError, ValueError) as exc:
-        render_svg(login, build_mock_calendar(login), out_file)
+        # Safety: if API fetch fails, keep the previous real SVG instead of
+        # replacing it with random mock history.
+        print(f"Contribution fetch failed - keeping existing SVG unchanged: {exc}")
         render_error_svg(login, str(exc), pathlib.Path("assets/pacman-contrib-error.svg"))
 
 
