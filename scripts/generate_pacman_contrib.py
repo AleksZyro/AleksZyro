@@ -211,7 +211,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     impact_keys = [length / total_length for length in impact_lengths]
 
+    move_cycle = max(45.0, len(targets) * 0.82)
+    pause_seconds = 2.0
+    cycle = move_cycle + pause_seconds
+    motion_end = move_cycle / cycle
+
     segment_angles: list[int] = []
+    segment_flips: list[int] = []
     segment_end_keys: list[float] = []
     walked = 0.0
     for idx in range(1, len(route_points)):
@@ -224,18 +230,23 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
             continue
         walked += seg_length
         if abs(dx) >= abs(dy):
-            angle = 0 if dx >= 0 else 180
+            angle = 0
+            flip = 1 if dx >= 0 else -1
         else:
             angle = 90 if dy > 0 else -90
+            flip = 1
         segment_angles.append(angle)
+        segment_flips.append(flip)
         segment_end_keys.append(walked / total_length)
 
     if not segment_angles:
         segment_angles = [0]
+        segment_flips = [1]
         segment_end_keys = [1.0]
 
-    rotation_key_times = [0.0] + segment_end_keys[:-1] + [1.0]
-    rotation_values = segment_angles + [segment_angles[-1]]
+    rotation_key_times = [0.0] + [value * motion_end for value in segment_end_keys[:-1]] + [motion_end, 1.0]
+    rotation_values = segment_angles + [segment_angles[-1], segment_angles[-1]]
+    flip_values = segment_flips + [segment_flips[-1], segment_flips[-1]]
 
     growth_values = [1.0]
     current_scale = 1.0
@@ -244,10 +255,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         current_scale = clamp(current_scale + 0.006 + 0.010 * (ratio / 3.2), 1.0, 1.42)
         growth_values.append(current_scale)
 
-    growth_key_times = [0.0] + impact_keys
-    if growth_key_times[-1] < 1.0:
-        growth_key_times.append(1.0)
+    growth_key_times = [0.0] + [value * motion_end for value in impact_keys]
+    if growth_key_times[-1] < motion_end:
+        growth_key_times.append(motion_end)
         growth_values.append(growth_values[-1])
+    growth_key_times.append(1.0)
+    growth_values.append(growth_values[-1])
 
     path_data = " ".join(
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
@@ -255,7 +268,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
 
     title = f"{login}'s Pac-Man Contribution Run"
-    cycle = max(45.0, len(targets) * 0.82)
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
     mouth_open = "0,0 14.8,-9.3 14.8,9.3"
@@ -305,7 +317,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         )
 
     for idx, target in enumerate(targets):
-        impact = impact_keys[idx]
+        impact = impact_keys[idx] * motion_end
         fade_start = clamp(impact - 0.002, 0.0, 1.0)
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
@@ -338,7 +350,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
     <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.4f}' for value in growth_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in growth_key_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyTimes="0;{motion_end:.5f};1" keyPoints="0;1;1">
       <mpath href="#pac-route" />
     </animateMotion>
     <g>
@@ -348,6 +360,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       </polygon>
       <circle class="pacman-eye" cx="-2.2" cy="-5.2" r="1.65" />
       <animateTransform attributeName="transform" type="rotate" values="{';'.join(str(angle) for angle in rotation_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value} 1' for value in flip_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" additive="sum" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
   </g>
 </svg>
