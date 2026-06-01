@@ -23,7 +23,150 @@
   <rect x="18" y="18" width="851" height="179" rx="13" stroke="#29466f" stroke-opacity="0.7" />
 
   <rect x="36" y="40" width="819" height="141" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
-  <text x="64" y="54" class="t-sub">Commit amount: 0/328</text>
+    <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 0/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00000;0.00000;0.14325;0.14325;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 37/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14325;0.14325;0.15147;0.15147;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 62/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15147;0.15147;0.15421;0.15421;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 84/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15421;0.15421;0.15695;0.15695;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 87/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15695;0.15695;0.16242;0.16242;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 123/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16242;0.16242;0.16790;0.16790;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 127/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16790;0.16790;0.18434;0.18434;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 135/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18434;0.18434;0.18708;0.18708;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 137/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18708;0.18708;0.18982;0.18982;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 139/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18982;0.18982;0.19256;0.19256;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 142/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19256;0.19256;0.19530;0.19530;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 147/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19530;0.19530;0.20352;0.20352;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 150/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20352;0.20352;0.20626;0.20626;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 151/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20626;0.20626;0.20900;0.20900;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 153/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20900;0.20900;0.21722;0.21722;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 155/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21722;0.21722;0.21996;0.21996;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 158/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21996;0.21996;0.22544;0.22544;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 160/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22544;0.22544;0.22818;0.22818;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 162/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22818;0.22818;0.23092;0.23092;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 165/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23092;0.23092;0.23366;0.23366;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 167/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23366;0.23366;0.23640;0.23640;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 170/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23640;0.23640;0.23914;0.23914;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 172/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23914;0.23914;0.24188;0.24188;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 175/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24188;0.24188;0.25284;0.25284;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 177/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25284;0.25284;0.25558;0.25558;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 179/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25558;0.25558;0.25832;0.25832;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 181/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25832;0.25832;0.26105;0.26105;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 184/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26105;0.26105;0.26379;0.26379;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 188/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26379;0.26379;0.26653;0.26653;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 191/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26653;0.26653;0.28571;0.28571;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 194/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28571;0.28571;0.28845;0.28845;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 196/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28845;0.28845;0.29119;0.29119;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 198/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29119;0.29119;0.29393;0.29393;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 200/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29393;0.29393;0.43366;0.43366;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 210/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43366;0.43366;0.43640;0.43640;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 219/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43640;0.43640;0.43914;0.43914;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 224/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43914;0.43914;0.44188;0.44188;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 248/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44188;0.44188;0.44736;0.44736;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 249/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44736;0.44736;0.70763;0.70763;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 256/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.70763;0.70763;0.72681;0.72681;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 260/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72681;0.72681;0.72955;0.72955;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 262/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72955;0.72955;0.73503;0.73503;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 263/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73503;0.73503;0.75147;0.75147;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 264/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75147;0.75147;0.75695;0.75695;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 274/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75695;0.75695;0.99900;0.99900;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 310/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;0.99950;0.99950;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 312/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;0.99950;0.99950;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
+  <text x="64" y="54" class="t-sub" opacity="0">Commit amount: 328/328
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;1.00000;1.00000;1" dur="45.00s" repeatCount="indefinite"/>
+  </text>
   <rect class="grid-cell grid-bg" x="54" y="58" width="11" height="11" />
   <rect class="grid-cell grid-bg" x="54" y="73" width="11" height="11" />
   <rect class="grid-cell grid-bg" x="54" y="88" width="11" height="11" />

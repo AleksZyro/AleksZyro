@@ -213,17 +213,21 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     cycle = max(45.0, len(targets) * 0.82)
 
     counter_total = max(total, 0)
+    popup_counter_starts: list[float] = []
+    for impact in impact_keys:
+        popup_rise = clamp(impact + 0.009, 0.0, 1.0)
+        popup_counter_starts.append(popup_rise)
+
     counter_steps: list[tuple[float, float, int]] = []
     if targets:
-        first_hit = impact_keys[0]
-        counter_steps.append((0.0, first_hit, 0))
+        counter_steps.append((0.0, popup_counter_starts[0], 0))
         running_total = 0
         target_sum = max(sum(int(item["count"]) for item in targets), 1)
         shown_total = 0
         for idx, target in enumerate(targets):
             running_total += int(target["count"])
-            start = impact_keys[idx]
-            end = impact_keys[idx + 1] if idx + 1 < len(targets) else 1.0
+            start = popup_counter_starts[idx]
+            end = popup_counter_starts[idx + 1] if idx + 1 < len(targets) else 1.0
             mapped_value = int(round(counter_total * (running_total / target_sum)))
             shown_total = max(shown_total, min(mapped_value, counter_total))
             counter_steps.append((start, end, shown_total))
@@ -314,7 +318,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
             show_end = min(1.0, show_start + 0.0005)
         pieces.append(
             f"""  <text x="{grid_x + 10}" y="{grid_y - 4}" class="t-sub" opacity="0">Commit amount: {value}/{counter_total}
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;{show_start:.5f};{show_end:.5f};1" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;{show_start:.5f};{show_start:.5f};{show_end:.5f};{show_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
 """
         )
