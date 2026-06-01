@@ -275,6 +275,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
 
     title = f"{login}'s Pac-Man Contribution Run"
+    counter_label_x = grid_x + 10
+    counter_value_x = counter_label_x + 105
+    counter_suffix_x = counter_value_x + 4
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
     mouth_open = "0,0 14.8,-9.3 14.8,9.3"
@@ -293,6 +296,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     </linearGradient>
     <style>
       .t-sub {{ font: 500 12px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
+      .t-counter {{ font: 700 12px 'Consolas', 'Courier New', monospace; fill: #dce9ff; text-anchor: end; }}
       .grid-cell {{ rx: 2; ry: 2; }}
       .grid-bg {{ fill: #1a2743; }}
       .pacman-shell {{ fill: #ffd54a; }}
@@ -309,6 +313,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 """
     )
 
+    pieces.append(
+        f'  <text x="{counter_label_x}" y="{grid_y - 4}" class="t-sub">Commit amount:</text>\n'
+    )
+    pieces.append(
+        f'  <text x="{counter_suffix_x}" y="{grid_y - 4}" class="t-sub">/{counter_total}</text>\n'
+    )
+
     for idx, (start, end, value) in enumerate(counter_steps):
         show_start = clamp(start, 0.0, 1.0)
         show_end = clamp(end, show_start, 1.0)
@@ -317,7 +328,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         if show_end <= show_start:
             show_end = min(1.0, show_start + 0.0005)
         pieces.append(
-            f"""  <text x="{grid_x + 10}" y="{grid_y - 4}" class="t-sub" opacity="0">Commit amount: {value}/{counter_total}
+            f"""  <text x="{counter_value_x}" y="{grid_y - 4}" class="t-counter" opacity="0">{value}
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;{show_start:.5f};{show_start:.5f};{show_end:.5f};{show_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
 """

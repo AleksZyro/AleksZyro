@@ -5,8 +5,9 @@
         font: 800 52px 'Segoe UI', 'Trebuchet MS', sans-serif;
         fill: #ffffff;
         dominant-baseline: middle;
+        text-anchor: middle;
       }
     </style>
   </defs>
-  <text class="name" x="24" y="52">Aleksandar Nikolic</text>
+  <text class="name" x="380" y="52">Aleksandar Nikolic</text>
 </svg>
