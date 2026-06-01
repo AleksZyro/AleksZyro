@@ -277,12 +277,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     title = f"{login}'s Pac-Man Contribution Run"
     counter_badge_x = 44
     counter_badge_y = 22
-    counter_badge_w = 150
+    counter_badge_w = 188
     counter_badge_h = 18
     counter_label_x = counter_badge_x + 12
     counter_text_y = counter_badge_y + 13
-    counter_value_x = counter_badge_x + 118
-    counter_suffix_x = counter_value_x + 4
+    counter_value_x = counter_badge_x + 136
+    counter_suffix_x = counter_value_x + 18
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
     mouth_open = "0,0 14.8,-9.3 14.8,9.3"
@@ -301,7 +301,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     </linearGradient>
     <style>
       .t-sub {{ font: 500 12px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
-      .t-counter {{ font: 700 12px 'Consolas', 'Courier New', monospace; fill: #dce9ff; text-anchor: end; }}
+      .t-counter {{ font: 700 12px 'Consolas', 'Courier New', monospace; fill: #dce9ff; text-anchor: middle; }}
       .grid-cell {{ rx: 2; ry: 2; }}
       .grid-bg {{ fill: #1a2743; }}
       .pacman-shell {{ fill: #ffd54a; }}
