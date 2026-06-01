@@ -284,8 +284,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     counter_value_x = counter_badge_x + 136
     counter_suffix_x = counter_value_x + 18
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
-    mouth_closed = "0,0 6.2,-1.4 6.2,1.4"
-    mouth_open = "0,0 6.2,-4.0 6.2,4.0"
+    mouth_closed = "0,0 6.8,-1.5 6.8,1.5"
+    mouth_open = "0,0 6.8,-4.4 6.8,4.4"
 
     pieces = []
     pieces.append(
@@ -390,11 +390,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <mpath href="#pac-route" />
     </animateMotion>
     <g>
-      <circle class="pacman-shell" cx="0" cy="0" r="5.5" />
+      <circle class="pacman-shell" cx="0" cy="0" r="6.1" />
       <polygon class="pacman-mouth" points="{mouth_closed}">
         <animate attributeName="points" values="{mouth_closed};{mouth_open};{mouth_closed}" dur="0.42s" repeatCount="indefinite" />
       </polygon>
-      <circle class="pacman-eye" cx="-0.9" cy="-2.2" r="0.75" />
+      <circle class="pacman-eye" cx="-1.0" cy="-2.4" r="0.82" />
       <animateTransform attributeName="transform" type="rotate" values="{';'.join(str(angle) for angle in rotation_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value} 1' for value in flip_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" additive="sum" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
