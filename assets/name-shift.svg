@@ -1,13 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="96" viewBox="0 0 760 96" role="img" aria-label="Aleksandar Nikolic">
   <defs>
+    <linearGradient id="name-shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f3f7ff" stop-opacity="0.96" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#d9e9ff" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#f3f7ff" stop-opacity="0.96" />
+      <animateTransform attributeName="gradientTransform" type="translate" values="-160 0;160 0;-160 0" dur="9s" repeatCount="indefinite" />
+    </linearGradient>
     <style>
       .name {
         font: 800 52px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #ffffff;
+        fill: url(#name-shine);
         dominant-baseline: middle;
         text-anchor: middle;
       }
+      .name-base {
+        fill: #ffffff;
+        opacity: 0.92;
+      }
     </style>
   </defs>
+  <text class="name name-base" x="380" y="52">Aleksandar Nikolic</text>
   <text class="name" x="380" y="52">Aleksandar Nikolic</text>
 </svg>

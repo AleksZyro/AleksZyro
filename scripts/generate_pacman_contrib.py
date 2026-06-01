@@ -275,8 +275,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
 
     title = f"{login}'s Pac-Man Contribution Run"
-    counter_label_x = grid_x + 10
-    counter_value_x = counter_label_x + 105
+    counter_badge_x = 44
+    counter_badge_y = 22
+    counter_badge_w = 150
+    counter_badge_h = 18
+    counter_label_x = counter_badge_x + 12
+    counter_text_y = counter_badge_y + 13
+    counter_value_x = counter_badge_x + 118
     counter_suffix_x = counter_value_x + 4
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 14.8,-3.4 14.8,3.4"
@@ -308,16 +313,17 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
   <rect width="{width}" height="{height}" fill="url(#shell)" rx="18" />
   <rect x="18" y="18" width="{width - 36}" height="{height - 36}" rx="13" stroke="#29466f" stroke-opacity="0.7" />
+  <rect x="{counter_badge_x}" y="{counter_badge_y}" width="{counter_badge_w}" height="{counter_badge_h}" rx="9" fill="#102036" stroke="#29466f" stroke-opacity="0.65" />
 
   <rect x="{grid_x - 18}" y="{grid_y - 18}" width="{grid_w + 24}" height="{grid_h + 36}" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
 """
     )
 
     pieces.append(
-        f'  <text x="{counter_label_x}" y="{grid_y - 4}" class="t-sub">Commit amount:</text>\n'
+        f'  <text x="{counter_label_x}" y="{counter_text_y}" class="t-sub">Commit amount</text>\n'
     )
     pieces.append(
-        f'  <text x="{counter_suffix_x}" y="{grid_y - 4}" class="t-sub">/{counter_total}</text>\n'
+        f'  <text x="{counter_suffix_x}" y="{counter_text_y}" class="t-sub">/{counter_total}</text>\n'
     )
 
     for idx, (start, end, value) in enumerate(counter_steps):
@@ -328,7 +334,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         if show_end <= show_start:
             show_end = min(1.0, show_start + 0.0005)
         pieces.append(
-            f"""  <text x="{counter_value_x}" y="{grid_y - 4}" class="t-counter" opacity="0">{value}
+            f"""  <text x="{counter_value_x}" y="{counter_text_y}" class="t-counter" opacity="0">{value}
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;{show_start:.5f};{show_start:.5f};{show_end:.5f};{show_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
 """

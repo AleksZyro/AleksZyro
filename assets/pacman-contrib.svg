@@ -22,152 +22,153 @@
 
   <rect width="887" height="215" fill="url(#shell)" rx="18" />
   <rect x="18" y="18" width="851" height="179" rx="13" stroke="#29466f" stroke-opacity="0.7" />
+  <rect x="44" y="22" width="150" height="18" rx="9" fill="#102036" stroke="#29466f" stroke-opacity="0.65" />
 
   <rect x="36" y="40" width="819" height="141" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
-  <text x="64" y="54" class="t-sub">Commit amount:</text>
-  <text x="173" y="54" class="t-sub">/328</text>
-  <text x="169" y="54" class="t-counter" opacity="0">0
+  <text x="56" y="35" class="t-sub">Commit amount</text>
+  <text x="166" y="35" class="t-sub">/328</text>
+  <text x="162" y="35" class="t-counter" opacity="0">0
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00000;0.00000;0.14325;0.14325;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">37
+  <text x="162" y="35" class="t-counter" opacity="0">37
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14325;0.14325;0.15147;0.15147;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">62
+  <text x="162" y="35" class="t-counter" opacity="0">62
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15147;0.15147;0.15421;0.15421;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">84
+  <text x="162" y="35" class="t-counter" opacity="0">84
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15421;0.15421;0.15695;0.15695;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">87
+  <text x="162" y="35" class="t-counter" opacity="0">87
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15695;0.15695;0.16242;0.16242;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">123
+  <text x="162" y="35" class="t-counter" opacity="0">123
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16242;0.16242;0.16790;0.16790;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">127
+  <text x="162" y="35" class="t-counter" opacity="0">127
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16790;0.16790;0.18434;0.18434;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">135
+  <text x="162" y="35" class="t-counter" opacity="0">135
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18434;0.18434;0.18708;0.18708;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">137
+  <text x="162" y="35" class="t-counter" opacity="0">137
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18708;0.18708;0.18982;0.18982;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">139
+  <text x="162" y="35" class="t-counter" opacity="0">139
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18982;0.18982;0.19256;0.19256;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">142
+  <text x="162" y="35" class="t-counter" opacity="0">142
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19256;0.19256;0.19530;0.19530;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">147
+  <text x="162" y="35" class="t-counter" opacity="0">147
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19530;0.19530;0.20352;0.20352;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">150
+  <text x="162" y="35" class="t-counter" opacity="0">150
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20352;0.20352;0.20626;0.20626;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">151
+  <text x="162" y="35" class="t-counter" opacity="0">151
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20626;0.20626;0.20900;0.20900;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">153
+  <text x="162" y="35" class="t-counter" opacity="0">153
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20900;0.20900;0.21722;0.21722;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">155
+  <text x="162" y="35" class="t-counter" opacity="0">155
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21722;0.21722;0.21996;0.21996;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">158
+  <text x="162" y="35" class="t-counter" opacity="0">158
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21996;0.21996;0.22544;0.22544;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">160
+  <text x="162" y="35" class="t-counter" opacity="0">160
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22544;0.22544;0.22818;0.22818;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">162
+  <text x="162" y="35" class="t-counter" opacity="0">162
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22818;0.22818;0.23092;0.23092;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">165
+  <text x="162" y="35" class="t-counter" opacity="0">165
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23092;0.23092;0.23366;0.23366;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">167
+  <text x="162" y="35" class="t-counter" opacity="0">167
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23366;0.23366;0.23640;0.23640;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">170
+  <text x="162" y="35" class="t-counter" opacity="0">170
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23640;0.23640;0.23914;0.23914;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">172
+  <text x="162" y="35" class="t-counter" opacity="0">172
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23914;0.23914;0.24188;0.24188;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">175
+  <text x="162" y="35" class="t-counter" opacity="0">175
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24188;0.24188;0.25284;0.25284;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">177
+  <text x="162" y="35" class="t-counter" opacity="0">177
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25284;0.25284;0.25558;0.25558;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">179
+  <text x="162" y="35" class="t-counter" opacity="0">179
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25558;0.25558;0.25832;0.25832;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">181
+  <text x="162" y="35" class="t-counter" opacity="0">181
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25832;0.25832;0.26105;0.26105;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">184
+  <text x="162" y="35" class="t-counter" opacity="0">184
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26105;0.26105;0.26379;0.26379;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">188
+  <text x="162" y="35" class="t-counter" opacity="0">188
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26379;0.26379;0.26653;0.26653;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">191
+  <text x="162" y="35" class="t-counter" opacity="0">191
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26653;0.26653;0.28571;0.28571;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">194
+  <text x="162" y="35" class="t-counter" opacity="0">194
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28571;0.28571;0.28845;0.28845;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">196
+  <text x="162" y="35" class="t-counter" opacity="0">196
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28845;0.28845;0.29119;0.29119;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">198
+  <text x="162" y="35" class="t-counter" opacity="0">198
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29119;0.29119;0.29393;0.29393;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">200
+  <text x="162" y="35" class="t-counter" opacity="0">200
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29393;0.29393;0.43366;0.43366;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">210
+  <text x="162" y="35" class="t-counter" opacity="0">210
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43366;0.43366;0.43640;0.43640;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">219
+  <text x="162" y="35" class="t-counter" opacity="0">219
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43640;0.43640;0.43914;0.43914;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">224
+  <text x="162" y="35" class="t-counter" opacity="0">224
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43914;0.43914;0.44188;0.44188;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">248
+  <text x="162" y="35" class="t-counter" opacity="0">248
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44188;0.44188;0.44736;0.44736;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">249
+  <text x="162" y="35" class="t-counter" opacity="0">249
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44736;0.44736;0.70763;0.70763;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">256
+  <text x="162" y="35" class="t-counter" opacity="0">256
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.70763;0.70763;0.72681;0.72681;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">260
+  <text x="162" y="35" class="t-counter" opacity="0">260
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72681;0.72681;0.72955;0.72955;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">262
+  <text x="162" y="35" class="t-counter" opacity="0">262
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72955;0.72955;0.73503;0.73503;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">263
+  <text x="162" y="35" class="t-counter" opacity="0">263
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73503;0.73503;0.75147;0.75147;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">264
+  <text x="162" y="35" class="t-counter" opacity="0">264
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75147;0.75147;0.75695;0.75695;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">274
+  <text x="162" y="35" class="t-counter" opacity="0">274
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75695;0.75695;0.99900;0.99900;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">310
+  <text x="162" y="35" class="t-counter" opacity="0">310
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;0.99950;0.99950;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">312
+  <text x="162" y="35" class="t-counter" opacity="0">312
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;0.99950;0.99950;1" dur="45.00s" repeatCount="indefinite"/>
   </text>
-  <text x="169" y="54" class="t-counter" opacity="0">328
+  <text x="162" y="35" class="t-counter" opacity="0">328
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.99900;0.99900;1.00000;1.00000;1" dur="45.00s" repeatCount="indefinite"/>
   </text>  <rect class="grid-cell grid-bg" x="54" y="58" width="11" height="11" />
   <rect class="grid-cell grid-bg" x="54" y="73" width="11" height="11" />

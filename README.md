@@ -1,34 +1,34 @@
-<p align="center">
+<div align="center">
   <img src="./assets/name-shift.svg" alt="Aleksandar Nikolic" />
-</p>
-
-<p align="center">
-  <b>Student developer from Switzerland building practical tools, polished interfaces, and playful project ideas.</b>
-</p>
-
-<p align="center">
+  <br />
+  <strong>Student developer from Switzerland building practical tools, polished interfaces, and playful project ideas.</strong>
+  <br />
+  <br />
   <a href="https://nikolicaleksandar.netlify.app">Portfolio</a> |
   <a href="https://github.com/Aleksandros2?tab=repositories">Repositories</a> |
   <a href="#featured-projects">Featured Projects</a>
-</p>
-
-<p align="center">
+  <br />
+  <br />
+  <sub>Arcade contribution run: Pac-Man clears my contribution grid in a live SVG loop.</sub>
+  <br />
   <img src="./assets/pacman-contrib.svg" alt="Pac-Man Contribution Run" width="100%" />
-</p>
+</div>
 
 ---
 
 ## About me
 
-- Student developer from Switzerland focused on practical apps and clean user experiences
-- I enjoy turning school ideas, experiments, and small tools into projects that feel polished
-- Currently improving presentation, structure, and interactivity across my public work
+- I like building small tools, school projects, and experiments that feel more like real products than class exercises
+- Clean interfaces matter to me because a project should be easy to understand before someone reads the code
+- Right now I am improving project quality from both sides: better structure under the hood and better presentation on the surface
 
 ## Featured projects
 
-- [Portfolio Website](https://github.com/Aleksandros2/Portfolio-Website) - Personal site focused on presentation, frontend polish, and a cleaner project showcase
-- [PathLab](https://github.com/Aleksandros2/PathLab) - Pathfinding playground for experimenting with algorithms and visual feedback
-- [LB259](https://github.com/Aleksandros2/LB259) - School project repository where I build and refine practical software solutions
+| Project | Focus | Stack | Link |
+| --- | --- | --- | --- |
+| Portfolio Website | Personal site for presenting projects with cleaner layout and frontend polish | `HTML` `CSS` `JavaScript` | [Open](https://github.com/Aleksandros2/Portfolio-Website) |
+| PathLab | Visual playground for pathfinding ideas, route logic, and algorithm feedback | `Python` `UI` | [Open](https://github.com/Aleksandros2/PathLab) |
+| LB259 | Practical school software project with a stronger focus on structure and implementation quality | `C#` `SQL` | [Open](https://github.com/Aleksandros2/LB259) |
 
 ## Tech stack
 
