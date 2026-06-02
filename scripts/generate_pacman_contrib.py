@@ -215,7 +215,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     counter_total = max(total, 0)
     popup_counter_starts: list[float] = []
     for impact in impact_keys:
-        popup_rise = clamp(impact + 0.004, 0.0, 1.0)
+        popup_rise = clamp(impact + 0.0015, 0.0, 1.0)
         popup_counter_starts.append(popup_rise)
 
     counter_steps: list[tuple[float, float, int]] = []
