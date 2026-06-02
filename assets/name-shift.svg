@@ -52,12 +52,10 @@
 
     <g transform="translate(296 124)">
       <g transform="translate(0 0)">
-        <path d="M 18 3 C 9 3 6 8 6 15 v 10 c 0 9 6 13 12 13 h 8 c 9 0 13 -6 13 -12 v -10 c 0 -9 -6 -13 -12 -13 z" fill="#3776ab" />
-        <path d="M 18 3 C 9 3 6 8 6 15 v 10 c 0 9 6 13 12 13 h 8 c 9 0 13 -6 13 -12 v -10 c 0 -9 -6 -13 -12 -13 z" fill="#ffd343" opacity="0.16" />
-        <circle cx="17" cy="12" r="2.2" fill="#ffffff" />
-        <circle cx="28" cy="28" r="2.2" fill="#ffffff" />
-        <path d="M 14 9 h 11 a 5 5 0 0 1 5 5 v 7 h -10 a 5 5 0 0 1 -5 -5 z" fill="#ffd343" />
-        <path d="M 30 32 h -11 a 5 5 0 0 1 -5 -5 v -7 h 10 a 5 5 0 0 1 5 5 z" fill="#3776ab" />
+        <path d="M 20 4 c -8 0 -12 4 -12 12 v 8 c 0 7 4 11 12 11 h 7 c 4 0 7 -3 7 -7 v -6 h -12 c -3 0 -6 -3 -6 -6 v -5 h 11 c 4 0 7 3 7 7 v 1 h 8 v -3 c 0 -8 -4 -12 -12 -12 z" fill="#3776ab" />
+        <path d="M 22 38 c -4 0 -7 -3 -7 -7 v -1 h -8 v 3 c 0 8 4 12 12 12 h 7 c 8 0 12 -4 12 -12 v -8 c 0 -7 -4 -11 -12 -11 h -7 c -4 0 -7 3 -7 7 v 6 h 12 c 3 0 6 3 6 6 v 5 h -11 c -4 0 -7 -3 -7 -7 v -1 h -8 v 3 c 0 8 4 12 12 12 z" fill="#ffd343" />
+        <circle cx="28.5" cy="12.3" r="2.1" fill="#ffffff" />
+        <circle cx="17.2" cy="36.1" r="2.1" fill="#ffffff" />
         <text class="stack-label" x="50" y="25">Python</text>
       </g>
       <g transform="translate(176 0)">

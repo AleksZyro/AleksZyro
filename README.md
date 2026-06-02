@@ -7,8 +7,6 @@
   <a href="#featured-projects">Featured Projects</a>
   <br />
   <br />
-  <sub>Arcade contribution run: Pac-Man clears my contribution grid in an auto-refreshed SVG loop.</sub>
-  <br />
   <img src="https://raw.githubusercontent.com/Aleksandros2/Aleksandros2/pacman-assets/assets/pacman-contrib.svg" alt="Pac-Man Contribution Run" width="100%" />
 </div>
 
