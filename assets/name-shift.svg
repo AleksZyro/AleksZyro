@@ -49,6 +49,10 @@
         opacity: 0.22;
         letter-spacing: 0.12em;
       }
+      .stack-label {
+        font: 700 18px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        fill: #e8f1ff;
+      }
     </style>
   </defs>
 
@@ -59,27 +63,36 @@
   <rect width="980" height="250" rx="28" fill="url(#glow-left)" />
   <rect width="980" height="250" rx="28" fill="url(#glow-right)" />
 
-  <g opacity="0.8">
-    <circle cx="120" cy="60" r="18" fill="#3776ab" opacity="0.22" />
-    <path d="M 111 52 h 13 a 5 5 0 0 1 5 5 v 7 h -11 a 5 5 0 0 1 -5 -5 z" fill="#ffd343" opacity="0.7" />
+  <g opacity="0.45">
+    <circle cx="120" cy="60" r="18" fill="#3776ab" opacity="0.18" />
+    <path d="M 111 52 h 13 a 5 5 0 0 1 5 5 v 7 h -11 a 5 5 0 0 1 -5 -5 z" fill="#ffd343" opacity="0.5" />
     <text class="mark" x="146" y="66">PYTHON</text>
 
-    <rect x="800" y="44" width="32" height="32" rx="8" fill="#f7df1e" opacity="0.82" />
-    <text x="808" y="65" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#0d1117">JS</text>
+    <rect x="800" y="44" width="32" height="32" rx="8" fill="#f7df1e" opacity="0.52" />
+    <text x="808" y="65" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#0d1117" opacity="0.72">JS</text>
     <text class="mark" x="846" y="66">JAVASCRIPT</text>
-
-    <rect x="130" y="181" width="30" height="24" rx="8" fill="#512bd4" opacity="0.46" />
-    <text x="138" y="198" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="15" font-weight="800" fill="#ffffff" opacity="0.8">C#</text>
-    <text class="mark" x="176" y="198">APPS</text>
-
-    <ellipse cx="830" cy="192" rx="18" ry="12" fill="#2f81f7" opacity="0.18" />
-    <path d="M 820 186 h 20 a 6 6 0 0 1 0 12 h -20 a 6 6 0 0 1 0 -12 z" fill="#2f81f7" opacity="0.72" />
-    <text class="mark" x="858" y="198">SQL</text>
   </g>
 
   <g filter="url(#soft-shadow)">
     <text class="title" x="490" y="128">Aleksandar Nikolic</text>
     <text class="title" x="490" y="128" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
-    <text class="subtitle" x="490" y="170">Student developer from Switzerland building projects that feel clean, useful, and alive.</text>
+    <g transform="translate(318 154)">
+      <g transform="translate(0 0)">
+        <circle cx="16" cy="16" r="16" fill="#3776ab" />
+        <path d="M 9 10 h 11 a 4 4 0 0 1 4 4 v 6 h -10 a 4 4 0 0 1 -4 -4 z" fill="#ffd343" />
+        <text class="stack-label" x="40" y="22">Python</text>
+      </g>
+      <g transform="translate(122 0)">
+        <rect x="0" y="0" width="32" height="32" rx="8" fill="#f7df1e" />
+        <text x="7" y="22" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#0d1117">JS</text>
+        <text class="stack-label" x="46" y="22">JavaScript</text>
+      </g>
+      <g transform="translate(296 0)">
+        <rect x="0" y="0" width="32" height="32" rx="9" fill="#512bd4" />
+        <text x="7" y="22" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#ffffff">C#</text>
+        <text class="stack-label" x="46" y="22">C#</text>
+      </g>
+    </g>
+    <text class="subtitle" x="490" y="214">Student developer from Switzerland building projects that feel clean, useful, and alive.</text>
   </g>
 </svg>
