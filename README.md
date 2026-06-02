@@ -1,7 +1,5 @@
 <div align="center">
-  <img src="./assets/name-shift.svg" alt="Aleksandar Nikolic" />
-  <br />
-  <strong>Student developer from Switzerland building practical tools, polished interfaces, and playful project ideas.</strong>
+  <img src="./assets/name-shift.svg" alt="Aleksandar Nikolic banner" width="100%" />
   <br />
   <br />
   <a href="https://nikolicaleksandar.netlify.app">Portfolio</a> |
@@ -32,7 +30,11 @@
 
 ## Tech stack
 
-`Python` `C#` `HTML` `CSS` `JavaScript` `SQL`
+| Area | Tools |
+| --- | --- |
+| Languages | `Python` `C#` `JavaScript` |
+| Frontend | `HTML` `CSS` `JavaScript` |
+| Data | `SQL` |
 
 ## Current focus
 
