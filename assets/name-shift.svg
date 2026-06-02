@@ -1,98 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="250" viewBox="0 0 980 250" role="img" aria-label="Aleksandar Nikolic developer banner">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="228" viewBox="0 0 980 228" role="img" aria-label="Aleksandar Nikolic developer banner">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#09111f" />
-      <stop offset="50%" stop-color="#0d1830" />
-      <stop offset="100%" stop-color="#0a1427" />
+      <stop offset="0%" stop-color="#0c1730" />
+      <stop offset="100%" stop-color="#102244" />
     </linearGradient>
-    <radialGradient id="glow-left" cx="20%" cy="18%" r="55%">
-      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.26" />
-      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0" />
-    </radialGradient>
-    <radialGradient id="glow-right" cx="82%" cy="24%" r="45%">
-      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.2" />
+    <radialGradient id="glow" cx="50%" cy="18%" r="80%">
+      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.14" />
       <stop offset="100%" stop-color="#58a6ff" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="title-fill" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#f7fbff" />
       <stop offset="55%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#d7e8ff" />
+      <stop offset="100%" stop-color="#d8e7ff" />
     </linearGradient>
     <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="52%" stop-color="#ffffff" stop-opacity="0.38" />
+      <stop offset="46%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="52%" stop-color="#ffffff" stop-opacity="0.3" />
       <stop offset="60%" stop-color="#ffffff" stop-opacity="0" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
       <animateTransform attributeName="gradientTransform" type="translate" values="-420 0;420 0" dur="11s" repeatCount="indefinite" />
     </linearGradient>
-    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#173056" stroke-opacity="0.28" stroke-width="1" />
-    </pattern>
     <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#020814" flood-opacity="0.32" />
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#030917" flood-opacity="0.28" />
     </filter>
     <style>
       .title {
-        font: 800 68px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        font: 800 70px 'Segoe UI', 'Trebuchet MS', sans-serif;
         fill: url(#title-fill);
         text-anchor: middle;
       }
       .subtitle {
-        font: 600 24px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #d7e8ff;
+        font: 600 22px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        fill: #d8e6fb;
         text-anchor: middle;
-      }
-      .mark {
-        font: 700 15px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #8fbaff;
-        opacity: 0.22;
-        letter-spacing: 0.12em;
       }
       .stack-label {
         font: 700 18px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #e8f1ff;
+        fill: #eef5ff;
       }
     </style>
   </defs>
 
-  <rect width="980" height="250" rx="28" fill="url(#bg)" />
-  <rect width="980" height="250" rx="28" fill="url(#grid)" opacity="0.86" />
-  <rect x="1.5" y="1.5" width="977" height="247" rx="26.5" fill="none" stroke="#244a82" stroke-opacity="0.8" />
-  <rect x="18" y="18" width="944" height="214" rx="22" fill="none" stroke="#173a68" stroke-opacity="0.42" />
-  <rect width="980" height="250" rx="28" fill="url(#glow-left)" />
-  <rect width="980" height="250" rx="28" fill="url(#glow-right)" />
-
-  <g opacity="0.45">
-    <circle cx="120" cy="60" r="18" fill="#3776ab" opacity="0.18" />
-    <path d="M 111 52 h 13 a 5 5 0 0 1 5 5 v 7 h -11 a 5 5 0 0 1 -5 -5 z" fill="#ffd343" opacity="0.5" />
-    <text class="mark" x="146" y="66">PYTHON</text>
-
-    <rect x="800" y="44" width="32" height="32" rx="8" fill="#f7df1e" opacity="0.52" />
-    <text x="808" y="65" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#0d1117" opacity="0.72">JS</text>
-    <text class="mark" x="846" y="66">JAVASCRIPT</text>
-  </g>
+  <rect width="980" height="228" rx="28" fill="url(#bg)" />
+  <rect width="980" height="228" rx="28" fill="url(#glow)" />
+  <rect x="1.5" y="1.5" width="977" height="225" rx="26.5" fill="none" stroke="#2f5d99" stroke-opacity="0.76" />
 
   <g filter="url(#soft-shadow)">
-    <text class="title" x="490" y="128">Aleksandar Nikolic</text>
-    <text class="title" x="490" y="128" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
-    <g transform="translate(318 154)">
+    <text class="title" x="490" y="102">Aleksandar Nikolic</text>
+    <text class="title" x="490" y="102" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
+
+    <g transform="translate(296 124)">
       <g transform="translate(0 0)">
-        <circle cx="16" cy="16" r="16" fill="#3776ab" />
-        <path d="M 9 10 h 11 a 4 4 0 0 1 4 4 v 6 h -10 a 4 4 0 0 1 -4 -4 z" fill="#ffd343" />
-        <text class="stack-label" x="40" y="22">Python</text>
+        <path d="M 18 3 C 9 3 6 8 6 15 v 10 c 0 9 6 13 12 13 h 8 c 9 0 13 -6 13 -12 v -10 c 0 -9 -6 -13 -12 -13 z" fill="#3776ab" />
+        <path d="M 18 3 C 9 3 6 8 6 15 v 10 c 0 9 6 13 12 13 h 8 c 9 0 13 -6 13 -12 v -10 c 0 -9 -6 -13 -12 -13 z" fill="#ffd343" opacity="0.16" />
+        <circle cx="17" cy="12" r="2.2" fill="#ffffff" />
+        <circle cx="28" cy="28" r="2.2" fill="#ffffff" />
+        <path d="M 14 9 h 11 a 5 5 0 0 1 5 5 v 7 h -10 a 5 5 0 0 1 -5 -5 z" fill="#ffd343" />
+        <path d="M 30 32 h -11 a 5 5 0 0 1 -5 -5 v -7 h 10 a 5 5 0 0 1 5 5 z" fill="#3776ab" />
+        <text class="stack-label" x="50" y="25">Python</text>
       </g>
-      <g transform="translate(122 0)">
-        <rect x="0" y="0" width="32" height="32" rx="8" fill="#f7df1e" />
-        <text x="7" y="22" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#0d1117">JS</text>
-        <text class="stack-label" x="46" y="22">JavaScript</text>
+      <g transform="translate(176 0)">
+        <rect x="0" y="2" width="40" height="40" rx="10" fill="#f7df1e" />
+        <text x="9" y="28" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="20" font-weight="800" fill="#0d1117">JS</text>
+        <text class="stack-label" x="56" y="25">JavaScript</text>
       </g>
-      <g transform="translate(296 0)">
-        <rect x="0" y="0" width="32" height="32" rx="9" fill="#512bd4" />
-        <text x="7" y="22" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="16" font-weight="800" fill="#ffffff">C#</text>
-        <text class="stack-label" x="46" y="22">C#</text>
+      <g transform="translate(420 0)">
+        <rect x="0" y="2" width="40" height="40" rx="12" fill="#512bd4" />
+        <text x="8" y="28" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="20" font-weight="800" fill="#ffffff">C#</text>
       </g>
     </g>
-    <text class="subtitle" x="490" y="214">Student developer from Switzerland building projects that feel clean, useful, and alive.</text>
+
+    <text class="subtitle" x="490" y="198">Swiss student developer building useful tools and polished interfaces.</text>
   </g>
 </svg>

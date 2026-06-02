@@ -3,7 +3,7 @@ name: Pac-Man Contributions
 on:
   workflow_dispatch:
   schedule:
-    - cron: "55 21 * * *"
+    - cron: "15 */4 * * *"
   push:
     branches:
       - main
