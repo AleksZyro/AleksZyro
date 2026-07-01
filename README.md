@@ -14,13 +14,13 @@
     <tr>
       <td>
         <img
-          src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/profile-languages.svg?raw=1"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aleksandros2&layout=compact&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8"
           alt="Most used languages"
         />
       </td>
       <td>
         <img
-          src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/profile-stats.svg?raw=1"
+          src="https://github-readme-stats.vercel.app/api?username=Aleksandros2&show_icons=true&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&rank_icon=github"
           alt="GitHub stats"
         />
       </td>
