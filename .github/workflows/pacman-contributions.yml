@@ -3,13 +3,14 @@ name: Pac-Man Contributions
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 */4 * * *"
+    - cron: "15 * * * *"
   push:
     branches:
       - main
       - master
     paths:
       - "scripts/generate_pacman_contrib.py"
+      - "scripts/generate_profile_cards.py"
       - ".github/workflows/pacman-contributions.yml"
 
 permissions:
@@ -39,15 +40,21 @@ jobs:
           PROFILE_USERNAME: Aleksandros2
         run: python scripts/generate_pacman_contrib.py
 
-      - name: Check for SVG changes
+      - name: Generate profile stat cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_USERNAME: Aleksandros2
+        run: python scripts/generate_profile_cards.py
+
+      - name: Check for asset changes
         id: changes
         run: |
-          if git diff --quiet -- assets/pacman-contrib.svg; then
+          if [ -z "$(git status --porcelain -- assets/pacman-contrib.svg assets/profile-languages.svg assets/profile-stats.svg)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No SVG changes."
+            echo "No asset changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "SVG changed."
+            echo "Assets changed."
           fi
 
       - name: Prepare publish folder
@@ -55,6 +62,8 @@ jobs:
         run: |
           mkdir -p publish/assets
           cp assets/pacman-contrib.svg publish/assets/pacman-contrib.svg
+          cp assets/profile-languages.svg publish/assets/profile-languages.svg
+          cp assets/profile-stats.svg publish/assets/profile-stats.svg
 
       - name: Publish generated SVG branch
         if: steps.changes.outputs.changed == 'true'
