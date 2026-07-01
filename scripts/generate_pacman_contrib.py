@@ -113,6 +113,10 @@ def clamp(value: float, low: float, high: float) -> float:
     return max(low, min(high, value))
 
 
+def is_power_cell(count: int, max_count: int) -> bool:
+    return max_count >= 8 and count >= max(8, math.ceil(max_count * 0.75))
+
+
 def trim_targets(cells: list[dict[str, Any]], max_targets: int) -> list[dict[str, Any]]:
     if len(cells) <= max_targets:
         return cells
@@ -315,6 +319,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; fill: #ffe58a; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
       .progress-track {{ fill: #122340; }}
       .progress-fill {{ fill: #ffd54a; }}
+      .power-cell {{ stroke: #ffd54a; stroke-width: 1; }}
     </style>
   </defs>
 
@@ -378,8 +383,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         if (c["x"], c["y"]) in target_keys:
             continue
         fill = palette[level_for_count(int(c["count"]), max_count)]
+        power_class = ' class="grid-cell power-cell"' if is_power_cell(int(c["count"]), max_count) else ' class="grid-cell"'
         pieces.append(
-            f'  <rect class="grid-cell" x="{c["x"]}" y="{c["y"]}" width="{cell}" height="{cell}" fill="{fill}" />\n'
+            f'  <rect{power_class} x="{c["x"]}" y="{c["y"]}" width="{cell}" height="{cell}" fill="{fill}" />\n'
         )
 
     for idx, target in enumerate(targets):
@@ -387,6 +393,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         fade_start = clamp(impact - 0.002, 0.0, 1.0)
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
+        power_class = ' class="power-cell"' if is_power_cell(int(target["count"]), max_count) else ""
         popup_hit = impact
         popup_rise = clamp(impact + 0.009, 0.0, 1.0)
         popup_mid = clamp(impact + 0.030, 0.0, 1.0)
@@ -402,7 +409,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         popup_y = ty - 5.0
         popup_y_top = popup_y - 4.5
         pieces.append(
-            f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
+            f"""  <rect{power_class} x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </rect>
 """
@@ -423,6 +430,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     </animateMotion>
     <g>
       <circle class="pacman-shell" cx="0" cy="0" r="7.3" />
+      <circle class="pacman-shell" cx="0" cy="0" r="7.3" opacity="0.14">
+        <animate attributeName="r" values="7.3;8.7;7.3" dur="0.42s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.16;0.04;0.16" dur="0.42s" repeatCount="indefinite" />
+      </circle>
       <polygon class="pacman-mouth" points="{mouth_closed}">
         <animate attributeName="points" values="{mouth_closed};{mouth_open};{mouth_closed}" dur="0.42s" repeatCount="indefinite" />
       </polygon>

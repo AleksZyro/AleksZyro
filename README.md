@@ -12,16 +12,18 @@
   <br />
   <table>
     <tr>
-      <td>
+      <td width="50%">
         <img
-          src="https://github-stats-extended.vercel.app/api/top-langs/?username=Aleksandros2&layout=compact&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8"
+          src="https://github-stats-extended.vercel.app/api/top-langs/?username=Aleksandros2&layout=compact&card_width=440&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f"
           alt="Most used languages"
+          width="100%"
         />
       </td>
-      <td>
+      <td width="50%">
         <img
-          src="https://github-stats-extended.vercel.app/api?username=Aleksandros2&show_icons=true&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&rank_icon=github"
+          src="https://github-stats-extended.vercel.app/api?username=Aleksandros2&show_icons=true&card_width=440&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&rank_icon=github&border_color=23456f"
           alt="GitHub stats"
+          width="100%"
         />
       </td>
     </tr>
@@ -38,11 +40,17 @@
 
 ## Featured projects
 
-| Project | Focus | Stack | Link |
-| --- | --- | --- | --- |
-| Portfolio Website | Personal site for presenting projects with cleaner layout and frontend polish | `HTML` `CSS` `JavaScript` | [Open](https://github.com/Aleksandros2/Portfolio-Website) |
-| PathLab | Interactive pathfinding visualizer with weighted terrain, algorithm comparisons, and automated tests | `React` `JavaScript` `Vite` `Vitest` | [Open](https://github.com/Aleksandros2/PathLab) |
-| LB259 | Analysis and prediction of industrial energy consumption using an anonymized dataset | `Python` `Jupyter` `Data Analysis` | [Open](https://github.com/Aleksandros2/LB259) |
+<div align="center">
+  <a href="https://github.com/Aleksandros2/Portfolio-Website">
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=Portfolio-Website&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Portfolio Website repository" width="49%" />
+  </a>
+  <a href="https://github.com/Aleksandros2/PathLab">
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=PathLab&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="PathLab repository" width="49%" />
+  </a>
+  <a href="https://github.com/Aleksandros2/LB259">
+    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=LB259&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="LB259 repository" width="49%" />
+  </a>
+</div>
 
 ## Tech stack
 
@@ -56,9 +64,9 @@ This overview combines technologies used in personal projects, team projects, an
 
 ## Current focus
 
-- Practical tooling and automation with `Python` and `C#`
-- UI work and interactive experiments with `HTML`, `CSS`, and `JavaScript`
-- Stronger project structure, cleaner documentation, and better showcases
+- **Building:** practical tools with `Python`, `C#`, and `JavaScript`
+- **Learning:** cleaner frontend structure and interactive UI patterns
+- **Improving:** documentation, project polish, and public presentation
 
 ## Profile build
 
