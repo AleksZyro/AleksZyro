@@ -283,11 +283,16 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     counter_text_y = counter_badge_y + 13
     counter_value_x = counter_badge_x + 136
     counter_suffix_x = counter_value_x + 18
+    progress_x = counter_badge_x + counter_badge_w + 18
+    progress_y = counter_badge_y + 7
+    progress_w = max(120, width - progress_x - 42)
+    progress_h = 4
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
 
     pieces = []
+    popup_pieces = []
     pieces.append(
         f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" fill="none" role="img" aria-label="{title}">
   <defs>
@@ -307,7 +312,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .pacman-shell {{ fill: #ffd54a; }}
       .pacman-mouth {{ fill: #132744; }}
       .pacman-eye {{ fill: #0b1220; }}
-      .score-pop {{ font: 700 11px 'Consolas', 'Courier New', monospace; fill: #fff2b1; stroke: #0b1220; stroke-width: 0.5; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
+      .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; fill: #ffe58a; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
+      .progress-track {{ fill: #122340; }}
+      .progress-fill {{ fill: #ffd54a; }}
     </style>
   </defs>
 
@@ -324,6 +331,28 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
     pieces.append(
         f'  <text x="{counter_suffix_x}" y="{counter_text_y}" class="t-sub">/{counter_total}</text>\n'
+    )
+    pieces.append(
+        f'  <rect x="{progress_x}" y="{progress_y}" width="{progress_w}" height="{progress_h}" rx="{progress_h / 2:.1f}" class="progress-track" />\n'
+    )
+
+    progress_times = [clamp(step[0], 0.0, 1.0) for step in counter_steps]
+    progress_values = [
+        progress_w * (clamp(value, 0, counter_total) / counter_total) if counter_total else 0
+        for _, _, value in counter_steps
+    ]
+    if progress_times[0] != 0.0:
+        progress_times.insert(0, 0.0)
+        progress_values.insert(0, 0.0)
+    if progress_times[-1] != 1.0:
+        progress_times.append(1.0)
+        progress_values.append(progress_values[-1])
+
+    pieces.append(
+        f"""  <rect x="{progress_x}" y="{progress_y}" width="0" height="{progress_h}" rx="{progress_h / 2:.1f}" class="progress-fill">
+    <animate attributeName="width" values="{';'.join(f'{value:.2f}' for value in progress_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in progress_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+  </rect>
+"""
     )
 
     for idx, (start, end, value) in enumerate(counter_steps):
@@ -376,7 +405,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
             f"""  <rect x="{target["x"]}" y="{target["y"]}" width="{cell}" height="{cell}" fill="{cell_fill}" opacity="1">
     <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;{fade_start:.5f};{impact:.5f};{restore:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </rect>
-  <text class="score-pop" x="{tx:.1f}" y="{popup_y:.1f}" opacity="0">+{int(target["count"])}
+"""
+        )
+        popup_pieces.append(
+            f"""  <text class="score-pop" x="{tx:.1f}" y="{popup_y:.1f}" opacity="0">+{int(target["count"])}
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     <animate attributeName="y" values="{popup_y:.1f};{popup_y:.1f};{popup_y_top:.1f};{popup_y_top:.1f};{popup_y_top:.1f};{popup_y_top:.1f}" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
@@ -399,6 +431,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value} 1' for value in flip_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" additive="sum" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
   </g>
+  <g id="score-overlay">
+{''.join(popup_pieces)}  </g>
 </svg>
 """
     )
