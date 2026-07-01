@@ -41,10 +41,12 @@
 | Project | Focus | Stack | Link |
 | --- | --- | --- | --- |
 | Portfolio Website | Personal site for presenting projects with cleaner layout and frontend polish | `HTML` `CSS` `JavaScript` | [Open](https://github.com/Aleksandros2/Portfolio-Website) |
-| PathLab | Visual playground for pathfinding ideas, route logic, and algorithm feedback | `Python` `UI` | [Open](https://github.com/Aleksandros2/PathLab) |
-| LB259 | Practical school software project with a stronger focus on structure and implementation quality | `C#` `SQL` | [Open](https://github.com/Aleksandros2/LB259) |
+| PathLab | Interactive pathfinding visualizer with weighted terrain, algorithm comparisons, and automated tests | `React` `JavaScript` `Vite` `Vitest` | [Open](https://github.com/Aleksandros2/PathLab) |
+| LB259 | Analysis and prediction of industrial energy consumption using an anonymized dataset | `Python` `Jupyter` `Data Analysis` | [Open](https://github.com/Aleksandros2/LB259) |
 
 ## Tech stack
+
+This overview combines technologies used in personal projects, team projects, and IMS coursework; my experience level varies by tool.
 
 | Area | Tools |
 | --- | --- |
