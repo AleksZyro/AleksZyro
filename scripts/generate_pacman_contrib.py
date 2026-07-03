@@ -210,7 +210,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     impact_keys = [length / total_length for length in impact_lengths]
 
-    cycle = max(45.0, len(targets) * 0.82)
+    cycle = max(32.0, len(targets) * 0.52)
 
     counter_total = max(total, 0)
     popup_counter_starts: list[float] = []
@@ -273,13 +273,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
         + [f"L {x:.1f} {y:.1f}" for x, y in route_points[1:]]
     )
-    ghost_offset = max(1, min(len(route_points) - 1, round(len(route_points) * 0.035)))
-    ghost_route_points = route_points[ghost_offset:] + route_points[:ghost_offset]
-    ghost_path_data = " ".join(
-        [f"M {ghost_route_points[0][0]:.1f} {ghost_route_points[0][1]:.1f}"]
-        + [f"L {x:.1f} {y:.1f}" for x, y in ghost_route_points[1:]]
-    )
-
     title = f"{login}'s Pac-Man Contribution Run"
     counter_badge_x = 44
     counter_badge_y = 22
@@ -357,10 +350,21 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     if progress_times[-1] != 1.0:
         progress_times.append(1.0)
         progress_values.append(progress_values[-1])
+    if len(progress_times) >= 2:
+        reset_start = 0.982
+        reset_pairs = [
+            (time_key, value)
+            for time_key, value in zip(progress_times, progress_values)
+            if time_key < reset_start
+        ]
+        reset_pairs.append((reset_start, progress_w))
+        reset_pairs.append((1.0, 0.0))
+        progress_times = [time_key for time_key, _ in reset_pairs]
+        progress_values = [value for _, value in reset_pairs]
 
     pieces.append(
         f"""  <rect x="{progress_x}" y="{progress_y}" width="0" height="{progress_h}" rx="{progress_h / 2:.1f}" class="progress-fill">
-    <animate attributeName="width" values="{';'.join(f'{value:.2f}' for value in progress_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in progress_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+    <animate attributeName="width" values="{';'.join(f'{value:.2f}' for value in progress_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in progress_times)}" calcMode="linear" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </rect>
 """
     )
@@ -427,10 +431,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
-  <path id="ghost-route" d="{ghost_path_data}" fill="none" stroke="none" />
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear">
-      <mpath href="#ghost-route" />
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" begin="1.15s">
+      <mpath href="#pac-route" />
     </animateMotion>
     <g opacity="0.68" transform="scale(0.88)">
       <path class="ghost-body" d="{ghost_body}" />
@@ -453,7 +456,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <polygon class="pacman-mouth" points="{mouth_closed}">
         <animate attributeName="points" values="{mouth_closed};{mouth_open};{mouth_closed}" dur="0.42s" repeatCount="indefinite" />
       </polygon>
-      <circle class="pacman-eye" cx="-1.2" cy="-2.9" r="0.98" />
+      <circle class="pacman-eye" cx="-1.2" cy="-2.9" r="1.18" />
       <animateTransform attributeName="transform" type="rotate" values="{';'.join(str(angle) for angle in rotation_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value} 1' for value in flip_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" additive="sum" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
