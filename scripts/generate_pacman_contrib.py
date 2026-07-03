@@ -113,10 +113,6 @@ def clamp(value: float, low: float, high: float) -> float:
     return max(low, min(high, value))
 
 
-def is_power_cell(count: int, max_count: int) -> bool:
-    return max_count >= 8 and count >= max(8, math.ceil(max_count * 0.75))
-
-
 def trim_targets(cells: list[dict[str, Any]], max_targets: int) -> list[dict[str, Any]]:
     if len(cells) <= max_targets:
         return cells
@@ -295,42 +291,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
     ghost_body = "M -5.8 4.8 L -5.8 -1.3 C -5.8 -5.0 -3.2 -7.0 0 -7.0 C 3.2 -7.0 5.8 -5.0 5.8 -1.3 L 5.8 4.8 L 3.4 3.1 L 1.1 4.8 L -1.1 3.1 L -3.4 4.8 Z"
-    ghost_fill_times = [0.0]
-    ghost_fill_values = ["#ff5d6c"]
-    ghost_opacity_times = [0.0]
-    ghost_opacity_values = [0.68]
-    ghost_scale_times = [0.0]
-    ghost_scale_values = [0.88]
-
-    def add_timeline_key(times: list[float], values: list[Any], time_key: float, value: Any) -> None:
-        time_key = clamp(time_key, 0.0, 1.0)
-        if time_key <= times[-1]:
-            time_key = min(1.0, times[-1] + 0.0005)
-        if time_key <= 1.0:
-            times.append(time_key)
-            values.append(value)
-
-    for idx, target in enumerate(targets):
-        if is_power_cell(int(target["count"]), max_count):
-            impact = impact_keys[idx]
-            add_timeline_key(ghost_fill_times, ghost_fill_values, impact - 0.010, "#ff5d6c")
-            add_timeline_key(ghost_fill_times, ghost_fill_values, impact, "#7cc7ff")
-            add_timeline_key(ghost_fill_times, ghost_fill_values, impact + 0.060, "#ff5d6c")
-            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact - 0.010, 0.68)
-            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact + 0.012, 0.18)
-            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact + 0.060, 0.68)
-            add_timeline_key(ghost_scale_times, ghost_scale_values, impact - 0.010, 0.88)
-            add_timeline_key(ghost_scale_times, ghost_scale_values, impact + 0.012, 0.36)
-            add_timeline_key(ghost_scale_times, ghost_scale_values, impact + 0.060, 0.88)
-    if ghost_fill_times[-1] < 1.0:
-        ghost_fill_times.append(1.0)
-        ghost_fill_values.append(ghost_fill_values[-1])
-    if ghost_opacity_times[-1] < 1.0:
-        ghost_opacity_times.append(1.0)
-        ghost_opacity_values.append(ghost_opacity_values[-1])
-    if ghost_scale_times[-1] < 1.0:
-        ghost_scale_times.append(1.0)
-        ghost_scale_values.append(ghost_scale_values[-1])
 
     pieces = []
     popup_pieces = []
@@ -431,7 +391,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         fade_start = clamp(impact - 0.002, 0.0, 1.0)
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
-        is_power_target = is_power_cell(int(target["count"]), max_count)
         popup_hit = impact
         popup_rise = clamp(impact + 0.009, 0.0, 1.0)
         popup_mid = clamp(impact + 0.030, 0.0, 1.0)
@@ -466,18 +425,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" begin="-1.35s">
       <mpath href="#pac-route" />
     </animateMotion>
-    <g>
-      <animate attributeName="opacity" values="{';'.join(f'{value:.2f}' for value in ghost_opacity_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_opacity_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-      <g>
-        <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.2f}' for value in ghost_scale_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_scale_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-        <path class="ghost-body" d="{ghost_body}">
-          <animate attributeName="fill" values="{';'.join(ghost_fill_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_fill_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-        </path>
-        <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
-        <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
-        <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.48" />
-        <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.48" />
-      </g>
+    <g opacity="0.68" transform="scale(0.88)">
+      <path class="ghost-body" d="{ghost_body}" />
+      <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
+      <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
+      <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.48" />
+      <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.48" />
     </g>
   </g>
   <g>
