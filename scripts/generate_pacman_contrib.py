@@ -124,14 +124,14 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     weeks = calendar.get("weeks", [])
     total = int(calendar.get("totalContributions", 0))
 
-    cell = 11
-    gap = 4
-    grid_x = 54
-    grid_y = 58
+    cell = 12
+    gap = 2
+    grid_x = 48
+    grid_y = 60
     grid_w = max(len(weeks), 52) * (cell + gap)
     grid_h = 7 * (cell + gap)
 
-    width = grid_x + grid_w + 38
+    width = grid_x + grid_w + 34
     height = grid_y + grid_h + 52
     panel_bg = "#091324"
     palette = ["#17243d", "#264c7d", "#3177b8", "#59a7e8", "#8fd1ff"]

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="228" viewBox="0 0 980 228" role="img" aria-label="Aleksandar Nikolic developer banner">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="238" viewBox="0 0 820 238" role="img" aria-label="Aleksandar Nikolic developer banner">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0c1730" />
@@ -26,12 +26,12 @@
     </filter>
     <style>
       .title {
-        font: 800 70px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        font: 800 68px 'Segoe UI', 'Trebuchet MS', sans-serif;
         fill: url(#title-fill);
         text-anchor: middle;
       }
       .subtitle {
-        font: 600 22px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        font: 600 21px 'Segoe UI', 'Trebuchet MS', sans-serif;
         fill: #d8e6fb;
         text-anchor: middle;
       }
@@ -42,15 +42,15 @@
     </style>
   </defs>
 
-  <rect width="980" height="228" rx="28" fill="url(#bg)" />
-  <rect width="980" height="228" rx="28" fill="url(#glow)" />
-  <rect x="1.5" y="1.5" width="977" height="225" rx="26.5" fill="none" stroke="#2f5d99" stroke-opacity="0.76" />
+  <rect width="820" height="238" rx="28" fill="url(#bg)" />
+  <rect width="820" height="238" rx="28" fill="url(#glow)" />
+  <rect x="1.5" y="1.5" width="817" height="235" rx="26.5" fill="none" stroke="#2f5d99" stroke-opacity="0.76" />
 
   <g filter="url(#soft-shadow)">
-    <text class="title" x="490" y="102">Aleksandar Nikolic</text>
-    <text class="title" x="490" y="102" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
+    <text class="title" x="410" y="100">Aleksandar Nikolic</text>
+    <text class="title" x="410" y="100" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
 
-    <g transform="translate(296 124)">
+    <g transform="translate(180 124)">
       <g transform="translate(0 0)">
         <g transform="translate(2 0) scale(0.34)">
           <path d="M 54.918785,0 C 50.335132,0.022 45.957846,0.413 42.106285,1.095 30.760069,3.099 28.700036,7.295 28.700035,15.032 V 25.251 H 55.512535 V 28.657 H 28.700035 18.637535 c -7.792459,0 -14.615759,4.684 -16.75,13.594 -2.46182,10.213 -2.571015,16.586 0,27.25 1.905928,7.938 6.457543,13.594 14.25,13.594 h 9.21875 v -12.25 c 0,-8.85 7.657144,-16.656 16.75,-16.656 h 26.78125 c 7.454951,0 13.406253,-6.138 13.40625,-13.625 v -25.531 c 0,-7.266 -6.12998,-12.725 -13.40625,-13.938 C 64.281548,0.328 59.502438,-0.02 54.918785,0 Z m -14.5,8.219 c 2.769547,0 5.03125,2.299 5.03125,5.125 0,2.816 -2.261703,5.094 -5.03125,5.094 -2.779476,0 -5.03125,-2.278 -5.03125,-5.094 0,-2.826 2.251774,-5.125 5.03125,-5.125 z" fill="#3776ab"/>
@@ -69,6 +69,6 @@
       </g>
     </g>
 
-    <text class="subtitle" x="490" y="198">Swiss student developer building useful tools and polished interfaces.</text>
+    <text class="subtitle" x="410" y="202">Swiss student developer building useful tools and polished interfaces.</text>
   </g>
 </svg>

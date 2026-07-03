@@ -7,27 +7,20 @@
   <a href="#featured-projects">Featured Projects</a>
   <br />
   <br />
-  <img src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=red-ghost-single" alt="Pac-Man Contribution Run" width="100%" />
+  <img src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=mobile-scale" alt="Pac-Man Contribution Run" width="100%" />
   <br />
   <br />
-  <table>
-    <tr>
-      <td width="50%">
-        <img
-          src="https://github-stats-extended.vercel.app/api/top-langs/?username=Aleksandros2&layout=compact&card_width=440&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f"
-          alt="Most used languages"
-          width="100%"
-        />
-      </td>
-      <td width="50%">
-        <img
-          src="https://github-stats-extended.vercel.app/api?username=Aleksandros2&show_icons=true&card_width=440&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&rank_icon=github&border_color=23456f"
-          alt="GitHub stats"
-          width="100%"
-        />
-      </td>
-    </tr>
-  </table>
+  <img
+    src="https://github-stats-extended.vercel.app/api/top-langs/?username=Aleksandros2&layout=compact&card_width=760&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f"
+    alt="Most used languages"
+    width="100%"
+  />
+  <br />
+  <img
+    src="https://github-stats-extended.vercel.app/api?username=Aleksandros2&show_icons=true&card_width=760&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&rank_icon=github&border_color=23456f"
+    alt="GitHub stats"
+    width="100%"
+  />
 </div>
 
 ---
