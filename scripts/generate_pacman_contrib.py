@@ -290,6 +290,14 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
     ghost_body = "M -5.8 4.8 L -5.8 -1.3 C -5.8 -5.0 -3.2 -7.0 0 -7.0 C 3.2 -7.0 5.8 -5.0 5.8 -1.3 L 5.8 4.8 L 3.4 3.1 L 1.1 4.8 L -1.1 3.1 L -3.4 4.8 Z"
+    ghost_colors = ["#ff5d6c", "#ff9bd2", "#67d9ff", "#ffb85c"]
+    ghost_cycle = cycle * len(ghost_colors)
+    ghost_color_values = ";".join(ghost_colors + [ghost_colors[0]])
+    ghost_color_times = ";".join(
+        f"{idx / len(ghost_colors):.5f}" for idx in range(len(ghost_colors) + 1)
+    )
+    ghost_hud_x = width - 105
+    ghost_hud_y = 31
 
     pieces = []
     popup_pieces = []
@@ -316,6 +324,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .progress-track {{ fill: #122340; }}
       .progress-fill {{ fill: #ffd54a; }}
       .ghost-body {{ fill: #ff5d6c; }}
+      .ghost-hud {{ opacity: 0.88; }}
       .ghost-eye {{ fill: #f5fbff; }}
       .ghost-pupil {{ fill: #132744; }}
     </style>
@@ -338,6 +347,20 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f'  <rect x="{progress_x}" y="{progress_y}" width="{progress_w}" height="{progress_h}" rx="{progress_h / 2:.1f}" class="progress-track" />\n'
     )
+
+    for ghost_idx, color in enumerate(ghost_colors):
+        gx = ghost_hud_x + ghost_idx * 24
+        pieces.append(
+            f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.72)">
+    <path d="{ghost_body}" fill="{color}" />
+    <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.2" />
+    <circle class="ghost-eye" cx="2" cy="-2.2" r="1.2" />
+    <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.42" />
+    <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.42" />
+    <animate attributeName="opacity" values="0.95;0.95;0.24;0.24;0.95" keyTimes="0;{(ghost_idx + 0.82) / len(ghost_colors):.5f};{(ghost_idx + 0.98) / len(ghost_colors):.5f};{(ghost_idx + 1) / len(ghost_colors):.5f};1" dur="{ghost_cycle:.2f}s" repeatCount="indefinite"/>
+  </g>
+"""
+        )
 
     progress_times = [clamp(step[0], 0.0, 1.0) for step in counter_steps]
     progress_values = [
@@ -437,11 +460,14 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" begin="1.15s">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyPoints="0;0.02;0.58;0.86;1" keyTimes="0;0.12;0.78;0.96;1">
       <mpath href="#pac-route" />
     </animateMotion>
-    <g opacity="0.68" transform="scale(0.88)">
-      <path class="ghost-body" d="{ghost_body}" />
+    <g transform="scale(0.88)">
+      <animate attributeName="opacity" values="0.68;0.68;0;0.68" keyTimes="0;0.935;0.985;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <path class="ghost-body" d="{ghost_body}">
+        <animate attributeName="fill" values="{ghost_color_values}" keyTimes="{ghost_color_times}" dur="{ghost_cycle:.2f}s" repeatCount="indefinite"/>
+      </path>
       <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
       <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
       <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.48" />
