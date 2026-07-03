@@ -402,12 +402,13 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         restore = clamp(impact + 0.030, 0.0, 1.0)
         cell_fill = palette[level_for_count(int(target["count"]), max_count)]
         popup_hit = impact
-        popup_end = clamp(impact + 0.038, 0.0, 1.0)
-        if idx + 3 < len(impact_keys):
+        popup_end = clamp(impact + 0.026, 0.0, 1.0)
+        if idx + 2 < len(impact_keys):
             # Keep the arcade feedback readable: never allow more than three
-            # score numbers to be visible at the same time.
-            popup_end = min(popup_end, clamp(impact_keys[idx + 3] - 0.001, impact + 0.004, 1.0))
-        popup_duration = max(0.004, popup_end - popup_hit)
+            # score numbers to be visible at the same time. The technical cap
+            # is stricter, because fading text still looks visible in GitHub.
+            popup_end = min(popup_end, clamp(impact_keys[idx + 2] - 0.001, impact + 0.003, 1.0))
+        popup_duration = max(0.003, popup_end - popup_hit)
         popup_rise = clamp(impact + popup_duration * 0.28, 0.0, 1.0)
         popup_mid = clamp(impact + popup_duration * 0.66, 0.0, 1.0)
         if popup_end <= popup_rise:
