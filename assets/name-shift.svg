@@ -1,74 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="238" viewBox="0 0 820 238" role="img" aria-label="Aleksandar Nikolic developer banner">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="230" viewBox="0 0 980 230" role="img" aria-label="Aleksandar Nikolic profile header">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0c1730" />
-      <stop offset="100%" stop-color="#102244" />
-    </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="18%" r="80%">
-      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.14" />
-      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0" />
-    </radialGradient>
-    <linearGradient id="title-fill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f7fbff" />
-      <stop offset="55%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#d8e7ff" />
-    </linearGradient>
-    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="46%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="52%" stop-color="#ffffff" stop-opacity="0.3" />
-      <stop offset="60%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-      <animateTransform attributeName="gradientTransform" type="translate" values="-420 0;420 0" dur="11s" repeatCount="indefinite" />
-    </linearGradient>
-    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#030917" flood-opacity="0.28" />
-    </filter>
     <style>
-      .title {
-        font: 800 68px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: url(#title-fill);
+      .name {
+        font: 800 36px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        fill: #e6edf3;
         text-anchor: middle;
       }
-      .subtitle {
-        font: 600 21px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #d8e6fb;
+      .role {
+        font: 500 24px 'Consolas', 'Courier New', monospace;
+        letter-spacing: 3px;
+        fill: #9fbce3;
         text-anchor: middle;
       }
-      .stack-label {
-        font: 700 18px 'Segoe UI', 'Trebuchet MS', sans-serif;
-        fill: #eef5ff;
+      .claim {
+        font: 500 17px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        fill: #f0f6fc;
+        text-anchor: middle;
+      }
+      .line {
+        stroke: #30363d;
+        stroke-width: 1;
       }
     </style>
   </defs>
 
-  <rect width="820" height="238" rx="28" fill="url(#bg)" />
-  <rect width="820" height="238" rx="28" fill="url(#glow)" />
-  <rect x="1.5" y="1.5" width="817" height="235" rx="26.5" fill="none" stroke="#2f5d99" stroke-opacity="0.76" />
-
-  <g filter="url(#soft-shadow)">
-    <text class="title" x="410" y="100">Aleksandar Nikolic</text>
-    <text class="title" x="410" y="100" fill="url(#shine)" opacity="0.92">Aleksandar Nikolic</text>
-
-    <g transform="translate(180 124)">
-      <g transform="translate(0 0)">
-        <g transform="translate(2 0) scale(0.34)">
-          <path d="M 54.918785,0 C 50.335132,0.022 45.957846,0.413 42.106285,1.095 30.760069,3.099 28.700036,7.295 28.700035,15.032 V 25.251 H 55.512535 V 28.657 H 28.700035 18.637535 c -7.792459,0 -14.615759,4.684 -16.75,13.594 -2.46182,10.213 -2.571015,16.586 0,27.25 1.905928,7.938 6.457543,13.594 14.25,13.594 h 9.21875 v -12.25 c 0,-8.85 7.657144,-16.656 16.75,-16.656 h 26.78125 c 7.454951,0 13.406253,-6.138 13.40625,-13.625 v -25.531 c 0,-7.266 -6.12998,-12.725 -13.40625,-13.938 C 64.281548,0.328 59.502438,-0.02 54.918785,0 Z m -14.5,8.219 c 2.769547,0 5.03125,2.299 5.03125,5.125 0,2.816 -2.261703,5.094 -5.03125,5.094 -2.779476,0 -5.03125,-2.278 -5.03125,-5.094 0,-2.826 2.251774,-5.125 5.03125,-5.125 z" fill="#3776ab"/>
-          <path d="m 85.637535,28.657 v 11.906 c 0,9.231 -7.825895,17 -16.75,17 h -26.78125 c -7.335833,0 -13.406249,6.279 -13.40625,13.625 v 25.531 c 0,7.266 6.318588,11.54 13.40625,13.625 8.487331,2.496 16.626237,2.947 26.78125,0 6.750155,-1.954 13.406253,-5.888 13.40625,-13.625 V 86.501 h -26.78125 v -3.406 h 26.78125 13.406254 c 7.792461,0 10.696251,-5.436 13.406241,-13.594 2.79933,-8.399 2.68022,-16.476 0,-27.25 -1.92578,-7.757 -5.60387,-13.594 -13.406241,-13.594 z m -15.0625,64.656 c 2.779478,0 5.03125,2.277 5.03125,5.094 0,2.826 -2.251775,5.125 -5.03125,5.125 -2.76955,0 -5.03125,-2.299 -5.03125,-5.125 0,-2.817 2.261697,-5.094 5.03125,-5.094 z" fill="#ffd343"/>
-        </g>
-        <text class="stack-label" x="50" y="25">Python</text>
-      </g>
-      <g transform="translate(176 0)">
-        <rect x="0" y="2" width="40" height="40" rx="10" fill="#f7df1e" />
-        <text x="9" y="28" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="20" font-weight="800" fill="#0d1117">JS</text>
-        <text class="stack-label" x="56" y="25">JavaScript</text>
-      </g>
-      <g transform="translate(420 0)">
-        <rect x="0" y="2" width="40" height="40" rx="12" fill="#512bd4" />
-        <text x="8" y="28" font-family="Segoe UI, Trebuchet MS, sans-serif" font-size="20" font-weight="800" fill="#ffffff">C#</text>
-      </g>
-    </g>
-
-    <text class="subtitle" x="410" y="202">Swiss student developer building useful tools and polished interfaces.</text>
-  </g>
+  <rect width="980" height="230" fill="none" />
+  <text class="name" x="490" y="56">Aleksandar Nikolic</text>
+  <line class="line" x1="44" y1="76" x2="936" y2="76" />
+  <text class="role" x="490" y="126">Student developer</text>
+  <text class="claim" x="490" y="178">Building practical tools, polished interfaces, and playful project ideas.</text>
 </svg>
