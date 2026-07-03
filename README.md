@@ -33,17 +33,11 @@
 
 ## Featured projects
 
-<div align="center">
-  <a href="https://github.com/Aleksandros2/Portfolio-Website">
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=Portfolio-Website&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Portfolio Website repository" width="49%" />
-  </a>
-  <a href="https://github.com/Aleksandros2/PathLab">
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=PathLab&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="PathLab repository" width="49%" />
-  </a>
-  <a href="https://github.com/Aleksandros2/LB259">
-    <img src="https://github-stats-extended.vercel.app/api/pin/?username=Aleksandros2&repo=LB259&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="LB259 repository" width="49%" />
-  </a>
-</div>
+| Project | What it is | Tech |
+| --- | --- | --- |
+| [Portfolio Website](https://github.com/Aleksandros2/Portfolio-Website) | Personal website focused on clean presentation, structure, and project polish | `JavaScript` `HTML` `CSS` |
+| [PathLab](https://github.com/Aleksandros2/PathLab) | Interactive project for experimenting with pathfinding, visual feedback, and UI behaviour | `JavaScript` |
+| [LB259](https://github.com/Aleksandros2/LB259) | School project work with notebooks, data handling, and documented exercises | `Jupyter Notebook` |
 
 ## Tech stack
 
