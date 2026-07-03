@@ -273,6 +273,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
         + [f"L {x:.1f} {y:.1f}" for x, y in route_points[1:]]
     )
+    ghost_offset = max(1, min(len(route_points) - 1, round(len(route_points) * 0.035)))
+    ghost_route_points = route_points[ghost_offset:] + route_points[:ghost_offset]
+    ghost_path_data = " ".join(
+        [f"M {ghost_route_points[0][0]:.1f} {ghost_route_points[0][1]:.1f}"]
+        + [f"L {x:.1f} {y:.1f}" for x, y in ghost_route_points[1:]]
+    )
 
     title = f"{login}'s Pac-Man Contribution Run"
     counter_badge_x = 44
@@ -421,9 +427,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
+  <path id="ghost-route" d="{ghost_path_data}" fill="none" stroke="none" />
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" begin="-1.35s">
-      <mpath href="#pac-route" />
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear">
+      <mpath href="#ghost-route" />
     </animateMotion>
     <g opacity="0.68" transform="scale(0.88)">
       <path class="ghost-body" d="{ghost_body}" />
