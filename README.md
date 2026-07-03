@@ -7,7 +7,7 @@
   <a href="#featured-projects">Featured Projects</a>
   <br />
   <br />
-  <img src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=score-popup-limit2" alt="Pac-Man Contribution Run" width="100%" />
+  <img src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=score-popup-limit3" alt="Pac-Man Contribution Run" width="100%" />
   <br />
   <br />
   <img
