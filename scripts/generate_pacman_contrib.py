@@ -291,33 +291,46 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     progress_y = counter_badge_y + 7
     progress_w = max(120, width - progress_x - 42)
     progress_h = 4
-    end_ghost_y = grid_y + 8
-    end_ghost_start_x = grid_x + grid_w - 4
-    end_ghost_end_x = end_ghost_start_x - 48
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
     ghost_body = "M -5.8 4.8 L -5.8 -1.3 C -5.8 -5.0 -3.2 -7.0 0 -7.0 C 3.2 -7.0 5.8 -5.0 5.8 -1.3 L 5.8 4.8 L 3.4 3.1 L 1.1 4.8 L -1.1 3.1 L -3.4 4.8 Z"
     ghost_fill_times = [0.0]
     ghost_fill_values = ["#ff5d6c"]
+    ghost_opacity_times = [0.0]
+    ghost_opacity_values = [0.68]
+    ghost_scale_times = [0.0]
+    ghost_scale_values = [0.88]
 
-    def add_ghost_fill(time_key: float, color: str) -> None:
+    def add_timeline_key(times: list[float], values: list[Any], time_key: float, value: Any) -> None:
         time_key = clamp(time_key, 0.0, 1.0)
-        if time_key <= ghost_fill_times[-1]:
-            time_key = min(1.0, ghost_fill_times[-1] + 0.0005)
+        if time_key <= times[-1]:
+            time_key = min(1.0, times[-1] + 0.0005)
         if time_key <= 1.0:
-            ghost_fill_times.append(time_key)
-            ghost_fill_values.append(color)
+            times.append(time_key)
+            values.append(value)
 
     for idx, target in enumerate(targets):
         if is_power_cell(int(target["count"]), max_count):
             impact = impact_keys[idx]
-            add_ghost_fill(impact - 0.006, "#ff5d6c")
-            add_ghost_fill(impact, "#7cc7ff")
-            add_ghost_fill(impact + 0.038, "#ff5d6c")
+            add_timeline_key(ghost_fill_times, ghost_fill_values, impact - 0.010, "#ff5d6c")
+            add_timeline_key(ghost_fill_times, ghost_fill_values, impact, "#7cc7ff")
+            add_timeline_key(ghost_fill_times, ghost_fill_values, impact + 0.060, "#ff5d6c")
+            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact - 0.010, 0.68)
+            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact + 0.012, 0.18)
+            add_timeline_key(ghost_opacity_times, ghost_opacity_values, impact + 0.060, 0.68)
+            add_timeline_key(ghost_scale_times, ghost_scale_values, impact - 0.010, 0.88)
+            add_timeline_key(ghost_scale_times, ghost_scale_values, impact + 0.012, 0.36)
+            add_timeline_key(ghost_scale_times, ghost_scale_values, impact + 0.060, 0.88)
     if ghost_fill_times[-1] < 1.0:
         ghost_fill_times.append(1.0)
         ghost_fill_values.append(ghost_fill_values[-1])
+    if ghost_opacity_times[-1] < 1.0:
+        ghost_opacity_times.append(1.0)
+        ghost_opacity_values.append(ghost_opacity_values[-1])
+    if ghost_scale_times[-1] < 1.0:
+        ghost_scale_times.append(1.0)
+        ghost_scale_values.append(ghost_scale_values[-1])
 
     pieces = []
     popup_pieces = []
@@ -343,10 +356,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; fill: #ffe58a; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
       .progress-track {{ fill: #122340; }}
       .progress-fill {{ fill: #ffd54a; }}
-      .ghost-body {{ fill: #ff5d6c; opacity: 0.66; }}
+      .ghost-body {{ fill: #ff5d6c; }}
       .ghost-eye {{ fill: #f5fbff; }}
       .ghost-pupil {{ fill: #132744; }}
-      .ghost-pop {{ opacity: 0; }}
     </style>
   </defs>
 
@@ -447,37 +459,25 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
   </text>
 """
         )
-        if is_power_target:
-            ghost_x = tx + 15.0
-            ghost_y = popup_y - 2.5
-            ghost_y_top = ghost_y - 4.5
-            popup_pieces.append(
-                f"""  <g class="ghost-pop" transform="translate({ghost_x:.1f} {ghost_y:.1f})">
-    <path d="{ghost_body}" fill="#7cc7ff" stroke="#07111f" stroke-width="0.55" />
-    <circle cx="-2" cy="-2.2" r="1.25" fill="#f5fbff" />
-    <circle cx="2" cy="-2.2" r="1.25" fill="#f5fbff" />
-    <circle cx="-1.6" cy="-2.2" r="0.45" fill="#132744" />
-    <circle cx="2.4" cy="-2.2" r="0.45" fill="#132744" />
-    <animate attributeName="opacity" values="0;0;0.95;0.95;0;0" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-    <animateTransform attributeName="transform" type="translate" values="{ghost_x:.1f} {ghost_y:.1f};{ghost_x:.1f} {ghost_y:.1f};{ghost_x:.1f} {ghost_y_top:.1f};{ghost_x:.1f} {ghost_y_top:.1f};{ghost_x:.1f} {ghost_y_top:.1f};{ghost_x:.1f} {ghost_y_top:.1f}" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-  </g>
-"""
-            )
 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
-  <g opacity="0.72">
+  <g>
     <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" begin="-1.35s">
       <mpath href="#pac-route" />
     </animateMotion>
-    <g transform="scale(0.88)">
-      <path class="ghost-body" d="{ghost_body}">
-        <animate attributeName="fill" values="{';'.join(ghost_fill_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_fill_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-      </path>
-      <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
-      <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
-      <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.48" />
-      <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.48" />
+    <g>
+      <animate attributeName="opacity" values="{';'.join(f'{value:.2f}' for value in ghost_opacity_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_opacity_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <g>
+        <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value:.2f}' for value in ghost_scale_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_scale_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+        <path class="ghost-body" d="{ghost_body}">
+          <animate attributeName="fill" values="{';'.join(ghost_fill_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in ghost_fill_times)}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+        </path>
+        <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
+        <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
+        <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.48" />
+        <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.48" />
+      </g>
     </g>
   </g>
   <g>
@@ -497,17 +497,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <animateTransform attributeName="transform" type="rotate" values="{';'.join(str(angle) for angle in rotation_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <animateTransform attributeName="transform" type="scale" values="{';'.join(f'{value} 1' for value in flip_values)}" keyTimes="{';'.join(f'{value:.5f}' for value in rotation_key_times)}" calcMode="discrete" additive="sum" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     </g>
-  </g>
-  <g opacity="0" transform="translate({end_ghost_start_x:.1f} {end_ghost_y:.1f})">
-    <g transform="scale(0.72)">
-      <path d="{ghost_body}" fill="#ff9f43" stroke="#07111f" stroke-width="0.6" />
-      <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.25" />
-      <circle class="ghost-eye" cx="2" cy="-2.2" r="1.25" />
-      <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.45" />
-      <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.45" />
-    </g>
-    <animate attributeName="opacity" values="0;0;0.72;0.72;0" keyTimes="0;0.945;0.962;0.990;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
-    <animateTransform attributeName="transform" type="translate" values="{end_ghost_start_x:.1f} {end_ghost_y:.1f};{end_ghost_start_x:.1f} {end_ghost_y:.1f};{end_ghost_end_x:.1f} {end_ghost_y:.1f};{end_ghost_end_x:.1f} {end_ghost_y:.1f};{end_ghost_end_x:.1f} {end_ghost_y:.1f}" keyTimes="0;0.945;0.962;0.990;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </g>
   <g id="score-overlay">
 {''.join(popup_pieces)}  </g>
