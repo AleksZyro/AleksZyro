@@ -120,6 +120,21 @@ def trim_targets(cells: list[dict[str, Any]], max_targets: int) -> list[dict[str
     return [cells[int(i * step)] for i in range(max_targets)]
 
 
+def score_color_for_count(count: int, max_count: int) -> str:
+    if max_count <= 0:
+        return "#ffe58a"
+    ratio = count / max_count
+    if ratio >= 0.78:
+        return "#ff5dff"
+    if ratio >= 0.56:
+        return "#ff6b4a"
+    if ratio >= 0.34:
+        return "#ff9f43"
+    if ratio >= 0.16:
+        return "#ffd54a"
+    return "#fff3a6"
+
+
 def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> None:
     weeks = calendar.get("weeks", [])
     total = int(calendar.get("totalContributions", 0))
@@ -296,10 +311,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     ghost_color_times = ";".join(
         f"{idx / len(ghost_colors):.5f}" for idx in range(len(ghost_colors) + 1)
     )
-    # Ghost chase pacing: stays behind Pac-Man, then loses pace as more
-    # commits are collected. Final catch-up happens while faded out.
-    ghost_motion_times = "0;0.12;0.32;0.58;0.82;0.94;1"
-    ghost_motion_points = "0;0.075;0.23;0.43;0.64;0.82;1"
+    # Ghost chase pacing: always stays behind Pac-Man. It starts active, then
+    # loses pace as more commits are collected; the reset catch-up is invisible.
+    ghost_motion_times = "0;0.12;0.34;0.62;0.88;0.90;1"
+    ghost_motion_points = "0;0.09;0.24;0.40;0.56;0.57;1"
     ghost_hud_x = width - 105
     ghost_hud_y = 31
 
@@ -324,7 +339,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       .pacman-shell {{ fill: #ffd54a; }}
       .pacman-mouth {{ fill: #132744; }}
       .pacman-eye {{ fill: #0b1220; }}
-      .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; fill: #ffe58a; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
+      .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
       .progress-track {{ fill: #122340; }}
       .progress-fill {{ fill: #ffd54a; }}
       .ghost-body {{ fill: #ff5d6c; }}
@@ -445,6 +460,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
             popup_hit = max(0.0, popup_rise - 0.001)
         tx = float(target["x"]) + cell / 2
         ty = float(target["y"]) + cell / 2
+        score_color = score_color_for_count(int(target["count"]), max_count)
         popup_y = ty - 5.0
         popup_y_top = popup_y - 4.5
         pieces.append(
@@ -454,7 +470,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 """
         )
         popup_pieces.append(
-            f"""  <text class="score-pop" x="{tx:.1f}" y="{popup_y:.1f}" opacity="0">+{int(target["count"])}
+            f"""  <text class="score-pop" x="{tx:.1f}" y="{popup_y:.1f}" fill="{score_color}" opacity="0">+{int(target["count"])}
     <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
     <animate attributeName="y" values="{popup_y:.1f};{popup_y:.1f};{popup_y_top:.1f};{popup_y_top:.1f};{popup_y_top:.1f};{popup_y_top:.1f}" keyTimes="0;{popup_hit:.5f};{popup_rise:.5f};{popup_mid:.5f};{popup_end:.5f};1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
   </text>
@@ -468,7 +484,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <mpath href="#pac-route" />
     </animateMotion>
     <g transform="scale(0.88)">
-      <animate attributeName="opacity" values="0.68;0.68;0;0.68" keyTimes="0;0.935;0.985;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.68;0.68;0;0" keyTimes="0;0.88;0.91;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <path class="ghost-body" d="{ghost_body}">
         <animate attributeName="fill" values="{ghost_color_values}" keyTimes="{ghost_color_times}" dur="{ghost_cycle:.2f}s" repeatCount="indefinite"/>
       </path>
