@@ -139,15 +139,15 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     weeks = calendar.get("weeks", [])
     total = int(calendar.get("totalContributions", 0))
 
-    cell = 14
-    gap = 2
-    grid_x = 40
-    grid_y = 66
+    cell = 15
+    gap = 1
+    grid_x = 22
+    grid_y = 62
     grid_w = max(len(weeks), 52) * (cell + gap)
     grid_h = 7 * (cell + gap)
 
-    width = grid_x + grid_w + 36
-    height = grid_y + grid_h + 46
+    width = grid_x + grid_w + 22
+    height = grid_y + grid_h + 30
     panel_bg = "#091324"
     palette = ["#17243d", "#264c7d", "#3177b8", "#59a7e8", "#8fd1ff"]
 
@@ -290,17 +290,17 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     )
     title = f"{login}'s Pac-Man Contribution Run"
     counter_badge_x = grid_x
-    counter_badge_y = 22
-    counter_badge_w = 190
-    counter_badge_h = 18
-    counter_label_x = counter_badge_x + 12
-    counter_text_y = counter_badge_y + 13
-    counter_value_x = counter_badge_x + 136
-    counter_suffix_x = counter_value_x + 18
-    progress_x = counter_badge_x + counter_badge_w + 22
-    progress_y = counter_badge_y + 7
-    progress_w = max(120, width - progress_x - 28)
-    progress_h = 4
+    counter_badge_y = 18
+    counter_badge_w = 204
+    counter_badge_h = 22
+    counter_label_x = counter_badge_x + 14
+    counter_text_y = counter_badge_y + 15
+    counter_value_x = counter_badge_x + 148
+    counter_suffix_x = counter_value_x + 20
+    progress_x = counter_badge_x + counter_badge_w + 18
+    progress_y = counter_badge_y + 9
+    progress_w = max(140, width - progress_x - 22)
+    progress_h = 6
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
@@ -346,7 +346,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
     ghost_motion_points = "0;0;0.20;0.36;0.50;0.64;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
-    ghost_hud_y = progress_y - 6
+    ghost_hud_y = progress_y - 8
 
     pieces = []
     popup_pieces = []
@@ -362,14 +362,14 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <stop offset="100%" stop-color="#102036" stop-opacity="0.82" />
     </linearGradient>
     <style>
-      .t-sub {{ font: 500 12px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
-      .t-counter {{ font: 700 12px 'Consolas', 'Courier New', monospace; fill: #dce9ff; text-anchor: middle; }}
+      .t-sub {{ font: 700 13px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
+      .t-counter {{ font: 800 13px 'Consolas', 'Courier New', monospace; fill: #dce9ff; text-anchor: middle; }}
       .grid-cell {{ rx: 2; ry: 2; }}
       .grid-bg {{ fill: #1a2743; }}
       .pacman-shell {{ fill: #ffd54a; }}
       .pacman-mouth {{ fill: #132744; }}
       .pacman-eye {{ fill: #0b1220; }}
-      .score-pop {{ font: 800 11px 'Consolas', 'Courier New', monospace; stroke: #07111f; stroke-width: 1; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
+      .score-pop {{ font: 800 12px 'Consolas', 'Courier New', monospace; stroke: #07111f; stroke-width: 1.15; paint-order: stroke fill; opacity: 0; text-anchor: middle; }}
       .progress-track {{ fill: #122340; }}
       .progress-fill {{ fill: #ffd54a; }}
       .ghost-body {{ fill: #ff5d6c; }}
@@ -397,7 +397,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     for marker, color in zip(ghost_markers, ghost_colors):
         gx = progress_x + progress_w * marker
         pieces.append(
-            f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.65)">
+            f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.9)">
     <path d="{ghost_body}" fill="{color}" />
     <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.2" />
     <circle class="ghost-eye" cx="2" cy="-2.2" r="1.2" />
