@@ -29,6 +29,8 @@ This overview combines technologies used in personal projects, team projects, an
 | Data | `SQL` `Jupyter` `JSON` |
 | Quality and tooling | `pytest` `Vitest` `GitHub Actions` `Git` |
 
-## Profile automation
+## Current focus
 
-The contribution animation is generated from public GitHub contribution data by `scripts/generate_pacman_contrib.py` and updated through GitHub Actions.
+- **Building:** practical tools with `Python`, `C#`, and `JavaScript`
+- **Learning:** cleaner application architecture, testing, and interactive UI patterns
+- **Improving:** documentation, project polish, and public presentation
