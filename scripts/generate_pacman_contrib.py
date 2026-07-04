@@ -296,6 +296,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     ghost_color_times = ";".join(
         f"{idx / len(ghost_colors):.5f}" for idx in range(len(ghost_colors) + 1)
     )
+    # Ghost chase pacing: starts faster than Pac-Man, then loses pace as more
+    # commits are collected. Final catch-up happens while faded out.
+    ghost_motion_times = "0;0.14;0.36;0.62;0.84;0.94;1"
+    ghost_motion_points = "0;0.24;0.48;0.68;0.82;0.90;1"
     ghost_hud_x = width - 105
     ghost_hud_y = 31
 
@@ -460,7 +464,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     pieces.append(
         f"""  <path id="pac-route" d="{path_data}" fill="none" stroke="none" />
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyPoints="0;0.02;0.58;0.86;1" keyTimes="0;0.12;0.78;0.96;1">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyPoints="{ghost_motion_points}" keyTimes="{ghost_motion_times}">
       <mpath href="#pac-route" />
     </animateMotion>
     <g transform="scale(0.88)">
