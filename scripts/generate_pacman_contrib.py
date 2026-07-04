@@ -306,17 +306,27 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     mouth_open = "0,0 8.1,-5.3 8.1,5.3"
     ghost_body = "M -5.8 4.8 L -5.8 -1.3 C -5.8 -5.0 -3.2 -7.0 0 -7.0 C 3.2 -7.0 5.8 -5.0 5.8 -1.3 L 5.8 4.8 L 3.4 3.1 L 1.1 4.8 L -1.1 3.1 L -3.4 4.8 Z"
     ghost_colors = ["#ff5d6c", "#ff9bd2", "#67d9ff", "#ffb85c"]
-    ghost_cycle = cycle * len(ghost_colors)
-    ghost_color_values = ";".join(ghost_colors + [ghost_colors[0]])
-    ghost_color_times = ";".join(
-        f"{idx / len(ghost_colors):.5f}" for idx in range(len(ghost_colors) + 1)
-    )
-    # Ghost chase pacing: always stays behind Pac-Man. It starts active, then
-    # loses pace as more commits are collected; the reset catch-up is invisible.
-    ghost_motion_times = "0;0.12;0.34;0.62;0.88;0.90;1"
-    ghost_motion_points = "0;0.09;0.24;0.40;0.56;0.57;1"
-    ghost_hud_x = width - 105
-    ghost_hud_y = 31
+    ghost_color_values = ";".join(ghost_colors + [ghost_colors[-1]])
+    ghost_color_key_times = [0.0]
+    for threshold in (0.25, 0.50, 0.75):
+        threshold_total = counter_total * threshold
+        threshold_time = 1.0
+        for start, _, value in counter_steps:
+            if value >= threshold_total:
+                threshold_time = clamp(start, 0.0, 1.0)
+                break
+        if threshold_time <= ghost_color_key_times[-1]:
+            threshold_time = min(1.0, ghost_color_key_times[-1] + 0.0005)
+        ghost_color_key_times.append(threshold_time)
+    ghost_color_key_times.append(1.0)
+    ghost_color_times = ";".join(f"{time_key:.5f}" for time_key in ghost_color_key_times)
+    ghost_wait = clamp(0.65 / cycle, 0.003, 0.045)
+    # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
+    # loses pace while commits are collected. Reset catch-up is invisible.
+    ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
+    ghost_motion_points = "0;0;0.20;0.36;0.50;0.64;1"
+    ghost_markers = [0.0, 0.25, 0.50, 0.75]
+    ghost_hud_y = progress_y + 1
 
     pieces = []
     popup_pieces = []
@@ -367,8 +377,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         f'  <rect x="{progress_x}" y="{progress_y}" width="{progress_w}" height="{progress_h}" rx="{progress_h / 2:.1f}" class="progress-track" />\n'
     )
 
-    for ghost_idx, color in enumerate(ghost_colors):
-        gx = ghost_hud_x + ghost_idx * 24
+    for marker, color in zip(ghost_markers, ghost_colors):
+        gx = progress_x + progress_w * marker
         pieces.append(
             f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.72)">
     <path d="{ghost_body}" fill="{color}" />
@@ -376,7 +386,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     <circle class="ghost-eye" cx="2" cy="-2.2" r="1.2" />
     <circle class="ghost-pupil" cx="-1.5" cy="-2.2" r="0.42" />
     <circle class="ghost-pupil" cx="2.5" cy="-2.2" r="0.42" />
-    <animate attributeName="opacity" values="0.95;0.95;0.24;0.24;0.95" keyTimes="0;{(ghost_idx + 0.82) / len(ghost_colors):.5f};{(ghost_idx + 0.98) / len(ghost_colors):.5f};{(ghost_idx + 1) / len(ghost_colors):.5f};1" dur="{ghost_cycle:.2f}s" repeatCount="indefinite"/>
   </g>
 """
         )
@@ -484,9 +493,9 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <mpath href="#pac-route" />
     </animateMotion>
     <g transform="scale(0.88)">
-      <animate attributeName="opacity" values="0.68;0.68;0;0" keyTimes="0;0.88;0.91;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.68;0.68;0;0" keyTimes="0;0.965;0.985;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <path class="ghost-body" d="{ghost_body}">
-        <animate attributeName="fill" values="{ghost_color_values}" keyTimes="{ghost_color_times}" dur="{ghost_cycle:.2f}s" repeatCount="indefinite"/>
+        <animate attributeName="fill" values="{ghost_color_values}" keyTimes="{ghost_color_times}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       </path>
       <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.35" />
       <circle class="ghost-eye" cx="2" cy="-2.2" r="1.35" />
