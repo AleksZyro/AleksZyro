@@ -384,7 +384,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
   </defs>
 
   <rect width="{width}" height="{height}" fill="url(#shell)" rx="18" />
-  <rect x="18" y="18" width="{width - 36}" height="{height - 36}" rx="13" stroke="#29466f" stroke-opacity="0.7" />
   <rect x="{panel_x}" y="{panel_y}" width="{panel_w}" height="{panel_h}" fill="url(#lane)" rx="16" stroke="#355784" stroke-opacity="0.58"/>
   <rect x="{counter_badge_x}" y="{counter_badge_y}" width="{counter_badge_w}" height="{counter_badge_h}" rx="9" fill="#102036" stroke="#29466f" stroke-opacity="0.65" />
 """
