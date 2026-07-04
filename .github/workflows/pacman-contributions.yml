@@ -3,7 +3,7 @@ name: Pac-Man Contributions
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "15 5 * * *"
   push:
     branches:
       - main
@@ -38,6 +38,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_USERNAME: Aleksandros2
         run: python scripts/generate_pacman_contrib.py
+
+      - name: Use accurate contribution label
+        run: sed -i 's/Commit amount/Contributions/' assets/pacman-contrib.svg
 
       - name: Check for SVG changes
         id: changes
