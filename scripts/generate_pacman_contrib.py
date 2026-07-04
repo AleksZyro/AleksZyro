@@ -139,15 +139,15 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     weeks = calendar.get("weeks", [])
     total = int(calendar.get("totalContributions", 0))
 
-    cell = 12
+    cell = 13
     gap = 2
-    grid_x = 48
-    grid_y = 60
+    grid_x = 54
+    grid_y = 68
     grid_w = max(len(weeks), 52) * (cell + gap)
     grid_h = 7 * (cell + gap)
 
-    width = grid_x + grid_w + 34
-    height = grid_y + grid_h + 52
+    width = grid_x + grid_w + 42
+    height = grid_y + grid_h + 58
     panel_bg = "#091324"
     palette = ["#17243d", "#264c7d", "#3177b8", "#59a7e8", "#8fd1ff"]
 
@@ -289,17 +289,21 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         + [f"L {x:.1f} {y:.1f}" for x, y in route_points[1:]]
     )
     title = f"{login}'s Pac-Man Contribution Run"
-    counter_badge_x = 44
-    counter_badge_y = 22
-    counter_badge_w = 188
+    panel_x = grid_x - 24
+    panel_y = 30
+    panel_w = grid_w + 36
+    panel_h = grid_h + 58
+    counter_badge_x = panel_x + 16
+    counter_badge_y = panel_y + 10
+    counter_badge_w = 190
     counter_badge_h = 18
     counter_label_x = counter_badge_x + 12
     counter_text_y = counter_badge_y + 13
     counter_value_x = counter_badge_x + 136
     counter_suffix_x = counter_value_x + 18
-    progress_x = counter_badge_x + counter_badge_w + 18
+    progress_x = counter_badge_x + counter_badge_w + 22
     progress_y = counter_badge_y + 7
-    progress_w = max(120, width - progress_x - 42)
+    progress_w = max(120, panel_x + panel_w - progress_x - 18)
     progress_h = 4
     # Robust GitHub-friendly Pac-Man: circle body + animated mouth wedge overlay.
     mouth_closed = "0,0 8.1,-1.8 8.1,1.8"
@@ -340,7 +344,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         ghost_opacity_values.append(opacity)
     ghost_opacity_times = ";".join(f"{time_key:.5f}" for time_key in ghost_opacity_key_times)
     ghost_opacity_values_text = ";".join(f"{opacity:.2f}" for opacity in ghost_opacity_values)
-    ghost_wait = clamp(0.65 / cycle, 0.003, 0.045)
+    ghost_wait = clamp(0.45 / cycle, 0.003, 0.045)
     # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
     # loses pace while commits are collected. Reset catch-up is invisible.
     ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
@@ -381,9 +385,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
   <rect width="{width}" height="{height}" fill="url(#shell)" rx="18" />
   <rect x="18" y="18" width="{width - 36}" height="{height - 36}" rx="13" stroke="#29466f" stroke-opacity="0.7" />
+  <rect x="{panel_x}" y="{panel_y}" width="{panel_w}" height="{panel_h}" fill="url(#lane)" rx="16" stroke="#355784" stroke-opacity="0.58"/>
   <rect x="{counter_badge_x}" y="{counter_badge_y}" width="{counter_badge_w}" height="{counter_badge_h}" rx="9" fill="#102036" stroke="#29466f" stroke-opacity="0.65" />
-
-  <rect x="{grid_x - 18}" y="{grid_y - 18}" width="{grid_w + 24}" height="{grid_h + 36}" fill="url(#lane)" rx="14" stroke="#355784" stroke-opacity="0.48"/>
 """
     )
 
