@@ -320,13 +320,33 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         ghost_color_key_times.append(threshold_time)
     ghost_color_key_times.append(1.0)
     ghost_color_times = ";".join(f"{time_key:.5f}" for time_key in ghost_color_key_times)
+    ghost_opacity_key_times = [0.0]
+    ghost_opacity_values = [0.86]
+    for time_key in ghost_color_key_times[1:-1]:
+        for pulse_time, opacity in (
+            (time_key - 0.006, 0.86),
+            (time_key, 1.0),
+            (time_key + 0.018, 0.86),
+        ):
+            pulse_time = clamp(pulse_time, 0.0, 0.955)
+            if pulse_time <= ghost_opacity_key_times[-1]:
+                pulse_time = min(0.955, ghost_opacity_key_times[-1] + 0.0005)
+            ghost_opacity_key_times.append(pulse_time)
+            ghost_opacity_values.append(opacity)
+    for time_key, opacity in ((0.955, 0.86), (0.985, 0.0), (1.0, 0.0)):
+        if time_key <= ghost_opacity_key_times[-1]:
+            time_key = min(1.0, ghost_opacity_key_times[-1] + 0.0005)
+        ghost_opacity_key_times.append(time_key)
+        ghost_opacity_values.append(opacity)
+    ghost_opacity_times = ";".join(f"{time_key:.5f}" for time_key in ghost_opacity_key_times)
+    ghost_opacity_values_text = ";".join(f"{opacity:.2f}" for opacity in ghost_opacity_values)
     ghost_wait = clamp(0.65 / cycle, 0.003, 0.045)
     # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
     # loses pace while commits are collected. Reset catch-up is invisible.
     ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
     ghost_motion_points = "0;0;0.20;0.36;0.50;0.64;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
-    ghost_hud_y = progress_y + 1
+    ghost_hud_y = progress_y - 6
 
     pieces = []
     popup_pieces = []
@@ -380,7 +400,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     for marker, color in zip(ghost_markers, ghost_colors):
         gx = progress_x + progress_w * marker
         pieces.append(
-            f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.72)">
+            f"""  <g class="ghost-hud" transform="translate({gx:.1f} {ghost_hud_y:.1f}) scale(0.65)">
     <path d="{ghost_body}" fill="{color}" />
     <circle class="ghost-eye" cx="-2" cy="-2.2" r="1.2" />
     <circle class="ghost-eye" cx="2" cy="-2.2" r="1.2" />
@@ -493,7 +513,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
       <mpath href="#pac-route" />
     </animateMotion>
     <g transform="scale(0.88)">
-      <animate attributeName="opacity" values="0.68;0.68;0;0" keyTimes="0;0.965;0.985;1" dur="{cycle:.2f}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="{ghost_opacity_values_text}" keyTimes="{ghost_opacity_times}" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       <path class="ghost-body" d="{ghost_body}">
         <animate attributeName="fill" values="{ghost_color_values}" keyTimes="{ghost_color_times}" calcMode="discrete" dur="{cycle:.2f}s" repeatCount="indefinite"/>
       </path>
