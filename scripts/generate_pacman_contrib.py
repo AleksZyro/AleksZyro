@@ -217,10 +217,11 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     route_duration = max(32.0, len(targets) * 0.52)
     ghost_delay_seconds = 0.65
-    cycle = route_duration + ghost_delay_seconds
-    pacman_end_key = route_duration / cycle
+    cycle = route_duration
+    pacman_end_key = 1.0
     ghost_wait = ghost_delay_seconds / cycle
-    impact_keys = [(length / total_length) * pacman_end_key for length in impact_lengths]
+    ghost_end_point = max(0.0, 1.0 - ghost_wait)
+    impact_keys = [length / total_length for length in impact_lengths]
 
     counter_total = max(total, 0)
     popup_counter_starts: list[float] = []
@@ -339,12 +340,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         ghost_opacity_values.append(opacity)
     ghost_opacity_times = ";".join(f"{time_key:.5f}" for time_key in ghost_opacity_key_times)
     ghost_opacity_values_text = ";".join(f"{opacity:.2f}" for opacity in ghost_opacity_values)
-    # Ghost chase pacing: start after Pac-Man, then traverse the same route
-    # over the same duration. Pac-Man waits at the end until the ghost arrives.
+    # Ghost chase pacing: start after Pac-Man and keep the same speed.
+    # The loop restarts with Pac-Man, so the ghost does not force a wait.
     ghost_motion_times = f"0;{ghost_wait:.5f};1"
-    ghost_motion_points = "0;0;1"
-    pacman_motion_times = f"0;{pacman_end_key:.5f};1"
-    pacman_motion_points = "0;1;1"
+    ghost_motion_points = f"0;0;{ghost_end_point:.5f}"
+    pacman_motion_times = "0;1"
+    pacman_motion_points = "0;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
     ghost_hud_y = progress_y - 8
     display_width = 1200
