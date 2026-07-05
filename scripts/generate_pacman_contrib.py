@@ -223,9 +223,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         route_points = [route_points[0], (route_points[0][0] + 1.0, route_points[0][1])]
         impact_lengths = [1.0]
 
-    impact_keys = [length / total_length for length in impact_lengths]
-
-    cycle = max(32.0, len(targets) * 0.52)
+    route_duration = max(32.0, len(targets) * 0.52)
+    ghost_delay_seconds = 0.65
+    cycle = route_duration + ghost_delay_seconds
+    pacman_end_key = route_duration / cycle
+    ghost_wait = ghost_delay_seconds / cycle
+    impact_keys = [(length / total_length) * pacman_end_key for length in impact_lengths]
 
     counter_total = max(total, 0)
     popup_counter_starts: list[float] = []
@@ -273,7 +276,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
             flip = 1
         segment_angles.append(angle)
         segment_flips.append(flip)
-        segment_end_keys.append(walked / total_length)
+        segment_end_keys.append((walked / total_length) * pacman_end_key)
 
     if not segment_angles:
         segment_angles = [0]
@@ -283,6 +286,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     rotation_key_times = [0.0] + segment_end_keys
     rotation_values = segment_angles + [segment_angles[-1]]
     flip_values = segment_flips + [segment_flips[-1]]
+    if rotation_key_times[-1] < 1.0:
+        rotation_key_times.append(1.0)
+        rotation_values.append(rotation_values[-1])
+        flip_values.append(flip_values[-1])
 
     path_data = " ".join(
         [f"M {route_points[0][0]:.1f} {route_points[0][1]:.1f}"]
@@ -340,11 +347,12 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         ghost_opacity_values.append(opacity)
     ghost_opacity_times = ";".join(f"{time_key:.5f}" for time_key in ghost_opacity_key_times)
     ghost_opacity_values_text = ";".join(f"{opacity:.2f}" for opacity in ghost_opacity_values)
-    ghost_wait = clamp(0.45 / cycle, 0.003, 0.045)
-    # Ghost chase pacing: wait briefly, then move at constant speed to avoid
-    # visible acceleration near the end of the loop.
+    # Ghost chase pacing: start after Pac-Man, then traverse the same route
+    # over the same duration. Pac-Man waits at the end until the ghost arrives.
     ghost_motion_times = f"0;{ghost_wait:.5f};1"
     ghost_motion_points = "0;0;1"
+    pacman_motion_times = f"0;{pacman_end_key:.5f};1"
+    pacman_motion_points = "0;1;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
     ghost_hud_y = progress_y - 8
     display_width = 1200
@@ -421,7 +429,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
         progress_times.append(1.0)
         progress_values.append(progress_values[-1])
     if len(progress_times) >= 2:
-        reset_start = 0.982
+        reset_start = 0.995
         reset_pairs = [
             (time_key, value)
             for time_key, value in zip(progress_times, progress_values)
@@ -523,7 +531,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     </g>
   </g>
   <g>
-    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear">
+    <animateMotion dur="{cycle:.2f}s" repeatCount="indefinite" rotate="0" calcMode="linear" keyPoints="{pacman_motion_points}" keyTimes="{pacman_motion_times}">
       <mpath href="#pac-route" />
     </animateMotion>
     <g>
