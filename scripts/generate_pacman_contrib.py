@@ -333,7 +333,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
                 pulse_time = min(0.955, ghost_opacity_key_times[-1] + 0.0005)
             ghost_opacity_key_times.append(pulse_time)
             ghost_opacity_values.append(opacity)
-    for time_key, opacity in ((0.955, 0.86), (0.985, 0.0), (1.0, 0.0)):
+    for time_key, opacity in ((0.955, 0.86), (1.0, 0.86)):
         if time_key <= ghost_opacity_key_times[-1]:
             time_key = min(1.0, ghost_opacity_key_times[-1] + 0.0005)
         ghost_opacity_key_times.append(time_key)
@@ -344,7 +344,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
     # loses pace while commits are collected. Reset catch-up is invisible.
     ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
-    ghost_motion_points = "0;0;0.18;0.42;0.66;0.84;1"
+    ghost_motion_points = "0;0;0.18;0.42;0.66;0.92;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
     ghost_hud_y = progress_y - 8
     display_width = 1200
