@@ -3,8 +3,7 @@
   <br />
   <br />
   <a href="https://nikolicaleksandar.netlify.app">Portfolio</a> |
-  <a href="https://github.com/Aleksandros2?tab=repositories">Repositories</a> |
-  <a href="#featured-projects">Featured Projects</a>
+  <a href="https://github.com/Aleksandros2?tab=repositories">Repositories</a>
   <br />
   <br />
   <img src="https://github.com/Aleksandros2/Aleksandros2/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=no-ghost-wait" alt="Pac-Man Contribution Run" width="100%" />
@@ -30,14 +29,6 @@
 - I like building small tools, school projects, and experiments that feel more like real products than class exercises
 - Clean interfaces matter to me because a project should be easy to understand before someone reads the code
 - Right now I am improving project quality from both sides: better structure under the hood and better presentation on the surface
-
-## Featured projects
-
-| Project | What it is | Tech |
-| --- | --- | --- |
-| [Portfolio Website](https://github.com/Aleksandros2/Portfolio-Website) | Personal website focused on clean presentation, structure, and project polish | `JavaScript` `HTML` `CSS` |
-| [PathLab](https://github.com/Aleksandros2/PathLab) | Interactive project for experimenting with pathfinding, visual feedback, and UI behaviour | `JavaScript` |
-| [LB259](https://github.com/Aleksandros2/LB259) | School project work with notebooks, data handling, and documented exercises | `Jupyter Notebook` |
 
 ## Tech stack
 
