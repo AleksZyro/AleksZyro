@@ -113,13 +113,6 @@ def clamp(value: float, low: float, high: float) -> float:
     return max(low, min(high, value))
 
 
-def trim_targets(cells: list[dict[str, Any]], max_targets: int) -> list[dict[str, Any]]:
-    if len(cells) <= max_targets:
-        return cells
-    step = len(cells) / max_targets
-    return [cells[int(i * step)] for i in range(max_targets)]
-
-
 def score_color_for_count(count: int, max_count: int) -> str:
     if max_count <= 0:
         return "#ffe58a"
@@ -148,7 +141,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
 
     width = grid_x + grid_w + 22
     height = grid_y + grid_h + 30
-    panel_bg = "#091324"
     palette = ["#17243d", "#264c7d", "#3177b8", "#59a7e8", "#8fd1ff"]
 
     cells: list[dict[str, Any]] = []
@@ -181,7 +173,7 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     for row_items in rows_all.values():
         row_items.sort(key=lambda cell_item: int(cell_item["x"]))
 
-    # Fixed snake route from bottom-left:
+    # Fixed Pac-Man sweep from bottom-left:
     # row 1 -> right, row 2 -> left, row 3 -> right, ...
     row_keys = sorted(rows_all.keys(), reverse=True)
     sweep_cells: list[dict[str, Any]] = []
@@ -366,10 +358,6 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#07111f" />
       <stop offset="100%" stop-color="#0d1930" />
-    </linearGradient>
-    <linearGradient id="lane" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#132744" stop-opacity="0.88" />
-      <stop offset="100%" stop-color="#102036" stop-opacity="0.82" />
     </linearGradient>
     <style>
       .t-sub {{ font: 700 13px 'Segoe UI', 'Trebuchet MS', sans-serif; fill: #a8c4ec; }}
