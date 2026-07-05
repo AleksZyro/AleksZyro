@@ -344,14 +344,16 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
     # loses pace while commits are collected. Reset catch-up is invisible.
     ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;0.965;1"
-    ghost_motion_points = "0;0;0.20;0.36;0.50;0.64;1"
+    ghost_motion_points = "0;0;0.18;0.42;0.66;0.84;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
     ghost_hud_y = progress_y - 8
+    display_width = 1200
+    display_height = round(display_width * height / width)
 
     pieces = []
     popup_pieces = []
     pieces.append(
-        f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" fill="none" role="img" aria-label="{title}">
+        f"""<svg xmlns="http://www.w3.org/2000/svg" width="{display_width}" height="{display_height}" viewBox="0 0 {width} {height}" fill="none" role="img" aria-label="{title}">
   <defs>
     <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#07111f" />
