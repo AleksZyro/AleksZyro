@@ -341,10 +341,10 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     ghost_opacity_times = ";".join(f"{time_key:.5f}" for time_key in ghost_opacity_key_times)
     ghost_opacity_values_text = ";".join(f"{opacity:.2f}" for opacity in ghost_opacity_values)
     ghost_wait = clamp(0.45 / cycle, 0.003, 0.045)
-    # Ghost chase pacing: waits at the start, then stays behind Pac-Man and
-    # loses pace while commits are collected. Reset catch-up is invisible.
-    ghost_motion_times = f"0;{ghost_wait:.5f};0.25;0.50;0.75;1"
-    ghost_motion_points = "0;0;0.18;0.42;0.66;1"
+    # Ghost chase pacing: wait briefly, then move at constant speed to avoid
+    # visible acceleration near the end of the loop.
+    ghost_motion_times = f"0;{ghost_wait:.5f};1"
+    ghost_motion_points = "0;0;1"
     ghost_markers = [0.0, 0.25, 0.50, 0.75]
     ghost_hud_y = progress_y - 8
     display_width = 1200
