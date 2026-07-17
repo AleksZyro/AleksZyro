@@ -35,7 +35,7 @@ jobs:
       - name: Generate Pac-Man contribution SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROFILE_USERNAME: Aleksandros2
+          PROFILE_USERNAME: AleksZyro
         run: python scripts/generate_pacman_contrib.py
 
       - name: Check for SVG changes
