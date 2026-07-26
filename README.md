@@ -26,9 +26,10 @@
 
 ## About me
 
+- IMS student in Switzerland, entering my 3rd year and focused on software development
+- Looking for a software internship in Switzerland for the 2027/2028 practical year
 - I like building small tools, school projects, and experiments that feel more like real products than class exercises
 - Clean interfaces matter to me because a project should be easy to understand before someone reads the code
-- Right now I am improving project quality from both sides: better structure under the hood and better presentation on the surface
 
 ## Tech stack
 
@@ -42,9 +43,9 @@ This overview combines technologies used in personal projects, team projects, an
 
 ## Current focus
 
+- **Preparing:** applications and portfolio material for a 2027/2028 Swiss internship
 - **Building:** practical tools with `Python`, `C#`, and `JavaScript`
-- **Learning:** cleaner frontend structure and interactive UI patterns
-- **Improving:** documentation, project polish, and public presentation
+- **Learning:** cleaner frontend structure, interactive UI patterns, and maintainable project structure
 
 ## Profile build
 

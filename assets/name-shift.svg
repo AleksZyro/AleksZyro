@@ -7,13 +7,13 @@
         text-anchor: middle;
       }
       .role {
-        font: 500 24px 'Consolas', 'Courier New', monospace;
-        letter-spacing: 3px;
+        font: 500 22px 'Consolas', 'Courier New', monospace;
+        letter-spacing: 2.4px;
         fill: #9fbce3;
         text-anchor: middle;
       }
       .claim {
-        font: 500 17px 'Segoe UI', 'Trebuchet MS', sans-serif;
+        font: 500 16px 'Segoe UI', 'Trebuchet MS', sans-serif;
         fill: #f0f6fc;
         text-anchor: middle;
       }
@@ -27,6 +27,7 @@
   <rect width="980" height="230" fill="none" />
   <text class="name" x="490" y="56">Aleksandar Nikolic</text>
   <line class="line" x1="44" y1="76" x2="936" y2="76" />
-  <text class="role" x="490" y="126">Student developer</text>
-  <text class="claim" x="490" y="178">Building practical tools, polished interfaces, and playful project ideas.</text>
+  <text class="role" x="490" y="122">IMS student developer</text>
+  <text class="claim" x="490" y="166">Entering my 3rd IMS year and building practical tools with polished interfaces.</text>
+  <text class="claim" x="490" y="194">Looking for a Swiss software internship for 2027/2028.</text>
 </svg>
