@@ -32,8 +32,9 @@
 | --- | --- | --- |
 | Personal product | [FolioLint](https://github.com/AleksZyro/FolioLint) | Python CLI for checking whether repositories are ready to present publicly |
 | Personal frontend | [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Personal website, visual polish, project presentation, and deployment workflow |
-| School project | [LB259](https://github.com/AleksZyro/LB259) | IMS coursework with notebooks, documentation, and data-oriented exercises |
-| Learning lab | [PathLab](https://github.com/AleksZyro/PathLab) | Interactive pathfinding visualizer for BFS, DFS, Dijkstra, and A* |
+| School project | [TwinType](https://github.com/AleksZyro/TwinType) | Local Streamlit/Ollama app for writing-style generation and prompt experimentation |
+| School project | [LB259](https://github.com/AleksZyro/LB259) | IMS data science coursework with Python notebooks, documentation, and regression work |
+| Learning lab | [PathLab](https://github.com/AleksZyro/PathLab) | Interactive React visualizer for BFS, DFS, Dijkstra, and A* |
 | Learning lab | [SortLab](https://github.com/AleksZyro/SortLab) | Sorting algorithm visualizer with operation counts and custom inputs |
 | Experiment | [BESP2074](https://github.com/AleksZyro/BESP2074) | Interactive simulation/dashboard work with scenarios and long-term forecasts |
 | Game/modding | [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft modding experiment in Java |
@@ -41,19 +42,24 @@
 
 ## Tech stack
 
-This overview combines technologies used in personal projects, team projects, and IMS coursework; my experience level varies by tool.
+This overview combines technologies used in personal projects, school projects, team projects, and experiments; my experience level varies by tool.
 
 | Area | Tools |
 | --- | --- |
-| Languages | `Python` `C#` `JavaScript` |
-| Frontend | `HTML` `CSS` `JavaScript` |
-| Data | `SQL` |
+| Languages | `Python` `C#` `JavaScript` `Java` |
+| Frontend | `HTML` `CSS` `JavaScript` `React` `Vite` |
+| Python apps and AI | `Streamlit` `Ollama` |
+| Data | `SQL` `Jupyter Notebook` |
+
+## Repository notes
+
+I keep the pinned repositories limited to projects that are not already highlighted above, so the profile shows both my main work and extra school/team work without repeating the same repositories twice.
 
 ## Current focus
 
 - **Preparing:** applications and portfolio material for a 2027/2028 Swiss internship
-- **Building:** practical tools with `Python`, `C#`, and `JavaScript`
-- **Learning:** cleaner frontend structure, interactive UI patterns, and maintainable project structure
+- **Building:** practical tools with `Python`, `C#`, `JavaScript`, `React`, and `Vite`
+- **Learning:** cleaner frontend structure, interactive UI patterns, local AI tooling, and maintainable project structure
 
 ## Profile build
 
