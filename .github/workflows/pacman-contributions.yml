@@ -32,21 +32,21 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Generate profile SVG assets
+      - name: Generate Pac-Man contribution SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_USERNAME: AleksZyro
         run: python scripts/generate_pacman_contrib.py
 
-      - name: Check for generated SVG changes
+      - name: Check for SVG changes
         id: changes
         run: |
-          if git diff --quiet -- assets/pacman-contrib.svg assets/language-stats.svg assets/profile-stats.svg; then
+          if git diff --quiet -- assets/pacman-contrib.svg; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No generated SVG changes."
+            echo "No SVG changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Generated SVGs changed."
+            echo "SVG changed."
           fi
 
       - name: Prepare publish folder
@@ -54,8 +54,6 @@ jobs:
         run: |
           mkdir -p publish/assets
           cp assets/pacman-contrib.svg publish/assets/pacman-contrib.svg
-          cp assets/language-stats.svg publish/assets/language-stats.svg
-          cp assets/profile-stats.svg publish/assets/profile-stats.svg
 
       - name: Publish generated SVG branch
         if: steps.changes.outputs.changed == 'true'
@@ -66,4 +64,4 @@ jobs:
           publish_dir: ./publish
           keep_files: false
           force_orphan: true
-          commit_message: "chore: update generated profile assets"
+          commit_message: "chore: update pacman contribution animation"
