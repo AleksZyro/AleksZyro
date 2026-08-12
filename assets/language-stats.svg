@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="220" viewBox="0 0 1000 220" role="img" aria-label="Most used languages loading">
+  <style>.title{font:800 28px 'Segoe UI',sans-serif;fill:#e6edf3}.text{font:600 16px 'Segoe UI',sans-serif;fill:#9fb3c8}</style>
+  <rect width="1000" height="220" rx="18" fill="#0d1117"/>
+  <rect x="1" y="1" width="998" height="218" rx="17" fill="none" stroke="#23456f" stroke-opacity="0.85"/>
+  <text x="58" y="58" class="title">Most Used Languages</text>
+  <text x="58" y="108" class="text">Waiting for the next GitHub Actions refresh...</text>
+</svg>

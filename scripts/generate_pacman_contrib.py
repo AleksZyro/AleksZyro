@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import datetime as dt
+import html
 import json
 import math
 import os
@@ -20,6 +21,48 @@ query($login: String!) {
           contributionDays {
             date
             contributionCount
+          }
+        }
+      }
+    }
+  }
+}
+"""
+
+PROFILE_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    login
+    name
+    contributionsCollection {
+      contributionCalendar {
+        totalContributions
+      }
+      totalCommitContributions
+      totalPullRequestContributions
+      totalIssueContributions
+      totalPullRequestReviewContributions
+      restrictedContributionsCount
+      repositoryContributions(first: 20) {
+        totalCount
+      }
+    }
+    repositories(first: 100, ownerAffiliations: OWNER, isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}) {
+      totalCount
+      nodes {
+        name
+        stargazerCount
+        primaryLanguage {
+          name
+          color
+        }
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+          edges {
+            size
+            node {
+              name
+              color
+            }
           }
         }
       }
@@ -54,6 +97,37 @@ def fetch_contribution_calendar(login: str, token: str) -> dict[str, Any]:
         raise RuntimeError(f"GitHub user '{login}' not found or not accessible.")
 
     return user["contributionsCollection"]["contributionCalendar"]
+
+
+def fetch_profile_summary(login: str, token: str) -> dict[str, Any]:
+    payload = json.dumps({"query": PROFILE_QUERY, "variables": {"login": login}}).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "User-Agent": "profile-stats-generator",
+        },
+        method="POST",
+    )
+
+    with urllib.request.urlopen(req, timeout=30) as response:
+        body = response.read().decode("utf-8")
+    data = json.loads(body)
+
+    if "errors" in data:
+        raise RuntimeError(f"GraphQL errors: {data['errors']}")
+
+    user = data.get("data", {}).get("user")
+    if not user:
+        raise RuntimeError(f"GitHub user '{login}' not found or not accessible.")
+
+    return user
+
+
+def xml_escape(value: Any) -> str:
+    return html.escape(str(value), quote=True)
 
 
 def level_for_count(count: int, max_count: int) -> int:
@@ -561,27 +635,160 @@ def render_error_svg(login: str, error_text: str, out_path: pathlib.Path) -> Non
     out_path.write_text(svg, encoding="utf-8")
 
 
+def render_language_stats_svg(profile: dict[str, Any], out_path: pathlib.Path) -> None:
+    languages: dict[str, dict[str, Any]] = {}
+    for repo in profile.get("repositories", {}).get("nodes", []) or []:
+        for edge in repo.get("languages", {}).get("edges", []) or []:
+            node = edge.get("node") or {}
+            name = str(node.get("name") or "Other")
+            size = int(edge.get("size") or 0)
+            if size <= 0:
+                continue
+            item = languages.setdefault(
+                name,
+                {"size": 0, "color": node.get("color") or "#58a6ff"},
+            )
+            item["size"] += size
+
+    top_languages = sorted(languages.items(), key=lambda item: int(item[1]["size"]), reverse=True)[:6]
+    total_size = max(sum(int(data["size"]) for _, data in top_languages), 1)
+
+    width = 1000
+    height = 260
+    bar_x = 58
+    bar_y = 92
+    bar_w = width - 116
+    bar_h = 14
+    parts = [
+        f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Most used languages">
+  <style>
+    .title {{ font: 800 28px 'Segoe UI', sans-serif; fill: #e6edf3; }}
+    .label {{ font: 600 15px 'Segoe UI', sans-serif; fill: #b7c6da; }}
+    .small {{ font: 700 14px 'Consolas', monospace; fill: #8fbfff; }}
+  </style>
+  <rect width="{width}" height="{height}" rx="18" fill="#0d1117" />
+  <rect x="1" y="1" width="{width - 2}" height="{height - 2}" rx="17" fill="none" stroke="#23456f" stroke-opacity="0.85" />
+  <text x="58" y="54" class="title">Most Used Languages</text>
+  <rect x="{bar_x}" y="{bar_y}" width="{bar_w}" height="{bar_h}" rx="{bar_h / 2}" fill="#17243d" />
+"""
+    ]
+
+    cursor = bar_x
+    for name, data in top_languages:
+        part_w = bar_w * (int(data["size"]) / total_size)
+        color = data["color"] or "#58a6ff"
+        parts.append(
+            f'  <rect x="{cursor:.1f}" y="{bar_y}" width="{part_w:.1f}" height="{bar_h}" rx="2" fill="{xml_escape(color)}" />\n'
+        )
+        cursor += part_w
+
+    for idx, (name, data) in enumerate(top_languages):
+        col = idx % 3
+        row = idx // 3
+        x = 58 + col * 300
+        y = 150 + row * 42
+        pct = int(data["size"]) / total_size * 100
+        color = data["color"] or "#58a6ff"
+        parts.append(
+            f"""  <circle cx="{x}" cy="{y - 5}" r="7" fill="{xml_escape(color)}" />
+  <text x="{x + 18}" y="{y}" class="label">{xml_escape(name)} <tspan class="small">{pct:.1f}%</tspan></text>
+"""
+        )
+
+    parts.append("</svg>\n")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("".join(parts), encoding="utf-8")
+
+
+def render_profile_stats_svg(profile: dict[str, Any], out_path: pathlib.Path) -> None:
+    collection = profile.get("contributionsCollection", {})
+    repositories = profile.get("repositories", {})
+    repo_nodes = repositories.get("nodes", []) or []
+    stars = sum(int(repo.get("stargazerCount") or 0) for repo in repo_nodes)
+    total_contributions = int(collection.get("contributionCalendar", {}).get("totalContributions") or 0)
+    commits = int(collection.get("totalCommitContributions") or 0)
+    prs = int(collection.get("totalPullRequestContributions") or 0)
+    issues = int(collection.get("totalIssueContributions") or 0)
+    reviews = int(collection.get("totalPullRequestReviewContributions") or 0)
+    contributed_to = int(collection.get("repositoryContributions", {}).get("totalCount") or 0)
+    restricted = int(collection.get("restrictedContributionsCount") or 0)
+    repo_count = int(repositories.get("totalCount") or len(repo_nodes))
+    display_name = profile.get("name") or profile.get("login") or "GitHub"
+
+    width = 1000
+    height = 300
+    metrics = [
+        ("Total contributions", total_contributions),
+        ("Commits last year", commits),
+        ("Pull requests", prs),
+        ("Code reviews", reviews),
+        ("Issues", issues),
+        ("Contributed to", contributed_to),
+        ("Public repos", repo_count),
+        ("Stars earned", stars),
+    ]
+    if restricted:
+        metrics.append(("Private contributions", restricted))
+
+    parts = [
+        f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{xml_escape(display_name)} GitHub stats">
+  <style>
+    .title {{ font: 800 27px 'Segoe UI', sans-serif; fill: #e6edf3; }}
+    .label {{ font: 650 15px 'Segoe UI', sans-serif; fill: #aebfd4; }}
+    .value {{ font: 800 24px 'Consolas', monospace; fill: #e6edf3; text-anchor: end; }}
+    .note {{ font: 600 13px 'Segoe UI', sans-serif; fill: #7fa6d8; }}
+  </style>
+  <rect width="{width}" height="{height}" rx="18" fill="#0d1117" />
+  <rect x="1" y="1" width="{width - 2}" height="{height - 2}" rx="17" fill="none" stroke="#23456f" stroke-opacity="0.85" />
+  <text x="58" y="52" class="title">{xml_escape(display_name)}'s GitHub Stats</text>
+"""
+    ]
+
+    for idx, (label, value) in enumerate(metrics):
+        col = idx % 2
+        row = idx // 2
+        x = 64 + col * 455
+        y = 98 + row * 42
+        parts.append(
+            f"""  <circle cx="{x}" cy="{y - 5}" r="6" fill="#58a6ff" />
+  <text x="{x + 18}" y="{y}" class="label">{xml_escape(label)}</text>
+  <text x="{x + 390}" y="{y}" class="value">{value}</text>
+"""
+        )
+
+    parts.append(
+        '  <text x="58" y="276" class="note">Generated from GitHub GraphQL data during the profile workflow.</text>\n</svg>\n'
+    )
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("".join(parts), encoding="utf-8")
+
+
 def main() -> None:
     repository = os.environ.get("GITHUB_REPOSITORY", "")
     owner = repository.split("/", 1)[0] if "/" in repository else ""
     detected_owner = detect_owner_from_git_remote()
     login = os.environ.get("PROFILE_USERNAME", owner or detected_owner or "octocat")
     token = os.environ.get("GITHUB_TOKEN", "")
-    out_file = pathlib.Path("assets/pacman-contrib.svg")
+    pacman_file = pathlib.Path("assets/pacman-contrib.svg")
+    language_file = pathlib.Path("assets/language-stats.svg")
+    stats_file = pathlib.Path("assets/profile-stats.svg")
 
     if not token:
         # Safety: never overwrite the tracked profile SVG with mock data.
         # Local runs without token should leave the last real SVG untouched.
-        print("GITHUB_TOKEN missing - keeping existing assets/pacman-contrib.svg unchanged.")
+        print("GITHUB_TOKEN missing - keeping existing generated SVG assets unchanged.")
         return
 
     try:
         calendar = fetch_contribution_calendar(login, token)
-        render_svg(login, calendar, out_file)
+        profile = fetch_profile_summary(login, token)
+        render_svg(login, calendar, pacman_file)
+        render_language_stats_svg(profile, language_file)
+        render_profile_stats_svg(profile, stats_file)
     except (RuntimeError, urllib.error.URLError, TimeoutError, KeyError, ValueError) as exc:
         # Safety: if API fetch fails, keep the previous real SVG instead of
         # replacing it with random mock history.
-        print(f"Contribution fetch failed - keeping existing SVG unchanged: {exc}")
+        print(f"GitHub data fetch failed - keeping existing SVGs unchanged: {exc}")
         render_error_svg(login, str(exc), pathlib.Path("assets/pacman-contrib-error.svg"))
 
 
