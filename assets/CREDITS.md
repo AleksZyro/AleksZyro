@@ -1,3 +1,3 @@
 # Asset Credits
 
-- `profile-banner.jpg` is adapted from [Modern Workspace with Laptop and Code Display](https://www.pexels.com/photo/modern-workspace-with-laptop-and-code-display-34804001/) by Dmitry Komov, used under the [Pexels License](https://www.pexels.com/license/).
+- `profile-banner.jpg` is adapted from [Close-up Photography of Computer Codes](https://www.pexels.com/photo/close-up-photography-of-computer-codes-577585/) by Markus Spiske, used under the [Pexels License](https://www.pexels.com/license/).
