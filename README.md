@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="./assets/profile-banner.jpg" alt="Aleksandar Nikolic profile banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Aleksandar Nikolic profile banner" width="100%" />
   <br />
   <br />
   <a href="https://aleksandar-nikolic.netlify.app">Portfolio</a> |
   <a href="https://github.com/AleksZyro?tab=repositories">Repositories</a>
   <br />
   <br />
-  <img src="https://github.com/AleksZyro/AleksZyro/blob/pacman-assets/assets/pacman-contrib.svg?raw=1&v=username-alekszyro-repo" alt="Pac-Man Contribution Run" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man Contribution Run" width="100%" />
   <br />
   <br />
   <img
