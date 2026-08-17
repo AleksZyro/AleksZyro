@@ -295,7 +295,8 @@ def render_svg(login: str, calendar: dict[str, Any], out_path: pathlib.Path) -> 
     counter_badge_h = 22
     counter_label_x = counter_badge_x + 14
     counter_text_y = counter_badge_y + 15
-    counter_value_x = counter_badge_x + 148
+    # Keep enough right-side breathing room for four-digit totals like 1096.
+    counter_value_x = counter_badge_x + 134
     counter_suffix_x = counter_value_x + 20
     progress_x = counter_badge_x + counter_badge_w + 18
     progress_y = counter_badge_y + 9
