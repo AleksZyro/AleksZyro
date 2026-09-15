@@ -34,11 +34,13 @@
 | Personal frontend | [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Personal website, visual polish, project presentation, and deployment workflow |
 | School project | [TwinType](https://github.com/AleksZyro/TwinType) | Local Streamlit/Ollama app for writing-style generation and prompt experimentation |
 | School project | [LB259](https://github.com/AleksZyro/LB259) | IMS data science coursework with Python notebooks, documentation, and regression work |
+| FHNW Hackathon | [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-) | Team machine-learning project for detecting rooftop PV systems and suggesting panel placement |
+| Team project | [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Shared hackathon project contributed to and maintained as a separate fork |
 | Learning lab | [PathLab](https://github.com/AleksZyro/PathLab) | Interactive React visualizer for BFS, DFS, Dijkstra, and A* |
 | Learning lab | [SortLab](https://github.com/AleksZyro/SortLab) | Sorting algorithm visualizer with operation counts and custom inputs |
 | Experiment | [BESP2074](https://github.com/AleksZyro/BESP2074) | Interactive simulation/dashboard work with scenarios and long-term forecasts |
 | Game/modding (in progress)| [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft modding experiment in Java |
-| Open source practice | [Forks and PR work](https://github.com/AleksZyro?tab=repositories&q=&type=fork) | Practice with real repositories, review feedback, and external contribution workflows |
+| Open source practice | [OSS contributions](https://aleksandar-nikolic.ch) | Nine genuine open-source contributions, separated from team, school, and friend-project forks |
 
 ## Tech stack
 
@@ -53,7 +55,7 @@ This overview combines technologies used in personal projects, school projects, 
 
 ## Repository notes
 
-I keep the pinned repositories limited to projects that are not already highlighted above, so the profile shows both my main work and extra school/team work without repeating the same repositories twice.
+I keep the pinned repositories limited to projects that are not already highlighted above. The OSS list on my portfolio separates genuine open-source contributions from forks of school, team, and friend projects.
 
 ## Current focus
 
