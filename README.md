@@ -40,7 +40,7 @@
 | Learning lab | [SortLab](https://github.com/AleksZyro/SortLab) | Sorting algorithm visualizer with operation counts and custom inputs |
 | Experiment | [BESP2074](https://github.com/AleksZyro/BESP2074) | Interactive simulation/dashboard work with scenarios and long-term forecasts |
 | Game/modding (in progress)| [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft modding experiment in Java |
-| Open source practice | [OSS contributions]([https://aleksandar-nikolic.ch/#github-activity]) | Nine genuine open-source contributions, separated from team, school, and friend-project forks |
+| Open source practice | [OSS contributions](https://aleksandar-nikolic.ch/#github-activity) | Nine genuine open-source contributions, separated from team, school, and friend-project forks |
 
 ## Tech stack
 
