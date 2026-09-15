@@ -35,7 +35,7 @@
 | School project | [TwinType](https://github.com/AleksZyro/TwinType) | Local Streamlit/Ollama app for writing-style generation and prompt experimentation |
 | School project | [LB259](https://github.com/AleksZyro/LB259) | IMS data science coursework with Python notebooks, documentation, and regression work |
 | FHNW Hackathon | [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-) | Team machine-learning project for detecting rooftop PV systems and suggesting panel placement |
-| Team project | [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Shared hackathon project contributed to and maintained as a separate fork |
+| BBB Hackathon | [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Shared hackathon project contributed to and maintained as a separate fork |
 | Learning lab | [PathLab](https://github.com/AleksZyro/PathLab) | Interactive React visualizer for BFS, DFS, Dijkstra, and A* |
 | Learning lab | [SortLab](https://github.com/AleksZyro/SortLab) | Sorting algorithm visualizer with operation counts and custom inputs |
 | Experiment | [BESP2074](https://github.com/AleksZyro/BESP2074) | Interactive simulation/dashboard work with scenarios and long-term forecasts |
