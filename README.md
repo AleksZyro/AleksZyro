@@ -2,7 +2,6 @@
   <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Profilbanner von Aleksandar Nikolic" width="100%" />
   <br />
   <br />
-  <a href="README_EN.md">English version</a> |
   <a href="https://aleksandar-nikolic.ch">Portfolio</a> |
   <a href="https://github.com/AleksZyro?tab=repositories">Repositories</a>
   <br />
