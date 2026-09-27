@@ -1,71 +1,102 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Aleksandar Nikolic profile banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Profilbanner von Aleksandar Nikolic" width="100%" />
   <br />
   <br />
+  <a href="README_EN.md">English version</a> |
   <a href="https://aleksandar-nikolic.ch">Portfolio</a> |
   <a href="https://github.com/AleksZyro?tab=repositories">Repositories</a>
   <br />
   <br />
-  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man Contribution Run" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man-Beitragsgrafik" width="100%" />
   <br />
   <br />
-  <img
-    src="https://github-stats-extended.vercel.app/api/top-langs/?username=AleksZyro&layout=compact&card_width=1000&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f"
-    alt="Most used languages"
-    width="100%"
-  />
+  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=AleksZyro&layout=compact&card_width=1000&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Am häufigsten verwendete Programmiersprachen" width="100%" />
 </div>
 
 ---
 
-## About me
+## Über mich
 
-- IMS student in Switzerland, entering my 3rd year and focused on software development
-- Looking for a software internship in Switzerland for the 2027/2028 practical year
-- I like building small tools, school projects, and experiments that feel more like real products than class exercises
-- Clean interfaces matter to me because a project should be easy to understand before someone reads the code
+- IMS-Schüler in der Schweiz im 3. Jahr mit Schwerpunkt Applikationsentwicklung
+- Suche eine Praktikumsstelle in der Schweiz für das 4. IMS-Jahr 2027/2028
+- Ich entwickle kleine Tools, Schulprojekte und Experimente mit einem möglichst realen Produktfokus
+- Klare und verständliche Benutzeroberflächen sind mir genauso wichtig wie sauberer Code
 
+## Ausgewählte Projekte
 
-## Selected work
+Die Projekte sind nach ihrem Kontext gruppiert. Die einzelnen Bereiche lassen sich auf GitHub ein- und ausklappen.
 
-| Type | Project | What it shows |
-| --- | --- | --- |
-| Personal product | [FolioLint](https://github.com/AleksZyro/FolioLint) | Python CLI for checking whether repositories are ready to present publicly |
-| Personal frontend | [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Personal website, visual polish, project presentation, and deployment workflow |
-| School project | [TwinType](https://github.com/AleksZyro/TwinType) | Local Streamlit/Ollama app for writing-style generation and prompt experimentation |
-| School project | [LB259](https://github.com/AleksZyro/LB259) | IMS data science coursework with Python notebooks, documentation, and regression work |
-| FHNW Hackathon | [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-) | Team machine-learning project for detecting rooftop PV systems and suggesting panel placement |
-| BBB Hackathon | [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Shared hackathon project contributed to and maintained as a separate fork |
-| Learning lab | [PathLab](https://github.com/AleksZyro/PathLab) | Interactive React visualizer for BFS, DFS, Dijkstra, and A* |
-| Learning lab | [SortLab](https://github.com/AleksZyro/SortLab) | Sorting algorithm visualizer with operation counts and custom inputs |
-| Experiment | [BESP2074](https://github.com/AleksZyro/BESP2074) | Interactive simulation/dashboard work with scenarios and long-term forecasts |
-| Game/modding (in progress)| [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft modding experiment in Java |
-| Open source practice | [OSS contributions](https://aleksandar-nikolic.ch/#github-activity) | Nine genuine open-source contributions, separated from team, school, and friend-project forks |
+<details open>
+<summary><strong>Persönliche Projekte und Portfolio</strong></summary>
 
-## Tech stack
-
-This overview combines technologies used in personal projects, school projects, team projects, and experiments; my experience level varies by tool.
-
-| Area | Tools |
+| Projekt | Was es zeigt |
 | --- | --- |
-| Languages | `Python` `C#` `JavaScript` `Java` |
+| [FolioLint](https://github.com/AleksZyro/FolioLint) | Python-CLI, die prüft, ob Repositories bereit für eine öffentliche Präsentation sind |
+| [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Persönliche Website, visuelle Gestaltung, Projektpräsentation und Deployment-Workflow |
+| [PathLab](https://github.com/AleksZyro/PathLab) | Interaktiver React-Visualizer für BFS, DFS, Dijkstra und A* |
+| [SortLab](https://github.com/AleksZyro/SortLab) | Visualizer für Sortieralgorithmen mit Operationszähler und eigenen Eingaben |
+
+</details>
+
+<details>
+<summary><strong>Schul- und Teamprojekte</strong></summary>
+
+| Projekt | Was es zeigt |
+| --- | --- |
+| [TwinType](https://github.com/AleksZyro/TwinType) | Lokale Streamlit-/Ollama-Anwendung für Schreibstil-Generierung und Prompt-Experimente |
+| [LB259](https://github.com/AleksZyro/LB259) | IMS-Data-Science-Arbeit mit Python-Notebooks, Dokumentation und Regression |
+| [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Gemeinsames Hackathon-Projekt, an dem ich mitgearbeitet habe |
+
+</details>
+
+<details>
+<summary><strong>Security und OWASP</strong></summary>
+
+| Projekt | Was es zeigt |
+| --- | --- |
+| [OWASP Training / OWASP Forge](https://github.com/AleksZyro/OWASP-Training) | Lokales ASP.NET-Core-Security-Lab mit zwölf OWASP-Themen, 72 Lernschritten und defensivem Fokus |
+| [VSW](https://github.com/BotondCsereklye/VSW) | Defensive Fullstack-Web-App für risikoarme Security-Checks an autorisierten Systemen |
+| [OSS-Beiträge](https://aleksandar-nikolic.ch/#github-activity) | Zehn echte Open-Source-Beiträge, getrennt von Schul-, Team- und Freundesprojekten |
+
+</details>
+
+<details>
+<summary><strong>Data, AI und angewandte Projekte</strong></summary>
+
+| Projekt | Was es zeigt |
+| --- | --- |
+| [PV Roofs / PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-) | Machine-Learning-Projekt zur Erkennung von PV-Systemen und Hindernissen sowie zur sinnvollen Platzierung auf Dächern |
+| [BESP2074](https://github.com/AleksZyro/BESP2074) | Interaktive Simulations- und Dashboard-Arbeit mit Szenarien und langfristigen Modellläufen |
+
+</details>
+
+<details>
+<summary><strong>Experimente</strong></summary>
+
+| Projekt | Was es zeigt |
+| --- | --- |
+| [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft-Modding-Experiment in Java, aktuell in Arbeit |
+
+</details>
+
+## Tech-Stack
+
+| Bereich | Tools |
+| --- | --- |
+| Sprachen | `Python` `C#` `JavaScript` `Java` |
 | Frontend | `HTML` `CSS` `JavaScript` `React` `Vite` |
-| Python apps and AI | `Streamlit` `Ollama` |
-| Data | `SQL` `Jupyter Notebook` |
+| Python und AI | `Streamlit` `Ollama` |
+| Daten | `SQL` `Jupyter Notebook` |
 
-## Repository notes
+## Aktueller Fokus
 
-I keep the pinned repositories limited to projects that are not already highlighted above. The OSS list on my portfolio separates genuine open-source contributions from forks of school, team, and friend projects.
+- **Vorbereiten:** Bewerbungen und Portfolio für eine Schweizer Praktikumsstelle 2027/2028
+- **Entwickeln:** praktische Tools mit `Python`, `C#`, `JavaScript`, `React` und `Vite`
+- **Lernen:** saubere Frontend-Strukturen, interaktive UI-Muster, lokale AI-Tools und wartbare Projektstrukturen
 
-## Current focus
+## Hinweise zum Profil
 
-- **Preparing:** applications and portfolio material for a 2027/2028 Swiss internship
-- **Building:** practical tools with `Python`, `C#`, `JavaScript`, `React`, and `Vite`
-- **Learning:** cleaner frontend structure, interactive UI patterns, local AI tooling, and maintainable project structure
-
-## Profile build
-
-- Header uses a real office/code photo adapted into `assets/profile-banner.jpg`
-- The Pac-Man SVG is generated by `scripts/generate_pacman_contrib.py`
-- GitHub Actions checks real GitHub contribution data several times per day and republishes the Pac-Man SVG only when the file really changes
-- Workflow file: `.github/workflows/pacman-contributions.yml`
+- Das Headerbild ist ein echtes Büro-/Codefoto in `assets/profile-banner.jpg`.
+- Die Pac-Man-SVG-Grafik wird durch `scripts/generate_pacman_contrib.py` erzeugt.
+- GitHub Actions prüft mehrmals täglich die echten GitHub-Beitragsdaten und veröffentlicht die Grafik nur bei Änderungen.
+- Workflow: `.github/workflows/pacman-contributions.yml`
