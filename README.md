@@ -34,6 +34,7 @@ Die Projekte sind nach ihrem Kontext gruppiert. Die einzelnen Bereiche lassen si
 | [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Persönliche Website, visuelle Gestaltung, Projektpräsentation und Deployment-Workflow |
 | [PathLab](https://github.com/AleksZyro/PathLab) | Interaktiver React-Visualizer für BFS, DFS, Dijkstra und A* |
 | [SortLab](https://github.com/AleksZyro/SortLab) | Visualizer für Sortieralgorithmen mit Operationszähler und eigenen Eingaben |
+| [OSS-Beiträge](https://aleksandar-nikolic.ch/#github-activity) | Zehn echte Open-Source-Beiträge und praktische Zusammenarbeit mit bestehenden Projekten |
 
 </details>
 
@@ -55,7 +56,6 @@ Die Projekte sind nach ihrem Kontext gruppiert. Die einzelnen Bereiche lassen si
 | --- | --- |
 | [OWASP Training / OWASP Forge](https://github.com/AleksZyro/OWASP-Training) | Lokales ASP.NET-Core-Security-Lab mit zwölf OWASP-Themen, 72 Lernschritten und defensivem Fokus |
 | [VSW](https://github.com/BotondCsereklye/VSW) | Defensive Fullstack-Web-App für risikoarme Security-Checks an autorisierten Systemen |
-| [OSS-Beiträge](https://aleksandar-nikolic.ch/#github-activity) | Zehn echte Open-Source-Beiträge, getrennt von Schul-, Team- und Freundesprojekten |
 
 </details>
 
