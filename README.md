@@ -14,88 +14,76 @@
 
 ---
 
+
 ## Über mich
 
-- IMS-Schüler in der Schweiz im 3. Jahr mit Schwerpunkt Applikationsentwicklung
-- Suche eine Praktikumsstelle in der Schweiz für das 4. IMS-Jahr 2027/2028
-- Ich entwickle kleine Tools, Schulprojekte und Experimente mit einem möglichst realen Produktfokus
-- Klare und verständliche Benutzeroberflächen sind mir genauso wichtig wie sauberer Code
+- IMS-Schüler an der Alten Kantonsschule Aarau und der Berufsbildung Baden, seit August 2026 im 3. Jahr mit Schwerpunkt Applikationsentwicklung
+- Ich suche ein IMS-Praxisjahr in der Applikationsentwicklung ab August 2027 für das Schuljahr 2027/2028
+- Ich entwickle eigene Anwendungen und Tools, arbeite mit Freunden an gemeinsamen Projekten und sammle Erfahrung mit Kundenwebsites
+- Besonders interessieren mich verständliche Benutzeroberflächen, zuverlässige Software und Cyber Security
 
-## Ausgewählte Projekte
+## Hauptprojekte
 
-Die Projekte sind nach ihrem Kontext gruppiert. Die einzelnen Bereiche lassen sich auf GitHub ein- und ausklappen.
-
-<details open>
-<summary><strong>Persönliche Projekte und Portfolio</strong></summary>
-
-| Projekt | Was es zeigt |
+| Projekt | Kurzbeschreibung |
 | --- | --- |
-| [FolioLint](https://github.com/AleksZyro/FolioLint) | Python-CLI, die prüft, ob Repositories bereit für eine öffentliche Präsentation sind |
-| [Portfolio Website](https://github.com/AleksZyro/Portfolio-Website) | Persönliche Website, visuelle Gestaltung, Projektpräsentation und Deployment-Workflow |
-| [PathLab](https://github.com/AleksZyro/PathLab) | Interaktiver React-Visualizer für BFS, DFS, Dijkstra und A* |
-| [SortLab](https://github.com/AleksZyro/SortLab) | Visualizer für Sortieralgorithmen mit Operationszähler und eigenen Eingaben |
-| [OSS-Beiträge](https://aleksandar-nikolic.ch/#github-activity) | Zehn echte Open-Source-Beiträge und praktische Zusammenarbeit mit bestehenden Projekten |
-
-</details>
+| [UMR – Useless Mobs Reworked](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft-Forge-Mod, die wir zu zweit entwickeln: neue Mob-Varianten, KI-Verhalten, Bosskämpfe, Modelle und Gameplay-Systeme. Eines meiner Hauptprojekte, laufend in Entwicklung. |
+| [FolioLint](https://github.com/AleksZyro/FolioLint) | Regelbasiertes Python-CLI für wiederholbare Repository-Checks: Dokumentation, Setup, Tests, Medien und öffentliche Präsentierbarkeit. |
+| [VSW](https://github.com/BotondCsereklye/VSW) | Gemeinsame Fullstack-Webanwendung mit FastAPI und React/TypeScript für defensive Security-Checks, Reports, Export und Verlauf. |
 
 <details>
-<summary><strong>Schul- und Teamprojekte</strong></summary>
+<summary><strong>Weitere persönliche Projekte</strong></summary>
 
-| Projekt | Was es zeigt |
+| Projekt | Kurzbeschreibung |
 | --- | --- |
-| [TwinType](https://github.com/AleksZyro/TwinType) | Lokale Streamlit-/Ollama-Anwendung für Schreibstil-Generierung und Prompt-Experimente |
-| [LB259](https://github.com/AleksZyro/LB259) | IMS-Data-Science-Arbeit mit Python-Notebooks, Dokumentation und Regression |
-| [Internet ein/aus](https://github.com/AleksZyro/internet-ein-aus) | Gemeinsames Hackathon-Projekt, an dem ich mitgearbeitet habe |
+| [PathLab](https://github.com/AleksZyro/PathLab) · [Demo](https://alekszyro.github.io/PathLab/) | Interaktiver React-Visualizer für BFS, DFS, Dijkstra und A* auf einem gewichteten Raster. |
+| [SortLab](https://github.com/AleksZyro/SortLab) · [Demo](https://alekszyro.github.io/SortLab/) | Visualisierung und Vergleich von sechs Sortieralgorithmen mit eigenen Eingaben und Operationszählern. |
+| [BESP2074](https://github.com/AleksZyro/BESP2074) | Persönliches Simulationsprojekt mit Python, Szenarien und einem interaktiven Karten-Dashboard. |
 
 </details>
+
+## Kundenwebsites
+
+- **[MM Transport & Assistance – mmta.ch](https://mmta.ch/):** Kundenwebsite, an der ich mit Hostpoint arbeite. Der Schwerpunkt liegt auf Gestaltung, Inhalten und der Umsetzung der Kundenwünsche.
+- **AARGO Clean GmbH:** Eine weitere Kundenwebsite befindet sich in Arbeit; eine ausführliche Präsentation folgt nach Fertigstellung.
+
+## Open Source
+
+**Zwölf gemergte Pull Requests in externen Open-Source-Projekten**, zusätzlich zu Beiträgen an eigenen und gemeinsamen Projekten. Ausgewählte Beispiele:
+
+| Beitrag | Änderung |
+| --- | --- |
+| [PyCQA/isort #2616](https://github.com/PyCQA/isort/pull/2616) | Zeilenenden bei stdin/stdout unter Windows erhalten und Regressionstests ergänzen. |
+| [pypa/pip-audit #1119](https://github.com/pypa/pip-audit/pull/1119) | Doppelte PYSEC-Schwachstellenergebnisse vermeiden und die Korrektur mit einem Test absichern. |
+| [tonym999/vault-cleaner #54](https://github.com/tonym999/vault-cleaner/pull/54) | Konfigurierte Ein- und Ausgabepfade in der CLI berücksichtigen. |
+
+[Weitere Beiträge und Nachweise im Portfolio](https://aleksandar-nikolic.ch/#github-activity)
 
 <details>
-<summary><strong>Security und OWASP</strong></summary>
+<summary><strong>Schulprojekte und Hackathons</strong></summary>
 
-| Projekt | Was es zeigt |
-| --- | --- |
-| [OWASP Training / OWASP Forge](https://github.com/AleksZyro/OWASP-Training) | Lokales ASP.NET-Core-Security-Lab mit zwölf OWASP-Themen, 72 Lernschritten und defensivem Fokus |
-| [VSW](https://github.com/BotondCsereklye/VSW) | Defensive Fullstack-Web-App für risikoarme Security-Checks an autorisierten Systemen |
+Weitere Erfahrung habe ich in Schul- und Hackathonprojekten gesammelt, darunter [Internet ein und aus](https://github.com/BotondCsereklye/internet-ein-aus), [LB259](https://github.com/AleksZyro/LB259), [TwinType](https://github.com/AleksZyro/TwinType) und [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-).
 
-</details>
-
-<details>
-<summary><strong>Data, AI und angewandte Projekte</strong></summary>
-
-| Projekt | Was es zeigt |
-| --- | --- |
-| [PV Roofs / PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-) | Machine-Learning-Projekt zur Erkennung von PV-Systemen und Hindernissen sowie zur sinnvollen Platzierung auf Dächern |
-| [BESP2074](https://github.com/AleksZyro/BESP2074) | Interaktive Simulations- und Dashboard-Arbeit mit Szenarien und langfristigen Modellläufen |
+Für den **Heimatschutz Aargau** entwickelten wir im Team einen Lösungsvorschlag für die gestellten Anforderungen. Wir gehörten zu den drei Teams der engeren Auswahl; für die weitere Umsetzung wurde ein anderes Team ausgewählt.
 
 </details>
 
-<details>
-<summary><strong>Experimente</strong></summary>
+## Technologien und Erfahrungen
 
-| Projekt | Was es zeigt |
+Erfahrungen aus eigenen Projekten, gemeinsamer Entwicklung, Schule und Kundenarbeit – mit unterschiedlicher Vertiefung je nach Projekt.
+
+| Bereich | Technologien und Kontext |
 | --- | --- |
-| [UMR Mod](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft-Modding-Experiment in Java, aktuell in Arbeit |
-
-</details>
-
-## Tech-Stack
-
-| Bereich | Tools |
-| --- | --- |
-| Sprachen | `Python` `C#` `JavaScript` `Java` |
-| Frontend | `HTML` `CSS` `JavaScript` `React` `Vite` |
-| Python und AI | `Streamlit` `Ollama` |
-| Daten | `SQL` `Jupyter Notebook` |
+| Sprachen | Python, Java, JavaScript/TypeScript, C# |
+| Web und APIs | HTML/CSS, React, Vite, FastAPI, ASP.NET Core |
+| Daten | SQL, SQLite, JSON/CSV, Jupyter Notebook |
+| Entwicklung und Tests | Git/GitHub, Docker, pytest, Vitest, GitHub Actions |
+| Weitere Werkzeuge | PowerShell, Streamlit, Ollama |
+| Hosting und Plattformen | Netlify und eigene Domain für mein Portfolio, Hostpoint für Kundenwebsites, AWS-Erfahrung aus der Schule |
 
 ## Aktueller Fokus
 
-- **Vorbereiten:** Bewerbungen und Portfolio für eine Schweizer Praktikumsstelle 2027/2028
-- **Entwickeln:** praktische Tools mit `Python`, `C#`, `JavaScript`, `React` und `Vite`
-- **Lernen:** saubere Frontend-Strukturen, interaktive UI-Muster, lokale AI-Tools und wartbare Projektstrukturen
+- UMR gemeinsam weiterentwickeln und bestehende Tools und Webanwendungen verbessern
+- Kundenwebsites umsetzen und betreuen
+- Bewerbungen und Portfolio für das IMS-Praxisjahr 2027/2028 vorbereiten
 
-## Hinweise zum Profil
-
-- Das Headerbild ist ein echtes Büro-/Codefoto in `assets/profile-banner.jpg`.
-- Die Pac-Man-SVG-Grafik wird durch `scripts/generate_pacman_contrib.py` erzeugt.
-- GitHub Actions prüft mehrmals täglich die echten GitHub-Beitragsdaten und veröffentlicht die Grafik nur bei Änderungen.
-- Workflow: `.github/workflows/pacman-contributions.yml`
+[Portfolio](https://aleksandar-nikolic.ch/) · [GitHub-Repositories](https://github.com/AleksZyro?tab=repositories)
