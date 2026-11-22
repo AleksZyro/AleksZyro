@@ -1,89 +1,88 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Profilbanner von Aleksandar Nikolic" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/main/assets/profile-banner.jpg?v=20260817" alt="Aleksandar Nikolic's profile banner" width="100%" />
   <br />
   <br />
   <a href="https://aleksandar-nikolic.ch">Portfolio</a> |
   <a href="https://github.com/AleksZyro?tab=repositories">Repositories</a>
   <br />
   <br />
-  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man-Beitragsgrafik" width="100%" />
+  <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man contribution graph" width="100%" />
   <br />
   <br />
-  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=AleksZyro&layout=compact&card_width=1000&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Am häufigsten verwendete Programmiersprachen" width="100%" />
+  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=AleksZyro&layout=compact&card_width=1000&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Most used programming languages" width="100%" />
 </div>
 
 ---
 
+## About me
 
-## Über mich
+- Third-year IMS (Informatikmittelschule) student at Alte Kantonsschule Aarau and Berufsbildung Baden, specialising in application development since August 2026
+- Looking for a one-year IMS internship in application development starting in August 2027 for the 2027/2028 academic year
+- I build my own applications and tools, collaborate with friends on shared projects, and gain hands-on experience creating client websites
+- I am particularly interested in clear user interfaces, reliable software, and cybersecurity
 
-- IMS-Schüler an der Alten Kantonsschule Aarau und der Berufsbildung Baden, seit August 2026 im 3. Jahr mit Schwerpunkt Applikationsentwicklung
-- Ich suche ein IMS-Praxisjahr in der Applikationsentwicklung ab August 2027 für das Schuljahr 2027/2028
-- Ich entwickle eigene Anwendungen und Tools, arbeite mit Freunden an gemeinsamen Projekten und sammle Erfahrung mit Kundenwebsites
-- Besonders interessieren mich verständliche Benutzeroberflächen, zuverlässige Software und Cyber Security
+## Main projects
 
-## Hauptprojekte
-
-| Projekt | Kurzbeschreibung |
+| Project | Description |
 | --- | --- |
-| [UMR – Useless Mobs Reworked](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | Minecraft-Forge-Mod, die wir zu zweit entwickeln: neue Mob-Varianten, KI-Verhalten, Bosskämpfe, Modelle und Gameplay-Systeme. Eines meiner Hauptprojekte, laufend in Entwicklung. |
-| [FolioLint](https://github.com/AleksZyro/FolioLint) | Regelbasiertes Python-CLI für wiederholbare Repository-Checks: Dokumentation, Setup, Tests, Medien und öffentliche Präsentierbarkeit. |
-| [VSW](https://github.com/BotondCsereklye/VSW) | Gemeinsame Fullstack-Webanwendung mit FastAPI und React/TypeScript für defensive Security-Checks, Reports, Export und Verlauf. |
+| [UMR – Useless Mobs Reworked](https://github.com/AleksZyro/UMR-Useless-mobs-reworked-Mod) | A Minecraft Forge mod that I develop with a friend, featuring new mob variants, AI behaviour, boss fights, models, and gameplay systems. One of my main projects, with development ongoing. |
+| [FolioLint](https://github.com/AleksZyro/FolioLint) | A rule-based Python CLI for repeatable repository checks covering documentation, setup, tests, media, and readiness for public presentation. |
+| [VSW](https://github.com/BotondCsereklye/VSW) | A collaborative full-stack web application built with FastAPI and React/TypeScript for defensive security checks, reports, exports, and scan history. |
 
 <details>
-<summary><strong>Weitere persönliche Projekte</strong></summary>
+<summary><strong>More personal projects</strong></summary>
 
-| Projekt | Kurzbeschreibung |
+| Project | Description |
 | --- | --- |
-| [PathLab](https://github.com/AleksZyro/PathLab) · [Demo](https://alekszyro.github.io/PathLab/) | Interaktiver React-Visualizer für BFS, DFS, Dijkstra und A* auf einem gewichteten Raster. |
-| [SortLab](https://github.com/AleksZyro/SortLab) · [Demo](https://alekszyro.github.io/SortLab/) | Visualisierung und Vergleich von sechs Sortieralgorithmen mit eigenen Eingaben und Operationszählern. |
-| [BESP2074](https://github.com/AleksZyro/BESP2074) | Persönliches Simulationsprojekt mit Python, Szenarien und einem interaktiven Karten-Dashboard. |
+| [PathLab](https://github.com/AleksZyro/PathLab) · [Demo](https://alekszyro.github.io/PathLab/) | An interactive React visualiser for BFS, DFS, Dijkstra, and A* on a weighted grid. |
+| [SortLab](https://github.com/AleksZyro/SortLab) · [Demo](https://alekszyro.github.io/SortLab/) | Visualises and compares six sorting algorithms with custom inputs and operation counters. |
+| [BESP2074](https://github.com/AleksZyro/BESP2074) | A personal Python simulation project with scenarios and an interactive map dashboard. |
 
 </details>
 
-## Kundenwebsites
+## Client websites
 
-- **[MM Transport & Assistance – mmta.ch](https://mmta.ch/):** Kundenwebsite, an der ich mit Hostpoint arbeite. Der Schwerpunkt liegt auf Gestaltung, Inhalten und der Umsetzung der Kundenwünsche.
-- **AARGO Clean GmbH:** Eine weitere Kundenwebsite befindet sich in Arbeit; eine ausführliche Präsentation folgt nach Fertigstellung.
+- **[MM Transport & Assistance – mmta.ch](https://mmta.ch/):** A client website I am working on using Hostpoint, focusing on design, content, and implementing the client's requirements.
+- **AARGO Clean GmbH:** Another client website is in progress; a detailed showcase will follow once it is complete.
 
-## Open Source
+## Open source
 
-**Zwölf gemergte Pull Requests in externen Open-Source-Projekten**, zusätzlich zu Beiträgen an eigenen und gemeinsamen Projekten. Ausgewählte Beispiele:
+**Twelve merged pull requests in external open-source projects**, alongside contributions to my own and shared projects. Selected examples:
 
-| Beitrag | Änderung |
+| Contribution | Change |
 | --- | --- |
-| [PyCQA/isort #2616](https://github.com/PyCQA/isort/pull/2616) | Zeilenenden bei stdin/stdout unter Windows erhalten und Regressionstests ergänzen. |
-| [pypa/pip-audit #1119](https://github.com/pypa/pip-audit/pull/1119) | Doppelte PYSEC-Schwachstellenergebnisse vermeiden und die Korrektur mit einem Test absichern. |
-| [tonym999/vault-cleaner #54](https://github.com/tonym999/vault-cleaner/pull/54) | Konfigurierte Ein- und Ausgabepfade in der CLI berücksichtigen. |
+| [PyCQA/isort #2616](https://github.com/PyCQA/isort/pull/2616) | Preserved line endings for stdin/stdout on Windows and added regression tests. |
+| [pypa/pip-audit #1119](https://github.com/pypa/pip-audit/pull/1119) | Prevented duplicate PYSEC vulnerability findings and added a test to cover the fix. |
+| [tonym999/vault-cleaner #54](https://github.com/tonym999/vault-cleaner/pull/54) | Ensured the CLI respects configured input and output paths. |
 
-[Weitere Beiträge und Nachweise im Portfolio](https://aleksandar-nikolic.ch/#github-activity)
+[More contributions and supporting details in my portfolio](https://aleksandar-nikolic.ch/#github-activity)
 
 <details>
-<summary><strong>Schulprojekte und Hackathons</strong></summary>
+<summary><strong>School projects and hackathons</strong></summary>
 
-Weitere Erfahrung habe ich in Schul- und Hackathonprojekten gesammelt, darunter [Internet ein und aus](https://github.com/BotondCsereklye/internet-ein-aus), [LB259](https://github.com/AleksZyro/LB259), [TwinType](https://github.com/AleksZyro/TwinType) und [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-).
+I have also gained experience through school projects and hackathons, including [Internet On and Off](https://github.com/BotondCsereklye/internet-ein-aus), [LB259](https://github.com/AleksZyro/LB259), [TwinType](https://github.com/AleksZyro/TwinType), and [PV Visual Placer](https://github.com/AleksZyro/PV-Visual-placer-).
 
-Für den **Heimatschutz Aargau** entwickelten wir im Team einen Lösungsvorschlag für die gestellten Anforderungen. Wir gehörten zu den drei Teams der engeren Auswahl; für die weitere Umsetzung wurde ein anderes Team ausgewählt.
+For **Heimatschutz Aargau**, our team developed a proposed solution to the given requirements. We were one of three shortlisted teams; another team was selected to continue with implementation.
 
 </details>
 
-## Technologien und Erfahrungen
+## Technologies and experience
 
-Erfahrungen aus eigenen Projekten, gemeinsamer Entwicklung, Schule und Kundenarbeit – mit unterschiedlicher Vertiefung je nach Projekt.
+Experience gained through personal projects, collaborative development, school, and client work, with varying depth depending on the project.
 
-| Bereich | Technologien und Kontext |
+| Area | Technologies and context |
 | --- | --- |
-| Sprachen | Python, Java, JavaScript/TypeScript, C# |
-| Web und APIs | HTML/CSS, React, Vite, FastAPI, ASP.NET Core |
-| Daten | SQL, SQLite, JSON/CSV, Jupyter Notebook |
-| Entwicklung und Tests | Git/GitHub, Docker, pytest, Vitest, GitHub Actions |
-| Weitere Werkzeuge | PowerShell, Streamlit, Ollama |
-| Hosting und Plattformen | Netlify und eigene Domain für mein Portfolio, Hostpoint für Kundenwebsites, AWS-Erfahrung aus der Schule |
+| Languages | Python, Java, JavaScript/TypeScript, C# |
+| Web and APIs | HTML/CSS, React, Vite, FastAPI, ASP.NET Core |
+| Data | SQL, SQLite, JSON/CSV, Jupyter Notebook |
+| Development and testing | Git/GitHub, Docker, pytest, Vitest, GitHub Actions |
+| Other tools | PowerShell, Streamlit, Ollama |
+| Hosting and platforms | Netlify and a custom domain for my portfolio, Hostpoint for client websites, and AWS experience from school |
 
-## Aktueller Fokus
+## Current focus
 
-- UMR gemeinsam weiterentwickeln und bestehende Tools und Webanwendungen verbessern
-- Kundenwebsites umsetzen und betreuen
-- Bewerbungen und Portfolio für das IMS-Praxisjahr 2027/2028 vorbereiten
+- Continuing development of UMR with a friend and improving existing tools and web applications
+- Building and maintaining client websites
+- Preparing applications and my portfolio for the 2027/2028 IMS internship
 
-[Portfolio](https://aleksandar-nikolic.ch/) · [GitHub-Repositories](https://github.com/AleksZyro?tab=repositories)
+[Portfolio](https://aleksandar-nikolic.ch/) · [GitHub repositories](https://github.com/AleksZyro?tab=repositories)
