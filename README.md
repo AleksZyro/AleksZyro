@@ -7,9 +7,6 @@
   <br />
   <br />
   <img src="https://raw.githubusercontent.com/AleksZyro/AleksZyro/pacman-assets/assets/pacman-contrib.svg?v=20260817" alt="Pac-Man contribution graph" width="100%" />
-  <br />
-  <br />
-  <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=AleksZyro&layout=compact&card_width=1000&hide_border=true&bg_color=0d1117&title_color=e6edf3&text_color=9fb3c8&icon_color=58a6ff&border_color=23456f" alt="Most used programming languages" width="100%" />
 </div>
 
 ---
